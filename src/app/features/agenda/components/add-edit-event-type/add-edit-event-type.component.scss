@@ -1,0 +1,120 @@
+.p-dialog{
+    width: 90%;
+    height: 90%;
+    max-height: 90%;
+}
+
+.p-dialog .p-dialog-content {
+    border-radius: 10px;
+}
+
+.my-confirm-dialog{
+    max-height: 90%;
+    height: fit-content !important;
+}
+
+.my-confirm-dialog .p-dialog-content {
+    border-radius: 0 !important;
+}
+
+.add-edit-event-type{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    padding-top: 20px;
+    width: 100%;
+
+    .actions{
+        display: flex;
+        justify-content: flex-end;
+        padding: 5px 10px;
+        background-color: rgb(241, 241, 241);    
+        margin: 60px 0 30px 0;
+
+        button{
+            display: flex;
+            align-items: center;
+            outline: none;
+            padding: 6px 10px;
+            border-radius: 100px;
+            color: green;
+            width: fit-content;
+            cursor: pointer;
+            background-color: white;
+            margin-left: 10px;
+
+            i{
+                margin-right: 5px;
+            }
+        }
+
+        .add{
+            border: solid #1172c2;
+            color: #1172c2;
+        }
+        .add:hover{
+            border: solid #1172c2;
+            color: white;
+            background-color: #1172c2;
+        }
+        .cancel{
+            border: solid gray;
+            color: gray;
+        }
+        .cancel:hover{
+            border: solid gray;
+            color: white;
+            background-color: gray;
+        }
+    }
+
+    form{
+        display: flex;
+        justify-content: center;
+        flex-direction: column;
+        border-radius: 7px;
+        padding: 60px 0;
+        width: 350px;
+        margin: auto;
+
+            .field{
+                display: flex;
+                flex-direction: column;
+                margin-bottom: 20px;
+                flex: 1;
+    
+                label{
+                    margin-bottom: 7px;
+                }
+    
+                small{
+                    margin:10px 0 0 0;
+                }
+            }
+    
+            .switch{
+                width: 150px;
+                flex: none;
+    
+                .p-inputswitch-slider{
+                    height: 36px;
+                    width: 50px;
+                }
+            }
+    }
+}
+@media all and (max-width: 990px){
+    .add-edit-event-type{
+        form{
+            width: 100%;
+        } 
+    }
+}
+
+@media all and (max-width: 768px){
+    .add-edit-event-type{
+        form{
+            color: inherit;
+        } 
+    }
+}

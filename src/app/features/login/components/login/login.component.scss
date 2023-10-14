@@ -1,0 +1,178 @@
+.login{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    .content{
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        width: 100%;
+        min-height: 100vh;
+        
+        .form-bloc{
+            display: flex;
+            overflow: hidden;
+            border-radius: 7px;
+            width: fit-content;
+            box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
+            min-height: 455px;
+
+            .left{
+                background-color: var(--project-primary-color);
+                width: 300px;
+                display: flex;
+                flex-direction: column;
+                align-items: center;
+                justify-content: center;
+                color: white;
+                padding: 20px;
+
+                img{
+                    width: 170px;
+                    border-radius: 50%;
+                    box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
+                }
+
+                h1{
+                    text-align: center;
+                    margin : 20px 0;
+                }
+
+            }
+            
+            .right{
+                width: fit-content;
+                padding: 20px 50px;
+                background-color: white;
+                display: flex;
+                align-items: center;
+                justify-content: center;
+                width: 400px;
+                form{
+                    display: flex;
+                    flex-direction: column;
+
+                    .message-request-error{
+                        padding: 5px;
+                        text-align: center;
+                        margin-bottom: 20px;
+                        background-color: #fddddd;
+                        color: red;
+                        font-size: 0.9em;
+                    }
+
+                    h1{
+                        margin-bottom: 35px;
+                        text-align: center;
+                    }
+
+                    .field{
+                        display: flex;
+                        flex-direction: column;
+                        margin-bottom: 15px;
+                        width: 300px;
+            
+                        label{
+                            margin-bottom: 7px;
+                        }
+            
+                        small{
+                            margin:10px 0 0 0;
+                        }
+            
+                    }
+
+                    .forgotten-password{
+                        text-align: right;
+                        cursor: pointer;
+                        color: #569672;
+                        transition: all 0.2s ease-in-out;
+                        font-size: 0.9rem;
+                        font-style: italic;
+
+                        &:hover{
+                            text-decoration: underline;
+                        }
+                    }
+
+                    button{
+                        margin-top: 10px;
+                        padding: 10px 10px;
+                        border: 1px solid black;
+                        background-color: white;
+                        transition: all 0.2s ease-in-out;
+                        font-size: 1.1em;
+
+                        &:hover{
+                            color: white;
+                            background-color: black;
+                        }
+                    }
+                }
+            }
+        }
+    }
+}
+
+@media all and (max-width: 830px){
+    .login{
+        .content{
+            flex-direction: column;
+            
+            .form-bloc{
+                flex-direction: column;
+                width: 400px;
+                height: fit-content;
+                min-height: unset;
+
+                .left{
+                    width: 100%;
+                    padding: 0 10px;
+                    
+                    img{
+                        display: none;
+                    }
+    
+                    h1{
+                        margin : 20px 0;
+                        color: white;
+                    }
+                }
+                
+                .right{
+                    width: 100%;
+                    padding: 20px 20px 40px 20px;
+
+                    form{
+                        width: 100%;
+    
+                        .field{
+                            width: 100%;
+                        }
+    
+                        button{
+                            padding: 7px;
+                            font-size: 1em;
+                        }
+                    }
+                }
+            }
+        }
+    }
+}
+
+@media all and (max-width: 515px){
+    .login{
+        margin: 0 20px;
+
+        .content{
+            .form-bloc{
+                width: 100%;
+
+                .right{
+                    padding: 10px 20px 25px 20px;
+                }
+            }
+        }
+    }
+}

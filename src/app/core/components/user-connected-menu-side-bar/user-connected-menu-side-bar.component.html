@@ -1,0 +1,58 @@
+<ng-container *ngIf="user">
+    <div class="user-connected-menu-side-bar">
+
+        <div class="user-connected" (click)="onUserMenuClick()" >
+            <p>{{getInitials(user.firstname, user.lastname)}}</p>
+            <div class="user-icon">
+                <i class="pi pi-user"></i>
+            </div>
+        </div>
+        
+        <p-sidebar styleClass="user-side-bar" [(visible)]="sideBarDisplayed" position="right" [blockScroll]=true >
+        
+            <ng-template pTemplate="content">
+                <div class="top">
+                    <div class="user-info">
+                        <div class="texts">
+                            <p class="name"> {{user.firstname}} {{user.lastname}}</p>
+                            <p class="email"> {{user.email}} </p>
+                        </div>
+                    </div>
+        
+                    <nav>
+                        <ul>
+                            <li>
+                                <a (click)="onSideBarNavigation()" routerLink="/mot-de-passe-oublie">Changer votre mot de passe </a>
+                            </li>
+                            <li>
+                                <a (click)="onSideBarNavigation()" routerLinkActive="active-link" routerLink="contact-webmaster">Contacter le webmaster</a>
+                            </li>
+                            <li>
+                                <a (click)="onSideBarNavigation()" routerLinkActive="active-link" routerLink="non-disponible">Changer image du profil</a>
+                            </li>
+                            <li>
+                                <a (click)="onSideBarNavigation()" routerLinkActive="active-link" routerLink="aides">Aides</a>
+                            </li>
+                        </ul>
+                    </nav>
+                </div>
+    
+                <div class="bottom">
+                    <div class="roles">
+                        <p>Vos rôles</p>
+                        <ul>
+                            <ng-container *ngFor="let role of user.roles">
+                                <li>{{role}}</li>
+                            </ng-container>
+                        </ul>
+                    </div>
+                    <button (click)="logout()">
+                        <i class="pi pi-sign-out"></i>
+                        Se déconnecter
+                    </button>
+                </div>
+            </ng-template>
+        </p-sidebar>
+    
+    </div>
+</ng-container>

@@ -1,0 +1,17 @@
+<div class="image-preview" [ngClass]="path ? 'is-single-image-set':'is-single-image-not-set'">
+    
+    
+    <i class="pi pi-camera"></i>
+    <img 
+        [src]="path"
+        alt="Image"
+    >
+
+    <button 
+        [ngClass]="dismisseable ? 'show-delete-button': 'hide-delete-button'"
+        type="button"
+        (click)="removeSecondaryPictureEvent()" 
+    >
+         <i class="pi pi-times"></i>
+    </button>
+</div>

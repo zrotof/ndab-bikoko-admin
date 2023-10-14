@@ -1,0 +1,26 @@
+<ng-container *ngIf="isUserLogged === true; else notLogged">
+  <div class="app">
+    <app-header></app-header>
+    <div class="content">
+      <div 
+        class="button-toggle-sidebar" 
+        (click)="onSideBarToggled()" 
+        [ngClass]="isSideNavToggled ? 'button-when-collapsed':'button-when-not-collapsed'" 
+        >
+        <i [ngClass]="isSideNavToggled ? 'pi pi-arrow-right' : 'pi pi-arrow-left' "></i>
+      </div>
+      <app-side-bar-navigation 
+        [ngClass]="isSideNavToggled ? 'sidebar-collapsed' : 'sidebar-not-collapsed'"
+        [screenWidth]="screenWidth"
+        >
+      </app-side-bar-navigation>
+      <div class="wrapper" [ngClass]="styleClass">
+        <router-outlet></router-outlet>
+      </div>
+    </div>
+  </div>
+</ng-container>
+
+<ng-template #notLogged>
+  <router-outlet></router-outlet>
+</ng-template>

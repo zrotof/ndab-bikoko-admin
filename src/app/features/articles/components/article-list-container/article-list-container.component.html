@@ -1,0 +1,15 @@
+<div class="article-list-container">
+    <h1 class="title">Gestion Des Articles </h1>
+    <p class="sub-title">Gestion de tous les articles créés</p>
+
+    <div class="content">
+        <div class="actions">
+            <button class="add-article" type="button" routerLink="/articles/creer-article"> 
+                <i class="pi pi-plus"></i>
+                Créer article 
+            </button>
+        </div>
+        <app-article-list-menu [menuList]="(rubricList$ | async)!" (menuItemClikedEvent)="getArticleListByRubricId($event)"></app-article-list-menu>
+        <app-article-list [articles]="(articlesList$ | async)!" (deleteArticleEvent)="deleteArticleById($event)"></app-article-list>
+    </div>
+</div>

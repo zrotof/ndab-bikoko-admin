@@ -1,0 +1,14 @@
+<div class="replay-list-container">
+    <h1 class="title">Replays Créés </h1>
+    <p class="sub-title">Liste de tous les replays</p>
+
+    <div class="content">
+        <div class="actions">
+            <button class="add-replay" type="button" routerLink="/replays/creer"> 
+                <i class="pi pi-plus"></i>
+                Créer replay 
+            </button>
+        </div>
+        <app-replay-list [replays]="(replaysList$ | async)!" (deleteReplayEvent)="deleteReplayById($event)"></app-replay-list>
+    </div>
+</div>

@@ -1,0 +1,73 @@
+<div class="add-edit-replay-container">
+    <ng-container *ngIf="!isEditMode; else editMode">
+        
+        <h1 class="title">Créer Un Replay </h1>
+        <p class="sub-title">Création d'une nouvelle rubrique de replay à partir de playlists créées sur Youtube</p>
+
+        <div class="actions">
+            <button class="add" type="submit" (click)="onSaveReplay()"> 
+                <i class="pi pi-plus"></i>
+                Ajouter
+            </button>
+            <button class="cancel" type="button" (click)="onCancelAddEditReplay()"> 
+                <i class="pi pi-times"></i>
+                Annuler
+            </button>
+        </div>
+    </ng-container>
+
+    <ng-template #editMode>
+        <h1 class="title">Modifier Un Replay</h1>
+        <p class="sub-title">Modification d'une playlist</p>
+
+        <div class="actions">
+            <button class="add" type="submit" (click)="onEditReplay()"> 
+                <i class="pi pi-pencil"></i>
+                Modifier
+            </button>
+            <button class="cancel" type="button" (click)="onCancelAddEditReplay()"> 
+                <i class="pi pi-times"></i>
+                Annuler
+            </button>
+        </div>
+    </ng-template>
+
+
+    <form [formGroup]="replayForm"  >
+
+        <div class="field" *ngIf="isEditMode">
+            <label>Activer?</label>
+            <p-inputSwitch formControlName="isActive"></p-inputSwitch>
+        </div>
+
+        <div class="field">
+            <label>Titre de la replay</label>
+            <input 
+                type="text" 
+                pInputText 
+                formControlName="title"
+            />
+            <small *ngIf="formControls['title'].invalid && ( isSaveButtonClicked || isEditButtonClicked)" class="p-error">Renseigner le titre de la playlist</small>
+
+        </div>
+
+        <div class="field">
+            <label>Playlist sur youtube</label>
+            <p-dropdown 
+                formControlName="playlistId"
+                placeholder="Sélectionnez une playlist"
+                [options]="youtubePlaylists" 
+                [filter]="true" 
+                filterBy="title" 
+                [showClear]="true"
+                optionLabel="title"
+            >
+                
+            </p-dropdown>
+            <small *ngIf="formControls['playlistId'].invalid && ( isSaveButtonClicked || isEditButtonClicked)" class="p-error">Sélectionnez une playlist</small>
+        </div>
+
+    </form>   
+
+    <p-toast position="top-right"></p-toast> 
+</div>

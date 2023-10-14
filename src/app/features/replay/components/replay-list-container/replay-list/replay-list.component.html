@@ -1,0 +1,47 @@
+<ng-container  *ngIf="replays">
+    <div class="replay-list">
+
+        <ng-container *ngIf="replays?.length == 0; else tableau">
+            <span>Aucun replay n'a encore été enregistré pour le moment.</span>
+        </ng-container>
+        
+        <ng-template #tableau>
+            <p-table  [value]="replays" responsiveLayout="scroll">
+                
+                <ng-template pTemplate="header">
+                    <tr>
+                        <th class="count"></th>
+                        <th>Titre</th>
+                        <th>Activée?</th>
+                        <th class="last-column">Actions</th>
+                    </tr>
+                </ng-template>
+                <ng-template pTemplate="body" let-replay let-rowIndex="rowIndex">
+                    <tr>
+                        <td class="count">{{rowIndex + 1}}</td>
+                        <td>{{replay.title}}</td>
+                        <td>
+                            <div class="default-state" [ngClass]="replay.isActive === true ? 'active-replay':''"></div>
+                        </td>
+                        <td class="row-actions">
+                            <i class="pi pi-ellipsis-v" (click)="op.toggle($event)"></i>
+    
+                            <p-overlayPanel #op>
+                                <ng-template pTemplate>
+                                    <div class="row-actions-event">
+                                        <i (click)="editReplay(replay.id)" class="pi pi-pencil"></i>
+                                        <i (click)="deleteReplay(replay.id)"class="pi pi-trash"></i>
+                                    </div>
+                                </ng-template>
+                            </p-overlayPanel>
+                        </td>
+                    </tr>
+                </ng-template>
+    
+            </p-table>
+            <p-confirmDialog styleClass="delete-message"  header="Confirmation de suppression" acceptLabel="Oui" rejectLabel="Non" [breakpoints]="{'960px': '75vw', '640px': '100vw'}" [style]="{width: '50vw'}">
+            </p-confirmDialog>
+            <p-toast position="top-right"></p-toast> 
+        </ng-template>
+    </div>
+</ng-container>

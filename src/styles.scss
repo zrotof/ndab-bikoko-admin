@@ -1,0 +1,59 @@
+@import 'variables.scss';
+
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    -moz-box-sizing: border-box;
+}
+
+html,body{
+    background-color: #edf1f7;
+    font-family: Verdana, Geneva, Tahoma, sans-serif;
+}
+
+a{
+    text-decoration: none;
+}
+
+input,
+a,
+button,
+div{
+    -webkit-tap-highlight-color: transparent;
+}
+
+.error-form{
+    margin-top: 5px;
+    color: red;
+}
+
+.red-star{
+    color: red;
+    font-size: 0.95em;
+}
+
+button{
+    cursor: pointer;
+    border: none;
+    border-radius: 5px;
+}
+
+//Removing background hightlight when autofill on google browser
+input:-webkit-autofill,
+input:-webkit-autofill:focus {
+    transition: background-color 600000s 0s, color 600000s 0s;
+}
+
+.title{
+    font-weight: bold;
+}
+
+.form-error{
+    color: red;
+    margin-top: 3px;
+
+    span{
+        font-size: 0.92em;
+    }
+}

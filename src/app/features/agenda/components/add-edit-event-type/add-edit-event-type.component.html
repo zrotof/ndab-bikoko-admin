@@ -1,0 +1,57 @@
+<div class="add-edit-event-type">
+    <ng-container *ngIf="!isEditMode">
+        
+        <h1 class="title">Ajouter Un Type d'Évênement d'Agenda</h1>
+        <p class="sub-title">Ajout d'un nouveau type d'évênement</p>
+
+        <div class="actions">
+            <button class="add" type="submit" (click)="onSaveEventType()"> 
+                <i class="pi pi-plus"></i>
+                Ajouter
+            </button>
+            <button class="cancel" type="button" (click)="onCancelAddEditEventType()"> 
+                <i class="pi pi-times"></i>
+                Annuler
+            </button>
+        </div>
+    </ng-container>
+
+    <ng-container *ngIf="isEditMode">
+        <h1 class="title">Modifier Playlist</h1>
+        <p class="sub-title">Modification d'un type d'évênement</p>
+
+        <div class="actions">
+            <button class="add" type="submit" (click)="onEditEventType()"> 
+                <i class="pi pi-pencil"></i>
+                Modifier
+            </button>
+            <button class="cancel" type="button" (click)="onCancelAddEditEventType()"> 
+                <i class="pi pi-times"></i>
+                Annuler
+            </button>
+        </div>
+    </ng-container>
+    
+    <form [formGroup]="eventTypeForm">
+
+        <ng-container *ngIf="isEditMode">
+            <div class="field">
+                <label>Activer ?</label>
+                <p-inputSwitch formControlName="isActive"></p-inputSwitch>
+            </div>
+        </ng-container>
+
+            <div class="field">
+                <label>Nom du type d'évênement</label>
+                <input 
+                    type="text" 
+                    pInputText 
+                    formControlName="name"
+                />
+                <small *ngIf="formControls['name'].invalid && ( isSaveButtonClicked || isEditButtonClicked)" class="p-error">Renseigner le nom du type d'évênement</small>
+            </div>
+
+            
+    </form>
+
+</div>

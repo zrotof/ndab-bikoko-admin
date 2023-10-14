@@ -1,0 +1,121 @@
+.add-edit-user{
+    display: flex;
+    flex-direction: column;
+
+    .actions{
+        display: flex;
+        justify-content: flex-end;
+        padding: 5px 10px;
+        background-color: white;
+        margin: 60px 0 30px 0;
+
+        button{
+            display: flex;
+            align-items: center;
+            outline: none;
+            padding: 6px 10px;
+            border-radius: 100px;
+            color: green;
+            width: fit-content;
+            cursor: pointer;
+            background-color: white;
+            margin: 10px;
+
+            i{
+                margin-right: 5px;
+            }
+        }
+
+        .add{
+            border: solid #1172c2;
+            color: #1172c2;
+            
+            &:hover{
+                border: solid #1172c2;
+                color: white;
+                background-color: #1172c2;
+            }
+        }
+        .cancel{
+            border: solid gray;
+            color: gray;
+            &:hover{
+                border: solid gray;
+                color: white;
+                background-color: gray;
+            }
+        }
+
+    }
+
+    form{
+        display: flex;
+        justify-content: center;
+        flex-direction: column;
+        margin: 0 auto;
+        max-width: 550px;
+        width: 100%;
+        background-color: white;
+        padding: 60px;
+        box-shadow: rgba(50, 50, 93, 0.25) 0px 13px 27px -5px, rgba(0, 0, 0, 0.3) 0px 8px 16px -8px;
+    
+        .field{
+            display: flex;
+            flex-direction: column;
+            margin-bottom: 20px;
+            width: 100%;
+
+            label{
+                margin-bottom: 7px;
+            }
+
+            small{
+                margin:10px 0 0 0;
+            }
+
+            p-multiselect{
+                width: 100%;
+                .p-multiselect{
+                    width: 100%;
+                }
+            }
+        }
+    } 
+}
+
+@media all and (max-width: 1024px){
+    .add-edit-user{
+        form{
+            .left{
+                width: 50%;
+            }
+    
+            .right{
+                width: 50%;
+            }
+        } 
+    }
+}
+
+@media all and (max-width: 935px){
+    .add-edit-user{
+        form{
+            flex-direction: column-reverse;
+            
+            .left{
+                width: 300px;
+                margin: auto;
+
+                .preview {
+                    height: 200px;
+                }
+            }
+    
+            .right{
+                width: 100%;
+                margin-left: 0;
+                margin-bottom: 20px
+            }
+        } 
+    }
+}

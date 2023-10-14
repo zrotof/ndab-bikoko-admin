@@ -1,0 +1,50 @@
+<div class="login">
+    <div class="content my-container">
+        <div class="form-bloc">
+            <div class="left">
+                <img src="../../../../../assets/img/login/icon.png" alt="logo">
+                <h1>Amadou BÂ 2024</h1>
+            </div>
+            <div class="right">
+                <form [formGroup]="loginForm" (submit)="onLogin()" >
+    
+                    <ng-container *ngIf="isMessageErrorDisplayed">
+                        <p class="message-request-error">{{messageError | json}}</p>
+                    </ng-container>
+                    <h1>Se Connecter</h1>
+                    
+                    <div class="field">
+                        <label>Login</label>
+                        <input 
+                            type="text" 
+                            pInputText 
+                            formControlName="email"
+                        />
+                        <small *ngIf="f['email'].invalid && isSaveButtonClicked" class="p-error">Renseigner votre login</small>
+            
+                    </div>
+            
+                    <div class="field">
+                        <label>Mot de passe</label>
+                        <input 
+                            type="text" 
+                            pInputText 
+                            formControlName="password"
+                        />        
+                        <small *ngIf="f['password'].invalid && isSaveButtonClicked" class="p-error">Renseigner votre mot de passe</small>
+                    </div>
+
+                    <p class="forgotten-password" routerLink="/mot-de-passe-oublie"> Mot de passe oublié ?</p>
+            
+                    
+                    <button type="submit" >
+                        <ng-container *ngIf="isLoginFormSubmittedAndNotErrorOnClientSide; else defaultText">
+                            <p-progressSpinner [style]="{width: '20px', height: '20px'}" strokeWidth="8"></p-progressSpinner>
+                        </ng-container>
+                    </button>
+                </form>
+                <ng-template #defaultText>Se Connecter</ng-template>        
+            </div>
+        </div>
+    </div>
+</div>

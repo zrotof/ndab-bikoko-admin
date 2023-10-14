@@ -1,0 +1,35 @@
+.article-list-container{
+    display: flex;
+    flex-direction: column;
+
+    .actions{
+        padding: 5px 10px;
+        background-color: rgb(241, 241, 241);
+        margin-top: 60px;
+        margin-bottom: 30px;
+    
+        .add-article{
+            display: flex;
+            flex-direction: row;
+            align-items: center;
+            outline: none;
+            border: solid green;
+            padding: 6px 10px;
+            border-radius: 100px;
+            color: green;
+            width: fit-content;
+            cursor: pointer;
+            background-color: white;
+            white-space: nowrap;
+                
+            &:hover{
+                background-color: green;
+                color: white;
+            }
+    
+            i{
+                margin-right: 5px;
+            }
+        }
+    }
+}

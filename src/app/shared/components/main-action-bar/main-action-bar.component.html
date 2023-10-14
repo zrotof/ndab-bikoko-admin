@@ -1,0 +1,9 @@
+<div class="main-action-bar">
+    <ng-container *ngFor="let actionButton of actionsButton">
+        <button class="add" type="button" (click)="onAddDestination(actionButton.url)"> 
+            <i class={{actionButton.icon}}></i>
+            {{actionButton.label}}
+        </button>
+    </ng-container>
+    
+</div>

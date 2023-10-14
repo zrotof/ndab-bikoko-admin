@@ -1,0 +1,90 @@
+<div class="add-edit-user">
+    <div *ngIf="!isEditMode">
+        
+        <h1 class="title">Ajouter Un  Utilisateur</h1>
+        <p class="sub-title">Ajout d'un nouvel utilisateur</p>
+        
+        <div class="actions">
+            <button class="add" type="submit" (click)="onSaveUser()"> 
+                <i class="pi pi-plus"></i>
+                Ajouter
+            </button>
+            <button class="cancel" type="button" (click)="onCancelAddEditUser()"> 
+                <i class="pi pi-times"></i>
+                Annuler
+            </button>
+        </div>
+    </div>
+
+    <div *ngIf="isEditMode">
+        <h1 class="title">Modifier Utilisateur</h1>
+
+        <div class="actions">
+            <button class="add" type="submit" (click)="onEdituser()"> 
+                <i class="pi pi-pencil"></i>
+                Modifier
+            </button>
+            <button class="cancel" type="button" (click)="onCancelAddEditUser()"> 
+                <i class="pi pi-times"></i>
+                Annuler
+            </button>
+        </div>
+    </div>
+
+    <form [formGroup]="userForm">
+        <div class="field">
+            <label class="block">Entrez le/les prénom(s)</label>
+            <input type="text" pInputText formControlName="firstname" placeholder="Prénom(s)"/>
+            <div *ngIf="formControls['firstname'].invalid && ( isSaveButtonClicked || isEditButtonClicked)"  class="form-error">
+                <span *ngIf="formControls['firstname'].errors?.required" class="text-danger">Prénom(s) manquant(s)</span>
+            </div>
+            <small class="p-error"></small>
+        </div>
+
+        <div class="field">
+            <label class="block">Entrez le/les nom(s)</label>
+            <input type="text" pInputText formControlName="lastname" placeholder="Nom(s)"/>
+            <div *ngIf="formControls['lastname'].invalid && ( isSaveButtonClicked || isEditButtonClicked)"  class="form-error">
+                <span *ngIf="formControls['lastname'].errors?.required" class="text-danger">Nom(s) manquant(s)</span>
+            </div>
+            <small class="p-error"></small>
+        </div>
+
+        <div class="field">
+            <label class="block">Email</label>
+            <input type="email" pInputText formControlName="email" placeholder="Entrez l'adresse mail"/>
+            <div *ngIf="formControls['email'].invalid && ( isSaveButtonClicked || isEditButtonClicked )" class="form-error">
+                <span *ngIf="formControls['email'].errors?.required" class="text-danger">Veuillez renseignez l'email</span>
+                <span *ngIf="formControls['email'].errors?.pattern" class="text-danger">Veuillez renseigner une adresse mail valide</span>
+            </div>
+        </div>
+
+        <div class="field" *ngIf="!isEditMode">
+            <label class="block">Mot de passe</label>
+            <input type="text" pInputText formControlName="password" placeholder="Entrez le mot de passe "/>
+            <div *ngIf="formControls['password'].invalid && ( isSaveButtonClicked || isEditButtonClicked )" class="form-error">
+                <span *ngIf="formControls['password'].errors?.required" >Veuillez renseignez le mot de passe</span>
+            </div>
+        </div>
+
+        <div class="field">
+            <label class="block">Roles</label>
+            <p-multiSelect 
+                id="presenters"
+                [options]="roles" 
+                formControlName="roles"
+                defaultLabel="Ajouter le/les role(s)" 
+                display="chip"
+            >
+            </p-multiSelect>
+
+            <div *ngIf="formControls['roles'].invalid && ( isSaveButtonClicked || isEditButtonClicked )" class="form-error">
+                <span *ngIf="formControls['roles'].errors?.required" >Veuillez renseignez le/les role(s) de l'utilisateur</span>                    
+            </div>
+        </div>
+    </form>   
+
+
+    <p-toast position="top-right"></p-toast> 
+
+</div>

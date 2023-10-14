@@ -1,0 +1,30 @@
+<ng-container  *ngIf="ambassadors">
+    <div class="rubric-list">
+
+        <ng-container *ngIf="ambassadors?.length == 0; else tableau">
+            <span>Aucun ambassadeur de campagne ne s'est enregistré pour le moment.</span>
+        </ng-container>
+        
+        <ng-template #tableau>
+            <p-table  [value]="ambassadors" responsiveLayout="scroll">
+                
+                <ng-template pTemplate="header">
+                    <tr>
+                        <th>Nom</th>
+                        <th>Ville de résidence</th>
+                        <th>email</th>
+                        <th class="last-column">Inscrit par</th>
+                    </tr>
+                </ng-template>
+                <ng-template pTemplate="body" let-ambassador let-rowIndex="rowIndex">
+                    <tr>
+                        <td>{{ambassador.firstname}} {{ambassador.lastname}}</td>
+                        <td> {{ambassador.town}}</td>
+                        <td> {{ambassador.email}}</td>
+                        <td> {{ambassador.appType}}</td>
+                    </tr>
+                </ng-template>
+            </p-table>
+        </ng-template>
+    </div>
+</ng-container>

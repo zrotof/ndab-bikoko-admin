@@ -1,0 +1,28 @@
+.single-video-displayed-bloc{
+    width: 100%;
+    height: 100%;
+    border-radius: 5px;
+}
+
+.is-single-video-set{
+
+    i{
+        display: none;
+    }
+
+}
+
+.is-single-video-not-set{
+    border-radius: 5px;
+    border: 2px solid #00000052;
+    border-style: dashed;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    i{
+        font-size: 1.9rem;
+        color : #adadad;
+    }
+
+}

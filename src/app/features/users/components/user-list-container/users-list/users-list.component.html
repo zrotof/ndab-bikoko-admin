@@ -1,0 +1,50 @@
+<div class="list-users" *ngIf="users">
+
+    <div *ngIf="users.length == 0; else tableau">
+        <span>Aucun utilisateur n'a encore été créé.</span>
+    </div>
+
+    <ng-template #tableau>
+        <p-table  [value]="users" responsiveLayout="scroll">
+            
+            <ng-template pTemplate="header">
+                <tr>
+                    <th class="count"></th>
+                    <th>Nom</th>
+                    <th>Role(s)</th>
+                    <th>Email</th>
+                    <th class="last-column">Actions</th>
+                </tr>
+            </ng-template>
+            <ng-template pTemplate="body" let-user let-rowIndex="rowIndex">
+                <tr>
+                    <td class="count">{{rowIndex + 1}}</td>
+                    <td>{{user.firstname}} {{user.lastname}}</td>
+                    <td>
+                        <ng-container *ngFor="let role of user.roles">
+                            <p>- {{role}}</p>
+                        </ng-container>
+                    </td>
+                    <td>{{user.email}}</td>
+                    <td class="row-actions">
+                    
+                        <i class="pi pi-ellipsis-v" (click)="op.toggle($event)"></i>
+
+                        <p-overlayPanel #op>
+                            <ng-template pTemplate>
+                                <div class="row-actions-event">
+                                    <i (click)="editUser(user.id)" class="pi pi-pencil"></i>
+                                    <i (click)="deleteUser(user)"class="pi pi-trash"></i>
+                                </div>
+                            </ng-template>
+                        </p-overlayPanel>
+                    </td>
+                </tr>
+            </ng-template>
+
+        </p-table>
+        <p-confirmDialog styleClass="delete-message"  header="Confirmation de suppression" acceptLabel="Oui" rejectLabel="Non" [breakpoints]="{'960px': '75vw', '640px': '100vw'}" [style]="{width: '50vw'}">
+        </p-confirmDialog>
+        <p-toast position="top-right"></p-toast> 
+    </ng-template>
+</div>

@@ -1,0 +1,45 @@
+.main-action-bar{
+    padding: 5px 10px;
+    background-color: #ffffff;
+    margin-bottom : 30px;
+    display: flex;
+    justify-content: space-between;
+    border-radius: 100px;
+
+    button{
+        display: flex;
+        align-items: center;
+        outline: none;
+        padding: 6px 10px;
+        border-radius: 100px;
+        background-color: white;
+        width: fit-content;
+        cursor: pointer;
+        margin: 6px;
+
+        i{
+            margin-right: 5px;
+        }
+    }
+
+    .add{
+        border: 2px solid green;
+        color: green;
+        
+        &:hover{
+            background-color: green;
+            color: white;
+        }
+    }
+
+    .see{
+        border: 2px solid green;
+        color: green;
+        background-color: white;
+
+        &:hover{
+            background-color: green;
+            color: white;
+        }
+    }
+}

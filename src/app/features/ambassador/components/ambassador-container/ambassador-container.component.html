@@ -1,0 +1,8 @@
+<div class="ambassador-list-container">
+    <h1 class="title">Rubriques Créées </h1>
+    <p class="sub-title">Liste de toutes les rubriques d'articles</p>
+
+    <div class="content">
+        <app-ambassador-list [ambassadors]="(ambassadorList$ | async)!"></app-ambassador-list>
+    </div>
+</div>

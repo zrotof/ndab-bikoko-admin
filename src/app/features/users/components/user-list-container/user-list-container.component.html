@@ -1,0 +1,13 @@
+<div class="user-list-container">
+
+    <h1 class="title">Gestion Des Utilisateurs </h1>
+    <p class="sub-title">Liste des utilisateurs de la partie admin</p>
+
+    <div class="actions">
+        <button class="add-user" type="button" routerLink="/utilisateurs/creer"> 
+            <i class="pi pi-plus"></i>
+            Ajouter un utilisateur
+        </button>
+    </div>
+    <app-users-list [users]="(usersList$ | async)!" (deleteUserEvent)="deleteUserById($event)"></app-users-list>
+</div>

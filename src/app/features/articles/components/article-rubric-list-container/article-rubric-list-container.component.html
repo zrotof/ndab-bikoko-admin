@@ -1,0 +1,14 @@
+<div class="rubric-list-container">
+    <h1 class="title">Rubriques Créées </h1>
+    <p class="sub-title">Liste de toutes les rubriques d'articles</p>
+
+    <div class="content">
+        <div class="actions">
+            <button class="add-replay" type="button" routerLink="/articles/creer-rubrique"> 
+                <i class="pi pi-plus"></i>
+                Créer rubrique 
+            </button>
+        </div>
+        <app-rubric-list [rubrics]="(rubricList$ | async)!" (deleteReplayEvent)="deleteReplayById($event)"></app-rubric-list>
+    </div>
+</div>
