@@ -125,7 +125,21 @@
             <div class="row-one">
                 <div class="field">
                     <label>Corps de l'article</label>
-                    <textarea [autoResize]="true" rows="13" cols="30" pInputTextarea formControlName="content"></textarea>
+                    <p-editor formControlName="content" [style]="{ height: '320px' }">
+                        <ng-template pTemplate="header">
+                            <span class="ql-formats">
+                                <button class="ql-header" value="1"></button>
+                                <button class="ql-header" value="2"></button>
+                                <button class="ql-header" value="false"></button>
+                                <button type="button" class="ql-bold" aria-label="Bold"></button>
+                                <button type="button" class="ql-italic" aria-label="Italic"></button>
+                                <button type="button" class="ql-underline" aria-label="Underline"></button>
+                                <button type="button" class="ql-list" value="ordered"></button>
+                                <button type="button" class="ql-list" value="bullet"></button>
+                                <button type="button" class="ql-link"></button>
+                            </span>
+                        </ng-template>
+                    </p-editor>
                     <small *ngIf="formControls['content'].invalid && ( isSaveButtonClicked || isEditButtonClicked)" class="p-error">Renseigner le contenu de l'article</small>
                 </div>
             </div>

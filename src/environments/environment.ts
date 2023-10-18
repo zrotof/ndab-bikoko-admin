@@ -5,7 +5,8 @@
 export const environment = {
   production: false,
 
-  baseUrl : "https://www.api-test.amadou-ba.sn/v1/"
+//  baseUrl : "https://www.api-test.amadou-ba.sn/v1/"
+  baseUrl : "http://localhost:3000/v1/"
 };
 
 /*

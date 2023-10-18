@@ -14,6 +14,7 @@ import { InputTextareaModule } from 'primeng/inputtextarea';
 import { ArticleRubric } from 'src/app/shared/models/article';
 import { DropdownModule } from 'primeng/dropdown';
 import { User } from 'src/app/shared/models/user';
+import { EditorModule } from 'primeng/editor';
 
 @Component({
   selector: 'app-article-add-edit-container',
@@ -30,7 +31,8 @@ import { User } from 'src/app/shared/models/user';
     InputSwitchModule,
     CalendarModule,
     InputTextareaModule,
-    DropdownModule
+    DropdownModule,
+    EditorModule
   ],
   templateUrl: './article-add-edit-container.component.html',
   styleUrls: ['./article-add-edit-container.component.scss'],
