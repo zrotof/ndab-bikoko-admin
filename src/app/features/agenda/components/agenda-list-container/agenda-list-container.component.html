@@ -1,11 +1,15 @@
 <div class="agenda-list-container">
-    <h1 class="title">Gestion Des Évênements d'Agenda </h1>
-    <p class="sub-title">Liste des évênements d'agenda du candidat</p>
+    <h1 class="title">Gestion Des Évènements d'Agenda </h1>
+    <p class="sub-title">Liste des évènements d'agenda du candidat par type d'évènement</p>
 
-    <div class="actions">
-        <button class="add-user" type="button" (click)="onAddEvent()"> 
-            <i class="pi pi-plus"></i>
-            Ajouter un évènement
-        </button>
+    <div class="content">
+        <div class="actions">
+            <button class="add-user" type="button" routerLink="/agenda/creer-evenement"> 
+                <i class="pi pi-plus"></i>
+                Ajouter un évènement
+            </button>
+        </div>
+        <app-category-list-menu [menuList]="(eventTypeList$ | async)!" (menuItemClikedEvent)="getEventListByEventTypeId($event)"></app-category-list-menu>
+        <app-agenda-list [events]="(eventsList$ | async)!" (deleteAgendaEvent)="deleteAgendaEventById($event)"></app-agenda-list>
     </div>
 </div>

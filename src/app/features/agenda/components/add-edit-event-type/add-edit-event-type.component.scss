@@ -1,28 +1,7 @@
-.p-dialog{
-    width: 90%;
-    height: 90%;
-    max-height: 90%;
-}
-
-.p-dialog .p-dialog-content {
-    border-radius: 10px;
-}
-
-.my-confirm-dialog{
-    max-height: 90%;
-    height: fit-content !important;
-}
-
-.my-confirm-dialog .p-dialog-content {
-    border-radius: 0 !important;
-}
-
 .add-edit-event-type{
     display: flex;
     flex-direction: column;
-    justify-content: center;
-    padding-top: 20px;
-    width: 100%;
+    min-height: 100vh;
 
     .actions{
         display: flex;
@@ -49,72 +28,67 @@
         }
 
         .add{
-            border: solid #1172c2;
-            color: #1172c2;
+            border: solid var(--project-primary-color);
+            color: var(--project-primary-color);
         }
+
         .add:hover{
-            border: solid #1172c2;
             color: white;
-            background-color: #1172c2;
+            background-color: var(--project-primary-color);
         }
+
         .cancel{
             border: solid gray;
             color: gray;
         }
+
         .cancel:hover{
-            border: solid gray;
             color: white;
             background-color: gray;
         }
+
     }
 
     form{
         display: flex;
-        justify-content: center;
         flex-direction: column;
+        width: 500px;
         border-radius: 7px;
-        padding: 60px 0;
-        width: 350px;
-        margin: auto;
+        margin: 0 auto;
+        padding: 20px 0;
+        background-color: white;
+        padding: 60px;
+        box-shadow: rgba(50, 50, 93, 0.25) 0px 13px 27px -5px, rgba(0, 0, 0, 0.3) 0px 8px 16px -8px;
+        
+        .field{
+            display: flex;
+            flex-direction: column;
+            margin-bottom: 20px;
+            flex: 1;
 
-            .field{
-                display: flex;
-                flex-direction: column;
-                margin-bottom: 20px;
-                flex: 1;
-    
-                label{
-                    margin-bottom: 7px;
-                }
-    
-                small{
-                    margin:10px 0 0 0;
-                }
+            label{
+                margin-bottom: 7px;
             }
-    
-            .switch{
-                width: 150px;
-                flex: none;
-    
-                .p-inputswitch-slider{
-                    height: 36px;
-                    width: 50px;
-                }
+
+            small{
+                margin:10px 0 0 0;
             }
-    }
+        }
+    } 
 }
+
 @media all and (max-width: 990px){
-    .add-edit-event-type{
+    .add{
         form{
             width: 100%;
         } 
     }
 }
 
-@media all and (max-width: 768px){
-    .add-edit-event-type{
+@media all and (max-width: 990px){
+    .add{
         form{
-            color: inherit;
+            padding: 20px;
         } 
     }
 }

@@ -11,10 +11,3 @@ export interface Article {
     userId ?: any,
     rubricId ?: number
 }
-
-export interface ArticleRubric {
-    id : number,
-    name: string,
-    description: string,
-    isActive: Boolean
-}

@@ -52,9 +52,8 @@ export class SideBarNavigationComponent implements OnInit {
         label: "Agenda",
         active: false,
         menuItems : [
-          {label: "Liste types d'évênements", link:"agenda/types-évênements"},
-          {label: "Liste d'évênements", link:"/agenda"},
-          {label: "Ajouter évênements", link:"/agenda/creer"}
+          {label: "Types d'évênements", link:"agenda/liste-types-d-evenements"},
+          {label: "Évênements", link:"/agenda/liste-par-type-d-evenement"}
         ]
       },
       {

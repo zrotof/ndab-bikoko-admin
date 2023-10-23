@@ -1,0 +1,149 @@
+.agenda-list{
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+
+    .actions{
+        padding: 5px 10px;
+        background-color: rgb(241, 241, 241);
+        margin-top: 60px;
+        margin-bottom: 30px;
+
+        .add-replay{
+            display: flex;
+            flex-direction: row;
+            align-items: center;
+            outline: none;
+            border: solid green;
+            padding: 6px 10px;
+            border-radius: 100px;
+            color: green;
+            width: fit-content;
+            cursor: pointer;
+            background-color: white;
+            white-space: nowrap;
+
+            &:hover{
+                background-color: green;
+                color: white;
+            }
+
+            i{
+                margin-right: 5px;
+            }
+        }
+    }
+
+    p-table{
+        width: 100%;
+        margin: auto;
+        box-shadow: rgba(0, 0, 0, 0.16) 0px 1px 4px;
+    }
+
+    tr{
+        th.count{
+            width: 55px;
+        }
+
+        th.date{
+            width: 175px;
+        }
+    
+        th.last-column{
+            text-align: right;
+            width: 100px;
+        }
+    }
+
+    .cover-image{
+        height: 50px;
+        width: 50px;
+        padding-top: 10px;
+        padding-bottom: 10px;
+
+        img{
+            width: 60px;
+            height: 60px;
+            object-fit: cover;
+            object-position: center;
+            border-radius: 50%;
+        }
+    }
+
+
+    .default-state{
+        height: 15px;
+        width: 15px;
+        border-radius: 50%;
+        background-color: rgb(203, 203, 203);
+    }
+
+    .active-replay{
+        background-color: green;
+    }
+
+    .row-actions{
+        text-align: right;
+
+        i{
+            padding: 6px;
+            font-weight: bold;
+            border-radius: 50%;
+            cursor: pointer;
+            transition: all 0.3s ease-in-out;
+            border: 1.5px solid white;
+
+            &:hover{
+                border: 1.5px solid #191922;
+            }
+        }
+    }
+
+    .p-datatable .p-datatable-tbody > tr > td {
+        padding: 0.5rem 1rem !important;
+    }
+}
+
+.row-actions-event{
+    display: flex;
+    flex-direction: column;
+
+    i{
+        padding: 6px;
+        font-weight: bold;
+        margin: 5px 0;
+        border-radius: 50%;
+        cursor: pointer;
+    }
+
+    .pi-trash{
+        color: red;
+        border: 1px solid red;
+    }
+
+    .pi-trash:hover{
+        color: white;
+        background-color: red;
+    }
+
+    .pi-pencil{
+        color: green;
+        border: 1px solid green;
+    }
+    .pi-pencil:hover{
+        color: white;
+        background-color: green;
+    }
+}
+
+.p-overlaypanel .p-overlaypanel-content {
+    padding: 7px;
+}
+
+@media all and (max-width: 990px){
+    .replay-list{
+        p-table{
+            width: 100%;
+        }
+    }
+}

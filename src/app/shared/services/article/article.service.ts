@@ -27,7 +27,14 @@ export class ArticleService {
   }
 
   getArticleList(rubricId ?: number) : Observable<any>{
-    return this.http.get<any>(`${this.baseUrlArticle}?rubricId=${rubricId}`).pipe(
+
+    let url = this.baseUrlArticle
+
+    if(rubricId){
+      url = `${url}?rubricId=${rubricId}`
+    }
+
+    return this.http.get<any>(url).pipe(
       map(({status,data, message})=> data)
     )
   }

@@ -1,16 +1,16 @@
 import { Component, EventEmitter, Input, Output } from '@angular/core';
-import { CommonModule, NgClass, NgIf } from '@angular/common';
-import { ConfirmationService, ConfirmEventType, MessageService } from 'primeng/api';
+import { DatePipe, NgClass, NgIf } from '@angular/common';
+import { Router } from '@angular/router';
+import { MessageService, ConfirmationService, ConfirmEventType } from 'primeng/api';
+import { AgendaService } from 'src/app/shared/services/agenda/agenda.service';
 import { ConfirmDialogModule } from 'primeng/confirmdialog';
 import { OverlayModule } from 'primeng/overlay';
 import { OverlayPanelModule } from 'primeng/overlaypanel';
 import { TableModule } from 'primeng/table';
 import { ToastModule } from 'primeng/toast';
-import { Router } from '@angular/router';
-import { ArticleService } from 'src/app/shared/services/article/article.service';
 
 @Component({
-  selector: 'app-rubric-list',
+  selector: 'app-agenda-list',
   standalone: true,
   imports: [
     NgIf,
@@ -21,29 +21,30 @@ import { ArticleService } from 'src/app/shared/services/article/article.service'
     OverlayPanelModule,
     NgClass
   ],
-  templateUrl: './rubric-list.component.html',
-  styleUrls: ['./rubric-list.component.scss'],
-  providers: [MessageService, ConfirmationService]
+  templateUrl: './agenda-list.component.html',
+  styleUrls: ['./agenda-list.component.scss'],
+  providers: [MessageService, ConfirmationService, DatePipe]
 })
-export class RubricListComponent {
+export class AgendaListComponent {
 
-  @Input() rubrics !: any;
-  @Output() deleteReplayEvent = new EventEmitter<string>();
+  @Input() events : any;
+  @Output() deleteAgendaEvent = new EventEmitter<any>();
 
   constructor( 
     private router: Router,
-    private articleService : ArticleService,
+    private agendaService : AgendaService,
     private messageService : MessageService, 
-    private confirmationService: ConfirmationService
-  ){}
+    private confirmationService: ConfirmationService,
+    private datePipe : DatePipe
+  ) { }
 
-  editRubric(rubricId : any){
-    this.articleService.getRubricById(rubricId)
+  editEvent(eventId : any){
+    this.agendaService.getEventById(eventId)
       .subscribe(
         (result : any) => {
 
           if(result.status === "success"){
-            this.router.navigate([`articles/modifier-rubrique/${rubricId}`], { queryParamsHandling: 'preserve' })
+            this.router.navigate([`agenda/modifier-evenement/${eventId}`], { queryParamsHandling: 'preserve' })
           }
 
           else{
@@ -57,12 +58,17 @@ export class RubricListComponent {
       )
   }
 
-  deleteRubric(rubricId: string){
+  deleteEvent(eventId: string, categoryId: string){
     this.confirmationService.confirm({
-      message: "Voulez-vous vraiment supprimer cette rubrique d'article?",
+      message: 'Voulez-vous vraiment supprimer cet évènement ?',
       accept: () => {
+
+        const deleteObject = {
+          eventId: eventId,
+          categoryId: categoryId
+        }
           //Emit event to do the delation
-          this.deleteReplayEvent.emit(rubricId);
+          this.deleteAgendaEvent.emit(deleteObject);
     },
         reject: (type: any) => {
             switch(type) {
@@ -73,5 +79,9 @@ export class RubricListComponent {
         }
   }
 )
+  }
+
+  convertDate( date : Date ) : string | null {
+    return this.datePipe.transform(date, 'dd/MM/yyyy');
   }
 }

@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { MessageService } from 'primeng/api';
 import { AsyncPipe } from '@angular/common';
-import { RubricListComponent } from './rubric-list/rubric-list.component';
+import { RubricListComponent } from '../../../../shared/components/rubric-list/rubric-list.component';
 import { RouterLink } from '@angular/router';
 import { Observable } from 'rxjs';
 import { ArticleService } from 'src/app/shared/services/article/article.service';
@@ -35,7 +35,7 @@ export class ArticleRubricListContainerComponent implements OnInit {
     this.rubricList$ = this.articleService.getRubricList();
   }
 
-  deleteReplayById($event : string){
+  deleteRubricById($event : string){
 
     const rubricId = $event;
 

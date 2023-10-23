@@ -9,7 +9,7 @@
                 Créer article 
             </button>
         </div>
-        <app-article-list-menu [menuList]="(rubricList$ | async)!" (menuItemClikedEvent)="getArticleListByRubricId($event)"></app-article-list-menu>
+        <app-category-list-menu [menuList]="(rubricList$ | async)!" (menuItemClikedEvent)="getArticleListByRubricId($event)"></app-category-list-menu>
         <app-article-list [articles]="(articlesList$ | async)!" (deleteArticleEvent)="deleteArticleById($event)"></app-article-list>
     </div>
 </div>

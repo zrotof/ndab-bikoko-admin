@@ -1,22 +1,22 @@
 import { ChangeDetectionStrategy, Component, EventEmitter, Input, OnChanges, Output, SimpleChanges } from '@angular/core';
 import { NgClass, NgFor, NgIf } from '@angular/common';
-import { ArticleRubric } from 'src/app/shared/models/article';
+import { Category } from 'src/app/shared/models/category';
 
 @Component({
-  selector: 'app-article-list-menu',
+  selector: 'app-category-list-menu',
   standalone: true,
   imports: [
     NgFor,
     NgIf,
     NgClass
   ],
-  templateUrl: './article-list-menu.component.html',
-  styleUrls: ['./article-list-menu.component.scss'],
+  templateUrl: './category-list-menu.component.html',
+  styleUrls: ['./category-list-menu.component.scss'],
   changeDetection: ChangeDetectionStrategy.Default,
 })
-export class ArticleListMenuComponent implements OnChanges {
+export class CategoryListMenuComponent implements OnChanges {
 
-  @Input() menuList !: ArticleRubric[] ;
+  @Input() menuList !: Category[] ;
   @Output() menuItemClikedEvent = new EventEmitter<number>();
 
   private isFirstChange = true;

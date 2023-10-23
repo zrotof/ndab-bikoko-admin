@@ -9,6 +9,6 @@
                 Créer rubrique 
             </button>
         </div>
-        <app-rubric-list [rubrics]="(rubricList$ | async)!" (deleteReplayEvent)="deleteReplayById($event)"></app-rubric-list>
+        <app-rubric-list [rubrics]="(rubricList$ | async)!" (deleteRubricEvent)="deleteRubricById($event)"></app-rubric-list>
     </div>
 </div>

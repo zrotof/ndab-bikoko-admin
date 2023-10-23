@@ -5,8 +5,8 @@ import { RouterLink } from '@angular/router';
 import { MessageService } from 'primeng/api';
 import { Observable, filter, map } from 'rxjs';
 import { ArticleService } from 'src/app/shared/services/article/article.service';
-import { ArticleListMenuComponent } from './article-list-menu/article-list-menu.component';
-import { ArticleRubric } from 'src/app/shared/models/article';
+import { CategoryListMenuComponent } from '../../../../shared/components/category-list-menu/category-list-menu.component';
+import { Category } from 'src/app/shared/models/category';
 
 @Component({
   selector: 'app-article-list-container',
@@ -14,7 +14,7 @@ import { ArticleRubric } from 'src/app/shared/models/article';
   imports: [
     RouterLink,
     AsyncPipe,
-    ArticleListMenuComponent,
+    CategoryListMenuComponent,
     ArticleListComponent
   ],
   templateUrl: './article-list-container.component.html',
@@ -23,7 +23,7 @@ import { ArticleRubric } from 'src/app/shared/models/article';
 })
 export class ArticleListContainerComponent implements OnInit {
 
-  rubricList$ !: Observable<ArticleRubric[]>;
+  rubricList$ !: Observable<Category[]>;
   articlesList$ !: Observable<any>;
 
   constructor(
@@ -38,7 +38,7 @@ export class ArticleListContainerComponent implements OnInit {
   getRubricList(): void {
     this.rubricList$ = this.articleService.getRubricList().pipe(
       map(result => result.map(
-        (res: ArticleRubric) => {
+        (res: Category) => {
           return {
             id: res.id,
             name : res.name,

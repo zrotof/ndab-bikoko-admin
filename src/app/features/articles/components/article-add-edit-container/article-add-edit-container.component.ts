@@ -11,7 +11,7 @@ import { Observable, filter, lastValueFrom, map, timer, pipe, tap } from 'rxjs';
 import { CalendarModule } from 'primeng/calendar';
 import { InputSwitchModule } from 'primeng/inputswitch';
 import { InputTextareaModule } from 'primeng/inputtextarea';
-import { ArticleRubric } from 'src/app/shared/models/article';
+import { Category } from 'src/app/shared/models/category';
 import { DropdownModule } from 'primeng/dropdown';
 import { User } from 'src/app/shared/models/user';
 import { EditorModule } from 'primeng/editor';
@@ -43,7 +43,7 @@ export class ArticleAddEditContainerComponent implements OnInit {
 
   connectedUser !: User;
 
-  articleRubrics$ !: Observable<ArticleRubric[]>;
+  articleRubrics$ !: Observable<Category[]>;
 
   articleForm !: FormGroup;
   isSaveButtonClicked = false;
@@ -91,7 +91,7 @@ export class ArticleAddEditContainerComponent implements OnInit {
 
   getArticleRubrics(): void {
     this.articleRubrics$ = this.artcileService.getRubricList().pipe(
-      map(result => result.map( (res: ArticleRubric)=> {
+      map(result => result.map( (res: Category)=> {
         return {
           id: res.id,
           name: res.name
