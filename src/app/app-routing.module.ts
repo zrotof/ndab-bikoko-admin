@@ -39,12 +39,12 @@ const routes: Routes = [
     resolve : { user : ConnectedUserResolverService}
   },
   {
-    path: "lives",
-    loadChildren: () => import('./features/lives/lives.module').then(m =>m.LivesModule),
-    canActivate: [AuthGuard],
-    data : {
-      roles : [Roles.Editeur]
-    }
+    path: "changer-mot-de-passe", 
+    loadChildren: () => import('./features/reset-password/reset-password.module').then(m => m.ResetPasswordModule)
+  },
+  {
+    path: "mot-de-passe-oublie", 
+    loadChildren: () => import('./features/init-reset-password/init-reset-password.module').then(m => m.InitResetPasswordModule)
   },
   {
     path: "non-autorise", 
@@ -69,6 +69,10 @@ const routes: Routes = [
     data : {
       roles : [Roles.Admin]
     }
+  },
+  {
+    path: "valider-email",
+    loadChildren: () => import('./features/validate-account/validate-account.module').then(m =>m.ValidateAccountModule)
   }
 ];
 

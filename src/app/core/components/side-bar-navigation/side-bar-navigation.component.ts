@@ -66,15 +66,6 @@ export class SideBarNavigationComponent implements OnInit {
         ]
       },
       {
-        icon: this.faCamera,
-        label: "Lives",
-        active: false,
-        menuItems : [
-          {label: "Live", link:"/live"},
-         
-        ]
-      },
-      {
         icon: this.faCirclePlay,
         label: "Replays",
         active: false,

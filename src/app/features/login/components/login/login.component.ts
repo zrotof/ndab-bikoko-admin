@@ -1,6 +1,6 @@
 import { Component, OnInit, ViewEncapsulation } from '@angular/core';
 import { ReactiveFormsModule, UntypedFormBuilder, UntypedFormGroup, Validators } from '@angular/forms';
-import { Router } from '@angular/router';
+import { Router, RouterLink } from '@angular/router';
 import { MessageService } from 'primeng/api';
 import { JsonPipe, Location, NgIf } from '@angular/common';
 import { AuthService } from 'src/app/shared/services/auth/auth.service';
@@ -21,14 +21,15 @@ import { InputTextModule } from 'primeng/inputtext';
     ProgressSpinnerModule,
     LoginComponent,
     JsonPipe,
-    ReactiveFormsModule
+    ReactiveFormsModule,
+    RouterLink
   ],
   encapsulation: ViewEncapsulation.None,
   providers: [MessageService]
 })
 export class LoginComponent implements OnInit {
 
-  loginForm : UntypedFormGroup;
+  loginForm !: UntypedFormGroup;
   isSaveButtonClicked = false;
   isMessageErrorDisplayed : boolean = false;
   messageError !: string;
@@ -36,26 +37,32 @@ export class LoginComponent implements OnInit {
   isLoginFormSubmittedAndNotErrorOnClientSide = false; 
 
   constructor(
-    private fb: UntypedFormBuilder, 
-    private router: Router,     
-    private location: Location,
+    private fb: UntypedFormBuilder,
     private authService : AuthService,
-    private userService : UsersService
+    private userService : UsersService,
+    private router: Router,     
   ) {
 
+   }
+
+  ngOnInit(): void {
+    this.redirectOnAlreadyLog();
+    this.initForm();
+  }
+
+  redirectOnAlreadyLog() : void{
     this.authService.isLogged$.subscribe(res => {
       if(res === true){
         this.router.navigateByUrl("");
       }
     })
+  }
 
+  initForm() : void {
     this.loginForm = this.fb.group({
       email : ["", Validators.required],
       password : ["", Validators.required]
     });
-   }
-
-  ngOnInit(): void {
   }
 
   get f(){
@@ -90,12 +97,14 @@ export class LoginComponent implements OnInit {
   }
 
   handleSuccessfullyLogged(token : string){
-    const payload : {exp: Number, iat: Number, sub: any } = JWT.default(token);
-    const connectedUserId = payload.sub as string;
-    const connectedExpirationTime = payload.exp as number;
+    const payload : {exp: number, iat: number, sub: string } = JWT.default(token);
+    const connectedUserId = payload.sub;
+    const timeout = payload.exp - payload.iat ;
 
-    this.setConnectedUser(connectedUserId);
-    this.authService.isLogged$.next(true);
+    if(timeout > 0) {
+      this.authService.isLogged$.next(true);
+      this.setConnectedUser(connectedUserId);
+    }    
   }
 
   setConnectedUser(userId : string){

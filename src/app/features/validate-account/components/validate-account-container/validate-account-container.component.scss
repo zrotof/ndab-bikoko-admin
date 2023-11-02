@@ -1,0 +1,84 @@
+.validate-account-container{
+    flex-direction: column;
+    display: flex;
+    width: 100%;
+    justify-content: center;
+
+    .header{
+        text-align: center;
+        font-size: 2rem;
+        color: white;
+        background-color: black;
+        padding-top: 2rem;
+        padding-bottom: 2rem;
+    }
+
+    .content{
+        width: 100%;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        padding-top: 60px;
+
+        p{
+            text-align: center;
+        }
+
+        .grettings{
+            display: flex;
+            flex-direction: column;
+            width: 100%;
+            text-align: center;
+            margin-bottom: 30px;
+            align-items: center;
+
+            p{
+                &:first-child{
+                    font-size: 1.7rem;
+                    margin-bottom: 20px;
+                    font-weight: bold;
+                }
+
+                &:last-child{
+                    font-size: 1.2rem;
+                }
+            }
+        }
+
+        .pi{
+            font-size: 2rem;
+            margin-bottom: 15px;
+        }
+
+        .pi-check-circle{
+            color: green;
+        }
+
+        .pi-times-circle{
+            color: red;
+        }
+
+        p{
+            max-width: 700px;
+            line-height: 23px;
+            font-size: 16px;
+        }
+
+        button{
+            margin: auto;
+            margin-top: 30px;
+            padding: 10px 30px;
+            border: 1px solid black;
+            cursor : pointer;
+            color: black;
+            width: fit-content;
+            transition: all 0.1s ease-in-out;
+            font-size: 1.1rem;
+            &:hover{
+                border: 1px solid var(--project-primary-color);
+                background-color: var(--project-primary-color);
+                color: white;
+            }
+        }
+    }
+}

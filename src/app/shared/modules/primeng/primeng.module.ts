@@ -24,6 +24,7 @@ import { TooltipModule } from 'primeng/tooltip';
 import { SelectButtonModule } from 'primeng/selectbutton';
 import { RadioButtonModule } from 'primeng/radiobutton'
 import { SidebarModule } from 'primeng/sidebar';
+import { PasswordModule } from 'primeng/password';
 
 
 @NgModule({
@@ -51,7 +52,8 @@ import { SidebarModule } from 'primeng/sidebar';
     TooltipModule,
     SelectButtonModule,
     RadioButtonModule,
-    SidebarModule
+    SidebarModule,
+    PasswordModule
   ],
   exports : [
     FontAwesomeModule,
@@ -74,7 +76,8 @@ import { SidebarModule } from 'primeng/sidebar';
     TooltipModule,
     SelectButtonModule,
     RadioButtonModule,
-    SidebarModule
+    SidebarModule,
+    PasswordModule
   ]
 })
 

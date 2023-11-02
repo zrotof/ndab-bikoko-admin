@@ -8,6 +8,7 @@ import { AppComponent } from './app.component';
 import { CoreModule } from './core/core.module';
 import { ReqInterceptor } from './shared/interceptors/http.interceptor';
 import { ErrorInterceptor } from './shared/interceptors/error.interceptor';
+import { JwtInterceptor } from './shared/interceptors/jwt.interceptor';
 
 @NgModule({
   declarations: [
@@ -22,7 +23,9 @@ import { ErrorInterceptor } from './shared/interceptors/error.interceptor';
   ],
   providers: [
 //    { provide: HTTP_INTERCEPTORS,  useClass: ReqInterceptor , multi: true },
-    { provide: HTTP_INTERCEPTORS,  useClass: ErrorInterceptor , multi: true }
+    { provide: HTTP_INTERCEPTORS,  useClass: ErrorInterceptor , multi: true },
+    { provide: HTTP_INTERCEPTORS,  useClass: JwtInterceptor , multi: true },
+
   ],
   bootstrap: [AppComponent]
 })

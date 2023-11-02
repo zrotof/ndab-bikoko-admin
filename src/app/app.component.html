@@ -1,4 +1,4 @@
-<ng-container *ngIf="isUserLogged === true; else notLogged">
+<ng-container *ngIf="(isUserLogged$ | async ) === true; else notLogged">
   <div class="app">
     <app-header></app-header>
     <div class="content">

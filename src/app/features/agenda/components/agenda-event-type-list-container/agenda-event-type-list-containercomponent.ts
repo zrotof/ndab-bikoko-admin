@@ -44,7 +44,6 @@ export class AgendaEventTypeListContainerComponent {
     this.agendaService.deleteEventType(eventTypeId)
       .subscribe(
         (result : any) =>{
-          console.log(result)
           if(result.status === "success" ){
             this.getEventTypeList();
             this.messageService.add({severity:'success', detail: result.message});

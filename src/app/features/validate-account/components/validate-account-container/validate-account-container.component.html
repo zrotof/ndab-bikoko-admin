@@ -1,0 +1,41 @@
+<div class="validate-account-container">
+
+    <div class="header">
+        <span>Amadou BÂ 2024</span>
+    </div>
+
+    <div class="content my-container">
+
+        <ng-container *ngIf="isThereAssociatedUserToToken === true ; else noRelativeUser">
+
+            <div class="grettings">
+                <p>Bonjour, {{associatedUser.firstname}} {{associatedUser.lastname}}</p>
+                <p>Nous sommes heureux de vous voir.</p>
+            </div>
+    
+            <ng-container *ngIf="isTokenVaild ; else errorValid">
+                <i class="pi pi-check-circle"></i>
+            </ng-container>
+            <ng-template #errorValid>
+                <i class="pi pi-times-circle"></i>
+            </ng-template>
+    
+            <p>{{message}}</p>
+    
+            <ng-container *ngIf="isTokenVaild ; else tokenNotValid">
+                <button routerLink="/se-connecter"> Vous pouvez vous connectez </button>
+                <button (click)="onAskForMailValidation(associatedUser.id)"> Redemander un mail de vérification </button>
+            </ng-container>
+    
+            <ng-template #tokenNotValid>
+            </ng-template>
+
+        </ng-container>
+
+        <ng-template #noRelativeUser>
+            <p>Nous ne trouvons aucun compte associé.</p>
+        </ng-template>
+    </div>
+    <p-toast position="top-right" label="Sticky"></p-toast> 
+
+</div>

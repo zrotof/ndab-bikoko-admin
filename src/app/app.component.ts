@@ -14,7 +14,7 @@ export class AppComponent implements OnInit {
   
   title = 'Amadou BÂ 2024';
 
-  isUserLogged !: boolean;
+  isUserLogged$ !: Observable<boolean>;
 
   isSideNavToggled !: boolean;
 
@@ -36,9 +36,7 @@ export class AppComponent implements OnInit {
     this.initAppOnReload();
     this.onResize();
     this.getSideBarState();
-    this.authService.isLogged$.subscribe( res => {
-      this.isUserLogged = res;
-    });
+    this.isUserLogged$ = this.authService.isLogged$
   }
 
   onSideBarToggled(){
@@ -87,20 +85,21 @@ export class AppComponent implements OnInit {
     })
   }
 
-
   initAppOnReload(){
+    
     const token = this.authService.getToken();
+
     if(token){
-      const payload : {exp: Number, iat: Number, sub: any } = JWT.default(token);
-      const connectedUserId = payload.sub as string;
-      const connectedExpirationTime = payload.exp as number;
 
-      let isTokenValid = connectedExpirationTime - Date.now() ;
+      const payload : {exp: number, iat: number, sub: string } = JWT.default(token);
+      
+      const connectedUserId = payload.sub ;
+      let timeout = payload.exp - payload.iat ;
 
-      if(isTokenValid > 0){
+      if(timeout > 0){
         this.setConnectedUser(connectedUserId)
         this.authService.isLogged$.next(true);
-        this.authService.setExpirationCounter(token);
+        this.authService.setExpirationCounter(timeout);
       }
     }
   }

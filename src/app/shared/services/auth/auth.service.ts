@@ -10,16 +10,12 @@ import * as JWT from 'jwt-decode';
   providedIn: 'root'
 })
 export class AuthService {
-
-    user$ = new Subject<User>();
-    isLogged$ : BehaviorSubject<boolean> = new BehaviorSubject<boolean>(false);
-    expirationTime !: number;
-
-    tokenSubscription = new Subscription();
-    tokenTimer : any;
-    userId : any;
-
     baseUrlAuth = environment.baseUrl+"users/"
+
+    isLogged$ : BehaviorSubject<boolean> = new BehaviorSubject<boolean>(false);
+    user$ = new Subject<User>();
+
+    tokenTimer : any;
 
     httpOptions = {
         headers: new HttpHeaders({
@@ -37,7 +33,11 @@ export class AuthService {
         return this.http.post<any>(this.baseUrlAuth+'login/', loginData, this.httpOptions).pipe(
             map( (res : {status: string,data: any, message: string}) => res.data),
             tap(res => this.setTokenToLocalStorage(res)),
-            tap(res => this.setExpirationCounter(res))
+            tap(res => {
+                const payload : {exp: number, iat: number, sub: string } = JWT.default(res);
+                const timeout = payload.exp - payload.iat ;
+                this.setExpirationCounter(timeout)
+            }),
         )
     }
 
@@ -68,14 +68,9 @@ export class AuthService {
     }
 
     // Returns true as long as the current time is less than the expiry date
-    setExpirationCounter(token: string) {
-        const payload : {exp: Number, iat: Number, sub: any } = JWT.default(token);
-        const connectedExpirationTime = payload.exp as number;
-        const timeout = connectedExpirationTime - Date.now() ;
-        
+    setExpirationCounter(timeout: number) {
         this.tokenTimer = setTimeout(()=>{
             this.logout();
         }, timeout)
     }
-
 }

@@ -1,14 +1,14 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 
-import { LivesRoutingModule } from './lives-routing.module';
+import { ValidateAccountRoutingModule } from './validate-account-routing.module';
 
 
 @NgModule({
   declarations: [],
   imports: [
     CommonModule,
-    LivesRoutingModule
+    ValidateAccountRoutingModule
   ]
 })
-export class LivesModule { }
+export class ValidateAccountModule { }
