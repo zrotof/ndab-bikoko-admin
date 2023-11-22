@@ -6,7 +6,7 @@ import { MessageService } from 'primeng/api';
 import { Observable, filter, map } from 'rxjs';
 import { ArticleService } from 'src/app/shared/services/article/article.service';
 import { CategoryListMenuComponent } from '../../../../shared/components/category-list-menu/category-list-menu.component';
-import { Category } from 'src/app/shared/models/category';
+import { Rubric } from 'src/app/shared/models/rubric';
 
 @Component({
   selector: 'app-article-list-container',
@@ -23,7 +23,7 @@ import { Category } from 'src/app/shared/models/category';
 })
 export class ArticleListContainerComponent implements OnInit {
 
-  rubricList$ !: Observable<Category[]>;
+  rubricList$ !: Observable<Rubric[]>;
   articlesList$ !: Observable<any>;
 
   constructor(
@@ -38,7 +38,7 @@ export class ArticleListContainerComponent implements OnInit {
   getRubricList(): void {
     this.rubricList$ = this.articleService.getRubricList().pipe(
       map(result => result.map(
-        (res: Category) => {
+        (res: Rubric) => {
           return {
             id: res.id,
             name : res.name,

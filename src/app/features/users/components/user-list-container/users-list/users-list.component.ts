@@ -59,16 +59,7 @@ export class UsersListComponent{
       this.messageService.add({severity:'error', detail: 'Vous ne pouvez pas supprimer cet utilisateur'});
       return ;
     }
-
-/*
-  let connectedUser !:User;
-
-  this.authService.user$.subscribe( res => {
-  console.log("Yes yes")
-
-  connectedUser = res ;
-  })
-*/
+    
     this.confirmationService.confirm({
       message: 'Voulez-vous vraiment supprimer ce compte?',
       accept: () => {

@@ -6,15 +6,15 @@
         padding: 5px 10px;
         background-color: rgb(241, 241, 241);
         margin: 60px 0 30px 0;
+        display: flex;
+        justify-content: space-between;
 
-        .add-user{
+        button{
             display: flex;
             align-items: center;
             outline: none;
-            border: solid green;
             padding: 6px 10px;
             border-radius: 100px;
-            color: green;
             width: fit-content;
             cursor: pointer;
             background-color: white;
@@ -29,6 +29,24 @@
             }
         
             
+        }
+
+        .add{
+            border: solid green;
+            color: green;
+
+            &:hover{
+                background-color: green;
+            }
+        }
+
+        .save{
+            border: solid blue;
+            color: blue;
+
+            &:hover{
+                background-color: blue;
+            }
         }
     }
 }

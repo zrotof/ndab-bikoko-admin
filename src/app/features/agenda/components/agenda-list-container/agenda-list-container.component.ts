@@ -5,8 +5,9 @@ import { Observable, map, pipe } from 'rxjs';
 import { AgendaService } from 'src/app/shared/services/agenda/agenda.service';
 import { MessageService } from 'primeng/api';
 import { CategoryListMenuComponent } from 'src/app/shared/components/category-list-menu/category-list-menu.component';
-import { Category } from 'src/app/shared/models/category';
+import { Rubric } from 'src/app/shared/models/rubric';
 import { AgendaListComponent } from './agenda-list/agenda-list.component';
+import { Event } from 'src/app/shared/models/event';
 
 @Component({
   selector: 'app-agenda-list-container',
@@ -24,8 +25,8 @@ import { AgendaListComponent } from './agenda-list/agenda-list.component';
 
 export class AgendaListContainerComponent {
 
-  eventTypeList$ !: Observable<any>;
-  eventsList$ !: Observable<any>;
+  eventTypeList$ !: Observable<Rubric[]>;
+  eventsList$ !: Observable<Event[]>;
 
   constructor(
     private agendaService : AgendaService,
@@ -39,7 +40,7 @@ export class AgendaListContainerComponent {
   getEventTypeList(){
     this.eventTypeList$ = this.agendaService.getEventTypeList().pipe(
       map(result => result.map(
-        (res: Category) => {
+        (res: Rubric) => {
           return {
             id: res.id,
             name : res.name,

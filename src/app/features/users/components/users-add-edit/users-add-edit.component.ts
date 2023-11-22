@@ -117,7 +117,6 @@ export class UsersAddEditComponent implements OnInit {
     this.userService.addUser(userToSave)
     .subscribe(
       (result) =>{
-        console.log(result)
         this.messageService.add({severity:'success', detail: result.message});
           lastValueFrom(timer(2000))
           .then(

@@ -1,25 +1,33 @@
-<ng-container  *ngIf="eventTypes">
+<ng-container  *ngIf="currentEventlist">
     <div class="event-type-list">
 
-        <ng-container *ngIf="eventTypes?.length == 0; else tableau">
+        <ng-container *ngIf="currentEventlist?.length == 0; else tableau">
             <span>Aucun type d'évènement n'a encore été enregistré pour le moment.</span>
         </ng-container>
         
         <ng-template #tableau>
-            <p-table  [value]="eventTypes" responsiveLayout="scroll">
+            <p-table  
+                [value]="currentEventlist" 
+                responsiveLayout="scroll"
+                (onRowReorder)="onRowReorder($event)"
+                >
                 
                 <ng-template pTemplate="header">
                     <tr>
-                        <th class="count"></th>
+                        <th></th>
+                        <th></th>
                         <th>Nom</th>
                         <th>Description</th>
                         <th>Activée?</th>
                         <th class="last-column">Actions</th>
                     </tr>
                 </ng-template>
-                <ng-template pTemplate="body" let-eventType let-rowIndex="rowIndex">
-                    <tr>
-                        <td class="count">{{rowIndex + 1}}</td>
+                <ng-template pTemplate="body" let-eventType let-index="rowIndex">
+                    <tr [pReorderableRow]="index">
+                        <td pReorderableRowHandle class="row-reorder-handler"></td>
+                        <td >
+                            <span class="pi pi-align-justify"></span>
+                        </td>
                         <td>{{eventType.name}}</td>
                         <td> {{eventType.description}}</td>
                         <td>
@@ -31,19 +39,15 @@
                             <p-overlayPanel #op>
                                 <ng-template pTemplate>
                                     <div class="row-actions-event">
-                                        <i (click)="editEventType(eventType.id)" class="pi pi-pencil"></i>
-                                        <i (click)="deleteEventType(eventType.id)"class="pi pi-trash"></i>
+                                        <i (click)="editRubricEventTrigger(eventType.id)" class="pi pi-pencil"></i>
+                                        <i (click)="deleteRubricEventTrigger(eventType.id)"class="pi pi-trash"></i>
                                     </div>
                                 </ng-template>
                             </p-overlayPanel>
                         </td>
                     </tr>
                 </ng-template>
-    
             </p-table>
-            <p-confirmDialog styleClass="delete-message"  header="Confirmation de suppression" acceptLabel="Oui" rejectLabel="Non" [breakpoints]="{'960px': '75vw', '640px': '100vw'}" [style]="{width: '50vw'}">
-            </p-confirmDialog>
-            <p-toast position="top-right"></p-toast> 
         </ng-template>
     </div>
 </ng-container>

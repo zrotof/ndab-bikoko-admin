@@ -2,13 +2,35 @@
     <h1 class="title">Replays Créés </h1>
     <p class="sub-title">Liste de tous les replays</p>
 
-    <div class="content">
-        <div class="actions">
-            <button class="add-replay" type="button" routerLink="/replays/creer"> 
-                <i class="pi pi-plus"></i>
-                Créer replay 
+    <div class="actions">
+        <button 
+            class="add" 
+            type="button" 
+            routerLink="/replays/creer"
+            > 
+            <i class="pi pi-plus"></i>
+            Créer replay 
+        </button>
+
+        <ng-container *ngIf="areThereNewOrderToSave">
+            <button 
+                class="save"  
+                type="button"
+                (click)="setNewItemsOrder()"
+                >
+                <i class="pi pi-save"></i>
+                Sauvegarder l'odre
             </button>
-        </div>
-        <app-replay-list [replays]="(replaysList$ | async)!" (deleteReplayEvent)="deleteReplayById($event)"></app-replay-list>
+        </ng-container>
     </div>
+    <app-replay-list 
+        [currentReplayList]="(replaysList$ | async)!"
+        (itemsOrderChangedEvent)="onReOrderDetect($event)"
+        (editReplayTypeEvent)="onEditReplayByIdDetect($event)"
+        (deleteReplayEvent)="onDeleteReplayByIdDetect($event)"
+        >
+    </app-replay-list>
+    <p-confirmDialog styleClass="delete-message"  header="Confirmation de suppression" acceptLabel="Oui" rejectLabel="Non" [breakpoints]="{'960px': '75vw', '640px': '100vw'}" [style]="{width: '50vw'}">
+    </p-confirmDialog>
+    <p-toast position="top-right"></p-toast> 
 </div>

@@ -6,7 +6,10 @@
         </ng-container>
         
         <ng-template #tableau>
-            <p-table  [value]="events" responsiveLayout="scroll">
+            <p-table  
+                [value]="events" 
+                responsiveLayout="scroll"
+                >
                 
                 <ng-template pTemplate="header">
                     <tr>
@@ -17,9 +20,9 @@
                         <th class="last-column">Actions</th>
                     </tr>
                 </ng-template>
-                <ng-template pTemplate="body" let-event let-rowIndex="rowIndex">
+                <ng-template pTemplate="body" let-event let-index="rowIndex">
                     <tr>
-                        <td class="count">{{rowIndex + 1}}</td>
+                        <td class="count">{{ index + 1}}</td>
                         <td class="cover-image"> <img src={{event.coverImage}} alt={{event.title}}> </td>
                         <td>{{event.title}}</td>
                         <td> 

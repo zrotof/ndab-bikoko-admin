@@ -13,7 +13,7 @@ import { MessageService } from 'primeng/api';
 import { AgendaService } from 'src/app/shared/services/agenda/agenda.service';
 import { ActivatedRoute } from '@angular/router';
 import { Observable, map, lastValueFrom, timer, pipe } from 'rxjs';
-import { Category } from 'src/app/shared/models/category';
+import { Rubric } from 'src/app/shared/models/rubric';
 import { ArticleService } from 'src/app/shared/services/article/article.service';
 
 @Component({
@@ -41,7 +41,7 @@ import { ArticleService } from 'src/app/shared/services/article/article.service'
 })
 export class AgendaAddEditContainerComponent implements OnInit {
 
-  eventTypes$ !: Observable<Category[]>;
+  eventTypes$ !: Observable<Rubric[]>;
   articleList$ !: Observable<any>;
 
   agendaForm !: FormGroup;
@@ -86,7 +86,7 @@ export class AgendaAddEditContainerComponent implements OnInit {
 
   getEventTypes(): void {
     this.eventTypes$ = this.agendaService.getEventTypeList().pipe(
-      map(result => result.map( (res: Category)=> {
+      map(result => result.map( (res: Rubric)=> {
         return {
           id: res.id,
           name: res.name

@@ -1,13 +1,10 @@
-import { Component, EventEmitter, Input, Output } from '@angular/core';
-import { CommonModule, NgClass, NgIf } from '@angular/common';
-import { ConfirmationService, ConfirmEventType, MessageService } from 'primeng/api';
-import { ConfirmDialogModule } from 'primeng/confirmdialog';
+import { Component, EventEmitter, Input, OnChanges, Output, SimpleChanges, ViewEncapsulation } from '@angular/core';
+import { NgClass, NgIf } from '@angular/common';
 import { OverlayModule } from 'primeng/overlay';
 import { OverlayPanelModule } from 'primeng/overlaypanel';
 import { TableModule } from 'primeng/table';
-import { ToastModule } from 'primeng/toast';
-import { Router } from '@angular/router';
-import { ArticleService } from 'src/app/shared/services/article/article.service';
+import { Reorder } from '../../models/reorder';
+import { Rubric } from '../../models/rubric';
 
 @Component({
   selector: 'app-rubric-list',
@@ -16,61 +13,43 @@ import { ArticleService } from 'src/app/shared/services/article/article.service'
     NgIf,
     TableModule,
     OverlayModule,
-    ConfirmDialogModule,
-    ToastModule,
     OverlayPanelModule,
     NgClass
   ],
   templateUrl: './rubric-list.component.html',
   styleUrls: ['./rubric-list.component.scss'],
-  providers: [MessageService, ConfirmationService]
+  encapsulation: ViewEncapsulation.None
 })
-export class RubricListComponent {
+export class RubricListComponent implements OnChanges {
 
-  @Input() rubrics !: any;
-  @Output() deleteRubricEvent = new EventEmitter<string>();
+  @Input() currentRubricList !: Rubric[];
+  private _firstReplayList !: Rubric[];
 
-  constructor( 
-    private router: Router,
-    private articleService : ArticleService,
-    private messageService : MessageService, 
-    private confirmationService: ConfirmationService
-  ){}
+  @Output() deleteRubricEvent = new EventEmitter<number>();
+  @Output() editRubricEvent = new EventEmitter<number>();
+  @Output() itemsOrderChangedEvent = new EventEmitter<Reorder>();
 
-  editRubric(rubricId : any){
-    this.articleService.getRubricById(rubricId)
-      .subscribe(
-        (result : any) => {
-
-          if(result.status === "success"){
-            this.router.navigate([`articles/modifier-rubrique/${rubricId}`], { queryParamsHandling: 'preserve' })
-          }
-
-          else{
-            this.messageService.add({severity:'warn', detail: result.message });
-          }
-
-        },
-        (err) =>{
-          this.messageService.add({severity:'error', detail: 'Erreur, contactez webmaster' });
-        }
-      )
+  //handling drag and drop functionnality
+  onRowReorder() {
+    const arrays : Reorder = {
+      firstList : this._firstReplayList, 
+      currentList : this.currentRubricList
+    }
+    this.itemsOrderChangedEvent.emit(arrays)
+  }
+  
+  editRubricEventTrigger(rubricId : number){
+    this.editRubricEvent.emit(rubricId);
   }
 
-  deleteRubric(rubricId: string){
-    this.confirmationService.confirm({
-      message: "Voulez-vous vraiment supprimer cette rubrique ?",
-      accept: () => {
-          //Emit event to do the delation
-          this.deleteRubricEvent.emit(rubricId);
-      },
-      reject: (type: any) => {
-        switch(type) {
-          case ConfirmEventType.REJECT:
-            this.messageService.add({severity:'info', detail:'Suppression annulée'});
-          break;
-        }
-      }
-    })
+  deleteRubricEventTrigger(rubricId: number){
+    this.deleteRubricEvent.emit(rubricId);
+  }
+
+
+  ngOnChanges(changes: SimpleChanges): void {
+    if(changes['currentRubricList'].currentValue){
+      this._firstReplayList = [...this.currentRubricList];
+    }
   }
 }

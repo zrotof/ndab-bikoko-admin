@@ -1,4 +1,4 @@
-import { Component, EventEmitter, Input, Output } from '@angular/core';
+import { Component, EventEmitter, Input, OnChanges, Output, SimpleChanges, ViewEncapsulation } from '@angular/core';
 import { CommonModule, NgClass, NgIf } from '@angular/common';
 import { ConfirmDialogModule } from 'primeng/confirmdialog';
 import { OverlayModule } from 'primeng/overlay';
@@ -8,6 +8,9 @@ import { ToastModule } from 'primeng/toast';
 import { ConfirmationService, ConfirmEventType, MessageService } from 'primeng/api';
 import { AgendaService } from 'src/app/shared/services/agenda/agenda.service';
 import { Router } from '@angular/router';
+import { Rubric } from 'src/app/shared/models/rubric';
+import { BehaviorSubject } from 'rxjs';
+import { Reorder } from 'src/app/shared/models/reorder';
 
 @Component({
   selector: 'app-event-type-list',
@@ -23,12 +26,21 @@ import { Router } from '@angular/router';
   ],
   templateUrl: './event-type-list.component.html',
   styleUrls: ['./event-type-list.component.scss'],
-  providers: [MessageService, ConfirmationService]
+  providers: [MessageService, ConfirmationService],
+  encapsulation: ViewEncapsulation.None
 })
-export class EventTypeListComponent {
+export class EventTypeListComponent implements OnChanges {
 
-  @Input() eventTypes : any;
-  @Output() deleteEventTypeEvent = new EventEmitter<string>();
+  @Input() currentEventlist !: Rubric[];
+  private _firstEventList !: Rubric[];
+
+  @Output() itemsOrderChangedEvent = new EventEmitter<Reorder>();
+  @Output() deleteEventTypeEvent = new EventEmitter<number>();
+  @Output() editEventTypeEvent = new EventEmitter<number>();
+
+  reorderedItems : {id: number, newIndex: number}[] = [];
+
+  private _isFirstChange = true;
 
   constructor(
     private messageService : MessageService, 
@@ -37,40 +49,28 @@ export class EventTypeListComponent {
     private router : Router
   ){}
 
-  editEventType(eventTypeId : any){
-    this.agendaService.getEventTypeById(eventTypeId)
-      .subscribe(
-        (result : any) => {
-
-          if(result.status === "success"){
-            this.router.navigate([`agenda/modifier-type-evenement/${eventTypeId}`], { queryParamsHandling: 'preserve' })
-          }
-
-          else{
-            this.messageService.add({severity:'warn', detail: result.message });
-          }
-
-        },
-        (err) =>{
-          this.messageService.add({severity:'error', detail: 'Erreur, contactez webmaster' });
-        }
-      )
+  //handling drag and drop functionnality
+  onRowReorder(event: any) {
+    const arrays : Reorder = {
+      firstList : this._firstEventList, 
+      currentList : this.currentEventlist
+    }
+    this.itemsOrderChangedEvent.emit(arrays)
   }
 
-  deleteEventType(eventTypeId: string){
-    this.confirmationService.confirm({
-      message: "Voulez-vous vraiment supprimer ce type d'évênement d'article?",
-      accept: () => {
-          this.deleteEventTypeEvent.emit(eventTypeId);
-    },
-        reject: (type: any) => {
-            switch(type) {
-                case ConfirmEventType.REJECT:
-                    this.messageService.add({severity:'info', detail:'Suppression annulée'});
-                break;
-            }
-        }
+  editRubricEventTrigger(rubricId : number){
+    this.editEventTypeEvent.emit(rubricId);
   }
-)
+
+  deleteRubricEventTrigger(rubricId: number){
+    this.deleteEventTypeEvent.emit(rubricId);
+  }
+
+  ngOnChanges(changes: SimpleChanges): void {
+    if(changes['currentEventlist'].currentValue){
+      this._firstEventList = [...this.currentEventlist];
+    }
   }
 }
+
+

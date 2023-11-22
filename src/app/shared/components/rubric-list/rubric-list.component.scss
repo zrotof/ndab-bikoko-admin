@@ -6,6 +6,27 @@
         width: 100%;
         margin: auto;
         box-shadow: rgba(0, 0, 0, 0.16) 0px 1px 4px;
+
+        .p-datatable{
+            .p-datatable-wrapper{
+                .p-datatable-table{
+                    .p-datatable-tbody{
+                        tr{
+                            position: relative;
+                            transition: all 0.8s ease-in-out;
+                            .row-reorder-handler{
+                                position: absolute;
+                                top: 0;
+                                left: 0;
+                                width: 100%;
+                                height: 100%;
+                            }
+                        }                      
+                    }
+                }
+            }
+        }
+
     }
 
     .last-column{
@@ -25,6 +46,7 @@
 
     .row-actions{
         text-align: right;
+        position: relative;
 
         i{
             padding: 6px;
@@ -79,12 +101,4 @@
 
 .p-overlaypanel .p-overlaypanel-content {
     padding: 7px;
-}
-
-@media all and (max-width: 990px){
-    .replay-list{
-        p-table{
-            width: 100%;
-        }
-    }
 }

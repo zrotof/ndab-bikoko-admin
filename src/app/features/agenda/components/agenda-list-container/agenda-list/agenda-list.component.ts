@@ -8,6 +8,8 @@ import { OverlayModule } from 'primeng/overlay';
 import { OverlayPanelModule } from 'primeng/overlaypanel';
 import { TableModule } from 'primeng/table';
 import { ToastModule } from 'primeng/toast';
+import { DragDropModule } from 'primeng/dragdrop';
+import { Event } from 'src/app/shared/models/event';
 
 @Component({
   selector: 'app-agenda-list',
@@ -19,7 +21,8 @@ import { ToastModule } from 'primeng/toast';
     ConfirmDialogModule,
     ToastModule,
     OverlayPanelModule,
-    NgClass
+    NgClass,
+    DragDropModule
   ],
   templateUrl: './agenda-list.component.html',
   styleUrls: ['./agenda-list.component.scss'],
@@ -27,7 +30,7 @@ import { ToastModule } from 'primeng/toast';
 })
 export class AgendaListComponent {
 
-  @Input() events : any;
+  @Input() events !: Event[];
   @Output() deleteAgendaEvent = new EventEmitter<any>();
 
   constructor( 

@@ -39,7 +39,7 @@ export class ArticleService {
     )
   }
 
-  getRubricById(id : string): Observable<any>{
+  getRubricById(id : number): Observable<any>{
     return this.http.get<any>(this.baseUrlRubric+`${id}`, this.httpOptions)
   }
 
@@ -63,12 +63,18 @@ export class ArticleService {
     return this.http.put<any>(this.baseUrlArticle+`${id}`, articleData);
   }
 
-  deleteRubric(id: string): Observable<any>{
+  deleteRubric(id: number): Observable<any>{
     return this.http.delete<any>(this.baseUrlRubric+`${id}`)
   }
 
   deleteArticle(id: string): Observable<any>{
     return this.http.delete<any>(this.baseUrlArticle+`${id}`);
+  }
+
+  updateArticleRubricsOrder(ids : any) : Observable<any> {
+    return this.http.put<any>(this.baseUrlRubric+'update-article-rubric-list-order', ids).pipe(
+      map(({status,data, message})=> message)
+    );
   }
 
 }

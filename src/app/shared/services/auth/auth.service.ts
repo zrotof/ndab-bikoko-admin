@@ -15,7 +15,7 @@ export class AuthService {
     isLogged$ : BehaviorSubject<boolean> = new BehaviorSubject<boolean>(false);
     user$ = new Subject<User>();
 
-    tokenTimer : any;
+    private _logoutTimeout: ReturnType<typeof setTimeout> | null = null;
 
     httpOptions = {
         headers: new HttpHeaders({
@@ -36,6 +36,7 @@ export class AuthService {
             tap(res => {
                 const payload : {exp: number, iat: number, sub: string } = JWT.default(res);
                 const timeout = payload.exp - payload.iat ;
+                console.log("payload.exp - payload.iat : ", payload.exp - payload.iat)
                 this.setExpirationCounter(timeout)
             }),
         )
@@ -46,10 +47,9 @@ export class AuthService {
     // another one.
     logout(){
         localStorage.removeItem("token");
-
         //emit false so that he whole app would be awared
         this.isLogged$.next(false);
-        clearTimeout(this.tokenTimer);
+        this.clearLogoutTimeout();
         this.router.navigate(["/se-connecter"]);
     }
 
@@ -69,8 +69,21 @@ export class AuthService {
 
     // Returns true as long as the current time is less than the expiry date
     setExpirationCounter(timeout: number) {
-        this.tokenTimer = setTimeout(()=>{
+        
+        const remainingTimeInMilliseconds = timeout*1000;
+
+        this.clearLogoutTimeout();
+
+        this._logoutTimeout = setTimeout(() => {
             this.logout();
-        }, timeout)
+          }, remainingTimeInMilliseconds);
+    }
+
+    // Function to clear the logout timeout
+    private clearLogoutTimeout() {
+        if (this._logoutTimeout) {
+        clearTimeout(this._logoutTimeout);
+        this._logoutTimeout = null;
+        }
     }
 }

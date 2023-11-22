@@ -1,25 +1,33 @@
-<ng-container  *ngIf="rubrics">
+<ng-container  *ngIf="currentRubricList">
     <div class="rubric-list">
 
-        <ng-container *ngIf="rubrics?.length == 0; else tableau">
+        <ng-container *ngIf="currentRubricList?.length == 0; else tableau">
             <span>Aucune rubrique n'a encore été enregistrée pour le moment.</span>
         </ng-container>
         
         <ng-template #tableau>
-            <p-table  [value]="rubrics" responsiveLayout="scroll">
+            <p-table  
+                [value]="currentRubricList" 
+                responsiveLayout="scroll"
+                (onRowReorder)="onRowReorder()"
+                >
                 
                 <ng-template pTemplate="header">
                     <tr>
-                        <th class="count"></th>
+                        <th></th>
+                        <th></th>
                         <th>Titre</th>
                         <th>Description</th>
                         <th>Activée?</th>
                         <th class="last-column">Actions</th>
                     </tr>
                 </ng-template>
-                <ng-template pTemplate="body" let-rubric let-rowIndex="rowIndex">
-                    <tr>
-                        <td class="count">{{rowIndex + 1}}</td>
+                <ng-template pTemplate="body" let-rubric let-index="rowIndex">
+                    <tr [pReorderableRow]="index">
+                        <td pReorderableRowHandle class="row-reorder-handler"></td>
+                        <td >
+                            <span class="pi pi-align-justify"></span>
+                        </td>
                         <td>{{rubric.name}}</td>
                         <td> {{rubric.description}}</td>
                         <td>
@@ -31,8 +39,8 @@
                             <p-overlayPanel #op>
                                 <ng-template pTemplate>
                                     <div class="row-actions-event">
-                                        <i (click)="editRubric(rubric.id)" class="pi pi-pencil"></i>
-                                        <i (click)="deleteRubric(rubric.id)"class="pi pi-trash"></i>
+                                        <i (click)="editRubricEventTrigger(rubric.id)" class="pi pi-pencil"></i>
+                                        <i (click)="deleteRubricEventTrigger(rubric.id)"class="pi pi-trash"></i>
                                     </div>
                                 </ng-template>
                             </p-overlayPanel>
@@ -41,9 +49,6 @@
                 </ng-template>
     
             </p-table>
-            <p-confirmDialog styleClass="delete-message"  header="Confirmation de suppression" acceptLabel="Oui" rejectLabel="Non" [breakpoints]="{'960px': '75vw', '640px': '100vw'}" [style]="{width: '50vw'}">
-            </p-confirmDialog>
-            <p-toast position="top-right"></p-toast> 
         </ng-template>
     </div>
 </ng-container>

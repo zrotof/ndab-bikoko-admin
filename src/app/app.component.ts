@@ -97,6 +97,7 @@ export class AppComponent implements OnInit {
       let timeout = payload.exp - payload.iat ;
 
       if(timeout > 0){
+        console.log(timeout)
         this.setConnectedUser(connectedUserId)
         this.authService.isLogged$.next(true);
         this.authService.setExpirationCounter(timeout);

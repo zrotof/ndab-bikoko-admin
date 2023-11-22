@@ -16,7 +16,6 @@ export class AuthGuard implements CanActivate {
         let status !: boolean;
 
         this.authService.isLogged$.subscribe( res => {
-            console.log("guard init")
             if(res === true){
                     if( route.url.length != 0 && route?.url[0].path === 'se-connecter'){
                         //Redirect to homapage in case of user logged in but try to navigate on login page

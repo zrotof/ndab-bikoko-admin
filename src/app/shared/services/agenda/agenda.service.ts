@@ -32,7 +32,7 @@ export class AgendaService {
     )
   }
 
-  getEventTypeById(id : string): Observable<any>{
+  getEventTypeById(id : number): Observable<any>{
     return this.http.get<any>(this.baseUrlEventType+`${id}`, this.httpOptions)
   }
 
@@ -56,12 +56,18 @@ export class AgendaService {
     return this.http.put<any>(this.baseUrlEvent+`${id}`, articleData);
   }
 
-  deleteEventType(id: string): Observable<any>{
+  deleteEventType(id: number): Observable<any>{
     return this.http.delete<any>(this.baseUrlEventType+`${id}`)
   }
 
   deleteEvent(id: string): Observable<any>{
     return this.http.delete<any>(this.baseUrlEvent+`${id}`);
+  }
+
+  updateEventRubricsOrder(ids : any) : Observable<any> {
+    return this.http.put<any>(this.baseUrlEventType+'update-event-type-list-order', ids).pipe(
+      map(({status,data, message})=> message)
+    );
   }
 
 }

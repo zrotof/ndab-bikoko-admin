@@ -29,7 +29,7 @@ export class ReplayService {
     )
   }
 
-  getReplayById(id : string): Observable<any>{
+  getReplayById(id : number): Observable<any>{
     return this.http.get<any>(this.baseUrlReplays+`${id}`);
   }
 
@@ -37,14 +37,12 @@ export class ReplayService {
     return this.http.post<any>(this.baseUrlReplays, replay, this.httpOptions)
   }
 
-  editReplay(id: string , replayData: any): Observable<any>{
+  editReplay(id: number , replayData: any): Observable<any>{
     return this.http.put<any>(this.baseUrlReplays+`${id}`, replayData);
   }
 
-  deleteReplay(id: string): Observable<any>{
-    return this.http.delete<any>(this.baseUrlReplays+`${id}`).pipe(
-      tap( result => console.log(result))
-    );
+  deleteReplay(id: number): Observable<any>{
+    return this.http.delete<any>(this.baseUrlReplays+`${id}`)
   }
 
   getVideoListByReplayId( replayId : string ) : Observable<any>{
@@ -54,4 +52,9 @@ export class ReplayService {
   getListOfReplaysOnYoutube(): Observable<any>{
     return this.http.get<any>(this.baseUrlYoutubeApi+"playlists/");
   }
-}
+
+  updateReplayListOrder(ids : any) : Observable<any> {
+    return this.http.put<any>(this.baseUrlReplays+'update-replay-list-order', ids).pipe(
+      map(({status,data, message})=> message)
+    );
+  }}

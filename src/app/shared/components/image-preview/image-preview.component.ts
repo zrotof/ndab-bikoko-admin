@@ -25,7 +25,6 @@ export class ImagePreviewComponent implements OnChanges{
       const reader = new FileReader();
       reader.onload = (e) => {
         this.path = e.target?.result;
-        console.log(e.target)
       };
       reader.readAsDataURL(this.formValue as File);
     }

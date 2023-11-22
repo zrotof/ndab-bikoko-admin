@@ -167,7 +167,7 @@ export class ReplayAddEditContainerComponent implements OnInit {
       updatedReplay = {...updatedReplay, isActive : this.replayForm.controls['isActive'].value}
     }
 
-    this.replayService.editReplay(this.initialReplayDataWhenEdit.id as string, updatedReplay).subscribe(
+    this.replayService.editReplay(this.initialReplayDataWhenEdit.id , updatedReplay).subscribe(
       (result)=>{
 
         if(result.status === "success"){
