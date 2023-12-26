@@ -2,6 +2,7 @@
     display: flex;
     align-items: center;
     justify-content: center;
+
     .content{
         display: flex;
         align-items: center;
@@ -48,6 +49,7 @@
                 align-items: center;
                 justify-content: center;
                 width: 400px;
+
                 form{
                     display: flex;
                     flex-direction: column;
@@ -75,11 +77,18 @@
                         label{
                             margin-bottom: 7px;
                         }
+
+                        .p-password{
+                            width: 100%;
+                            
+                            input{
+                                width: 100%;
+                            }
+                        }
             
                         small{
                             margin:10px 0 0 0;
                         }
-            
                     }
 
                     .forgotten-password{

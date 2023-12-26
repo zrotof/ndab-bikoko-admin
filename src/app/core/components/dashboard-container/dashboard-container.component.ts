@@ -1,5 +1,5 @@
 import { Component, OnInit, ViewEncapsulation } from '@angular/core';
-import { UntypedFormBuilder, UntypedFormGroup, Validators } from '@angular/forms';
+import { UntypedFormBuilder } from '@angular/forms';
 import { faCoins } from '@fortawesome/free-solid-svg-icons';
 
 import { faPlane, faBed, faCarSide, faHome, faEllipsisV, faCubes, faChevronLeft, faChevronRight, faGlobeAfrica } from '@fortawesome/free-solid-svg-icons';
@@ -24,13 +24,10 @@ export class DashboardContainerComponent implements OnInit {
   faChevronRight = faChevronRight;
   faGlobeAfrica = faGlobeAfrica;
 
-
   //Used to store header Data
   topHeaderPageData !: TopHeader;
   
-  constructor( private fb: UntypedFormBuilder) { 
- 
-  }
+  constructor( private fb: UntypedFormBuilder ) {}
 
   ngOnInit(): void {
     this.getTopHeaderPageData();
@@ -40,7 +37,7 @@ export class DashboardContainerComponent implements OnInit {
    * set header data
    */
   getTopHeaderPageData() : void{
-    this.topHeaderPageData = { title : "Tableau de bord", description : "Lorem ipsum dolor, sit amet consectetur adipisicing elit"}
+    this.topHeaderPageData = { title : "Tableau de bord", description : "Quelques métriques importantes de la campagne"}
   }
 
 }

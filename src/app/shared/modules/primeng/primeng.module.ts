@@ -26,7 +26,6 @@ import { RadioButtonModule } from 'primeng/radiobutton'
 import { SidebarModule } from 'primeng/sidebar';
 import { PasswordModule } from 'primeng/password';
 
-
 @NgModule({
   declarations: [
     ConvertStringLabelToFontawesomeIconPipe

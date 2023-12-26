@@ -8,7 +8,7 @@ import { ProgressSpinnerModule } from 'primeng/progressspinner';
 import * as JWT from 'jwt-decode';
 import { UsersService } from 'src/app/shared/services/users/users.service';
 import { InputTextModule } from 'primeng/inputtext';
-
+import { PasswordModule } from 'primeng/password';
 
 @Component({
   selector: 'app-login',
@@ -18,6 +18,7 @@ import { InputTextModule } from 'primeng/inputtext';
   imports : [
     NgIf,
     InputTextModule,
+    PasswordModule,
     ProgressSpinnerModule,
     LoginComponent,
     JsonPipe,
@@ -41,9 +42,7 @@ export class LoginComponent implements OnInit {
     private authService : AuthService,
     private userService : UsersService,
     private router: Router,     
-  ) {
-
-   }
+  ){}
 
   ngOnInit(): void {
     this.redirectOnAlreadyLog();

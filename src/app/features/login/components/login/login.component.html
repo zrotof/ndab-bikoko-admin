@@ -21,16 +21,11 @@
                             formControlName="email"
                         />
                         <small *ngIf="f['email'].invalid && isSaveButtonClicked" class="p-error">Renseigner votre login</small>
-            
                     </div>
             
                     <div class="field">
-                        <label>Mot de passe</label>
-                        <input 
-                            type="text" 
-                            pInputText 
-                            formControlName="password"
-                        />        
+                        <label>Mot de passe</label> 
+                        <p-password formControlName="password" [feedback]="false" [toggleMask]="true"></p-password>      
                         <small *ngIf="f['password'].invalid && isSaveButtonClicked" class="p-error">Renseigner votre mot de passe</small>
                     </div>
 
