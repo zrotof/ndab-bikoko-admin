@@ -10,7 +10,6 @@ import { ReactiveFormsModule } from '@angular/forms';
 import { CommonComponentsModule } from '../shared/modules/common-components/common-components.module';
 import { UserConnectedMenuSideBarComponent } from './components/user-connected-menu-side-bar/user-connected-menu-side-bar.component';
 
-
 @NgModule({
   declarations: [
     HeaderComponent,
