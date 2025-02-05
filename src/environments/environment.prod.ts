@@ -1,4 +1,4 @@
 export const environment = {
   production: true,
-  baseUrl : "https://www.api-test.amadou-ba.sn/v1/"
+  baseUrl : "https://www.campagne-api.purs.cm/v1/"
 }
