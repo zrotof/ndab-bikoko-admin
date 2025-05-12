@@ -1,6 +1,5 @@
-<ng-container *ngIf="(isUserLogged$ | async ) === true; else notLogged">
+<ng-container *ngIf="(isUserLogged$ | async ) === false; else notLogged">
   <div class="app">
-    <app-header></app-header>
     <div class="content">
       <div 
         class="button-toggle-sidebar" 

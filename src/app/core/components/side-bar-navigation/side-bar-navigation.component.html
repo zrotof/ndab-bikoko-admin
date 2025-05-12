@@ -1,30 +1,16 @@
 <div class="sidebar">
 
-    <ng-template ngFor let-menu [ngForOf]="menuList"; let-ind="index">
-        <div class="dropdown-menu"   *ngIf="menu.menuItems.length > 1; else noDropdownMenu">
-            <div class="dropdown" (click)="onItemMenuClicked(ind)">
-                <span>
-                    <fa-icon [icon]="menu.icon"></fa-icon>
-                    <span> {{menu.label}} </span>
-                </span>
+    <ul>
+        @for (menu of menuList; track $index) {
 
-                <fa-icon [icon]="faAngleDown"></fa-icon>
-            </div>
-
-            <ul [ngClass]="menu.active? 'showDropdownMenuItems':'hideDropdownMenuItems'">
-                <ng-template ngFor let-item [ngForOf]="menu.menuItems" ; let-index="index">
-                    <li> <a routerLinkActive="active-navigation" [routerLinkActiveOptions]="{exact: true}" routerLink={{item.link}}>{{item.label}}</a> </li>
-                </ng-template>
-            </ul>
-        </div>
-        <ng-template #noDropdownMenu>
-            <div class="no-dropdown-menu">
-                <div class="sidebar-menu-item noDropdownMenu" routerLinkActive="active-link" [routerLinkActiveOptions]="{exact: true}" [routerLink]="menu.menuItems[0].link"  routerLinkActive="active-navigation" >
-                        <fa-icon [icon]="menu.icon"></fa-icon>
-                        <span> {{menu.label}} </span>
-                </div>
-            </div>
-        </ng-template>
-    </ng-template>
+            <li class="no-dropdown-menu">
+                    <span routerLinkActive="active-link" [routerLinkActiveOptions]="{exact: true}" [routerLink]="menu.menuItems[0].link"  routerLinkActive="active-navigation" >
+                            <fa-icon [icon]="menu.icon"></fa-icon>
+                            <span> {{menu.label}} </span>
+                    </span>
+                    <fa-icon [icon]="faAngleDown"></fa-icon>
+                </li>
+        }  
+    </ul>
     
 </div>

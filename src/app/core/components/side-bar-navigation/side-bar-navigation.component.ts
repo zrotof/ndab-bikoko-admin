@@ -52,7 +52,6 @@ export class SideBarNavigationComponent implements OnInit {
         label: "Agenda",
         active: false,
         menuItems : [
-          {label: "Types d'évênements", link:"agenda/liste-types-d-evenements"},
           {label: "Évênements", link:"/agenda/liste-par-type-d-evenement"}
         ]
       },
@@ -62,7 +61,6 @@ export class SideBarNavigationComponent implements OnInit {
         active: false,
         menuItems : [
           {label: "liste d'articles", link:"/articles/liste-par-type-de-rubrique"},
-          {label: "Rubriques d'articles", link:"/articles/liste-rubriques"}
         ]
       },
       {
@@ -71,7 +69,6 @@ export class SideBarNavigationComponent implements OnInit {
         active: false,
         menuItems : [
           {label: "Liste replays", link:"/replays"},
-          {label: "Ajouter replays", link:"/replays/creer"}
         ]
       },
       {
@@ -80,7 +77,6 @@ export class SideBarNavigationComponent implements OnInit {
         active: false,
         menuItems : [
           {label: "Liste utilisateurs", link:"/utilisateurs"},
-          {label: "Ajouter utilisateur", link:"/utilisateurs/creer"}
         ]
       },
     ]

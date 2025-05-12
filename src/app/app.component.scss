@@ -3,13 +3,8 @@
     flex-direction: column;
     width: 100%;
 
-    app-header{
-        width: 100%;
-    }
-
     .content{
         display: flex;
-        margin-top: 5em;
         position: relative;
 
         .button-toggle-sidebar{
@@ -57,7 +52,7 @@
             display: flex;
             flex-direction: column;
             width: 20em;
-            height: calc(100vh - 5em);
+            height: 100vh;
             box-shadow: 0 0.5rem 1rem 0 rgb(44 51 73 / 10%);
             background-color: #0a1c36;
             position: fixed;
