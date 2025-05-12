@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { ActivatedRouteSnapshot, Resolve, RouterStateSnapshot } from '@angular/router';
+import { ActivatedRouteSnapshot, RouterStateSnapshot } from '@angular/router';
 import { Observable, map} from 'rxjs';
 import { AuthService } from './auth.service';
 import { UsersService } from '../users/users.service';
@@ -8,7 +8,7 @@ import { UsersService } from '../users/users.service';
   providedIn: 'root'
 })
 
-export class ConnectedUserResolverService implements Resolve<any> {
+export class ConnectedUserResolverService  {
 
   constructor( private authService : AuthService, private userService : UsersService ) { }
 
