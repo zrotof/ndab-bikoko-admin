@@ -5,12 +5,13 @@
     margin-bottom: 2.5rem;
 
     h1{
-        font-family: 'Exo-bold';
+        color: var(--project-white-primary-color);
         font-size: 2.1rem;
     }
 
-    p{
+    p {
         font-size: 1.03rem;
         margin-top: 5px;
+        color: var(--project-white-secondary-color);
     }
 }

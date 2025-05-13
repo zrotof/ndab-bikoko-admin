@@ -1,6 +1,7 @@
-<ng-container *ngIf="(isUserLogged$ | async ) === false; else notLogged">
+@if ((isUserLogged$ | async ) === false) {
   <div class="app">
     <div class="content">
+    <!--
       <div 
         class="button-toggle-sidebar" 
         (click)="onSideBarToggled()" 
@@ -8,18 +9,24 @@
         >
         <i [ngClass]="isSideNavToggled ? 'pi pi-arrow-right' : 'pi pi-arrow-left' "></i>
       </div>
-      <app-side-bar-navigation 
-        [ngClass]="isSideNavToggled ? 'sidebar-collapsed' : 'sidebar-not-collapsed'"
-        [screenWidth]="screenWidth"
-        >
-      </app-side-bar-navigation>
-      <div class="wrapper" [ngClass]="styleClass">
-        <router-outlet></router-outlet>
+    -->
+      <div class="left">        
+        <app-side-bar-navigation 
+          [ngClass]="isSideNavToggled ? 'sidebar-collapsed' : 'sidebar-not-collapsed'"
+          [screenWidth]="screenWidth"
+          >
+        </app-side-bar-navigation>
+      </div>
+  
+      <div class="right">
+        <app-header></app-header>
+        <div class="wrapper" [ngClass]="styleClass">
+          <router-outlet></router-outlet>
+        </div>
       </div>
     </div>
   </div>
-</ng-container>
-
-<ng-template #notLogged>
+}
+@else {
   <router-outlet></router-outlet>
-</ng-template>
+}

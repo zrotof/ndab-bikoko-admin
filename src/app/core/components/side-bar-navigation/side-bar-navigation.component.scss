@@ -1,46 +1,68 @@
-.sidebar{
+.sidebar {
     display: flex;
     flex-direction: column;
     width: 100%;
-    min-height: 100vh;
     box-shadow: 0 0.5rem 1rem 0 rgb(44 51 73 / 10%);
-    background-color: rgb(14, 14, 14);
-    padding: 3rem 2rem 0 2rem;
-    overflow-y: scroll;
-    color: white;
+    overflow-y: auto;
+    color: var(--project-white-primary-color);
+    gap: 1rem;
     position: relative;
 
-    .dropdown-menu{
+    .logo-bloc {
+        position: fixed;
+        top: 0;
+        display: flex;
+        align-items: center;
+        gap: 1rem;
+        padding: 1rem 2rem;
+        border-bottom: 1px solid rgb(59, 59, 59);
+        background-color: var(--project-black-primary-color);
+        width: 20rem;
+
+        img {
+            width: 65px;
+            height: 72px;
+            object-fit: cover;
+        }
+
+        span {
+            font-size: 1.4rem;
+            font-weight: 900;
+            color: var(--project-yellow-primary-color);
+        }
+    }
+
+    .dropdown-menu {
         border-bottom: 1px solid #7a7a7a32;
         display: flex;
         flex-direction: column;
         width: 100%;
 
-        &:last-child{
+        &:last-child {
             border: none;
         }
 
-        .dropdown{
+        .dropdown {
             padding: 1.2em;
             display: flex;
             justify-content: space-between;
             cursor: pointer;
             border-radius: 7px;
 
-            
-            span{
-                fa-icon{
+
+            span {
+                fa-icon {
                     margin-right: 10px;
                     font-size: 1.15em;
                 }
             }
         }
 
-        .active-navigation{
+        .active-navigation {
             position: relative;
             color: var(--project-secondary-color) !important;
 
-            &::after{
+            &::after {
                 content: "";
                 width: 5px;
                 height: 100%;
@@ -51,25 +73,26 @@
             }
         }
 
-        .showDropdownMenuItems{
+        .showDropdownMenuItems {
             height: 100%;
             padding-bottom: 1.2em;
             transition: all 0.08s ease;
         }
 
-        .hideDropdownMenuItems{
+        .hideDropdownMenuItems {
             height: 0px;
             transition: all 0.04s ease;
         }
 
-        ul{
+        ul {
             list-style: none;
             height: 0px;
             overflow: hidden;
 
-            li{
+            li {
                 margin-bottom: 5px;
-                a{
+
+                a {
                     margin-left: 1.4em;
                     font-weight: 100;
                     margin-bottom: 5px;
@@ -77,7 +100,7 @@
                     white-space: nowrap;
                     cursor: pointer;
                     font-size: 0.92em;
-                    
+
                     &:hover {
                         color: var(--project-secondary-color);
                     }
@@ -86,28 +109,60 @@
         }
     }
 
-    .no-dropdown-menu{
-        border-bottom: 1px solid #e4e1e126;
+
+    .menu-bloc{
         display: flex;
         flex-direction: column;
-        width: 100%;
-        font-size: 1em;
+        gap: 1rem;
+        padding: 0 2rem;
+        margin-top: 150px;
 
-        .active-navigation{
-            color: var(--project-secondary-color);
-            background-color: var(--project-primary-color) !important;
-
+        p{
+            font-size: 0.92rem;
+            color: var(--project-white-secondary-color);
         }
 
-        .noDropdownMenu{
-            cursor: pointer;
-            &:hover{
-                color: var(--project-secondary-color);
+        .menu-items {
+        display: flex;
+        flex-direction: column;
+        list-style: none;
+        gap: 0.5rem;
+
+
+        li {
+            .menu-item {
+                display: flex;
+                width: 100%;
+                font-size: 1em;
+                gap: 0.5rem;
+                padding: 0.6rem 1rem;
+                cursor: pointer;
+                border-radius: 7px;
+                color: var(--project-white-secondary-color);
+                border: 1px solid transparent;
+
+                &:hover{
+                    border: 1px solid var(--project-brown-primary-color);
+                }
+
+                fa-icon {
+                    font-size: 1.05rem;
+                    margin-right: 10px;
+                }
+
+                span {
+                    flex: 1;
+                    font-size: 1rem;
+                }
             }
 
-            fa-icon{
-                margin-right: 10px;
+            .active-link {
+                background: var(--project-brown-primary-color);
+                color: var(--project-white-primary-color);
             }
         }
+
+
+    }
     }
 }

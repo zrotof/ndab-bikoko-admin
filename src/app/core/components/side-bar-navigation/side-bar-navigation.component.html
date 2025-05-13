@@ -1,16 +1,27 @@
 <div class="sidebar">
 
-    <ul>
-        @for (menu of menuList; track $index) {
+    <div class="logo-bloc">
+        <img src="../../../../assets/img/header/logo.png">
+        <span>Ndab Bikokoo Pil Gweha</span>
+    </div>
 
-            <li class="no-dropdown-menu">
-                    <span routerLinkActive="active-link" [routerLinkActiveOptions]="{exact: true}" [routerLink]="menu.menuItems[0].link"  routerLinkActive="active-navigation" >
-                            <fa-icon [icon]="menu.icon"></fa-icon>
-                            <span> {{menu.label}} </span>
-                    </span>
-                    <fa-icon [icon]="faAngleDown"></fa-icon>
-                </li>
-        }  
-    </ul>
-    
+    <div class="menu-bloc">
+        <p>MENU</p>
+        <ul class="menu-items">
+            @for (menu of menuList; track $index) {
+            <li>
+                <a 
+                    class="menu-item" 
+                    [routerLink]="menu.menuItems[0].link" 
+                    routerLinkActive="active-link"
+                    [routerLinkActiveOptions]="{exact: true}"
+                    >
+                    <fa-icon [icon]="menu.icon"></fa-icon>
+                    <span> {{menu.label}} </span>
+                </a>
+            </li>
+            }
+        </ul>
+    </div>
+
 </div>

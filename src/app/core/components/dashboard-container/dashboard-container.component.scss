@@ -2,6 +2,10 @@
     display: flex;
     flex-direction: column;
     width: 100%;
+    background-color: var(--project-black-primary-color);
+    min-height: 100vh;
+    padding: 2rem;
+    border-radius: 7px;
 
     .nav-search{
         width: 100%;

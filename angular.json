@@ -9,7 +9,7 @@
   "version": 1,
   "newProjectRoot": "projects",
   "projects": {
-    "foryou-admin": {
+    "ndabbikokoo-admin": {
       "projectType": "application",
       "schematics": {
         "@schematics/angular:component": {
@@ -26,7 +26,7 @@
         "build": {
           "builder": "@angular-devkit/build-angular:browser",
           "options": {
-            "outputPath": "dist/foryou-admin",
+            "outputPath": "dist/ndabbikokoo-admin",
             "index": "src/index.html",
             "main": "src/main.ts",
             "polyfills": "src/polyfills.ts",
@@ -83,10 +83,10 @@
           "builder": "@angular-devkit/build-angular:dev-server",
           "configurations": {
             "production": {
-              "browserTarget": "foryou-admin:build:production"
+              "buildTarget": "ndabbikokoo-admin:build:production"
             },
             "development": {
-              "browserTarget": "foryou-admin:build:development"
+              "buildTarget": "ndabbikokoo-admin:build:development"
             }
           },
           "defaultConfiguration": "development"
@@ -94,7 +94,7 @@
         "extract-i18n": {
           "builder": "@angular-devkit/build-angular:extract-i18n",
           "options": {
-            "browserTarget": "foryou-admin:build"
+            "buildTarget": "ndabbikokoo-admin:build"
           }
         },
         "test": {
