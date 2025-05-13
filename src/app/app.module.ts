@@ -1,4 +1,4 @@
-import { HttpClientModule } from '@angular/common/http';
+import { provideHttpClient, withInterceptorsFromDi } from '@angular/common/http';
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
@@ -10,23 +10,16 @@ import { ReqInterceptor } from './shared/interceptors/http.interceptor';
 import { ErrorInterceptor } from './shared/interceptors/error.interceptor';
 import { JwtInterceptor } from './shared/interceptors/jwt.interceptor';
 
-@NgModule({
-  declarations: [
-    AppComponent
-  ],
-  imports: [
-    BrowserModule,
-    AppRoutingModule,
-    CoreModule,
-    HttpClientModule,
-    BrowserAnimationsModule
-  ],
-  providers: [
-//    { provide: HTTP_INTERCEPTORS,  useClass: ReqInterceptor , multi: true },
-    { provide: HTTP_INTERCEPTORS,  useClass: ErrorInterceptor , multi: true },
-    { provide: HTTP_INTERCEPTORS,  useClass: JwtInterceptor , multi: true },
-
-  ],
-  bootstrap: [AppComponent]
-})
+@NgModule({ declarations: [
+        AppComponent
+    ],
+    bootstrap: [AppComponent], imports: [BrowserModule,
+        AppRoutingModule,
+        CoreModule,
+        BrowserAnimationsModule], providers: [
+        //    { provide: HTTP_INTERCEPTORS,  useClass: ReqInterceptor , multi: true },
+        { provide: HTTP_INTERCEPTORS, useClass: ErrorInterceptor, multi: true },
+        { provide: HTTP_INTERCEPTORS, useClass: JwtInterceptor, multi: true },
+        provideHttpClient(withInterceptorsFromDi()),
+    ] })
 export class AppModule { }
