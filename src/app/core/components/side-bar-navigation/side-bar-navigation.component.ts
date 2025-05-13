@@ -1,91 +1,45 @@
-import { Component, Input, OnInit } from '@angular/core';
-import {  faCirclePlay, faUsers, faNewspaper, faAngleDown, faUserTie, faCalendarAlt, faChartLine, faVideoCamera,  } from '@fortawesome/free-solid-svg-icons';
+import { Component, computed, inject } from '@angular/core';
+import { Menu } from '../../models/side-bar';
+import { MENU_LIST } from 'src/app/shared/constants/sidebar-menus.constants';
+import { AuthService } from '../../services/auth/auth.service';
 
 @Component({
   selector: 'app-side-bar-navigation',
   templateUrl: './side-bar-navigation.component.html',
   styleUrls: ['./side-bar-navigation.component.scss']
 })
-export class SideBarNavigationComponent implements OnInit {
 
-  @Input() screenWidth !: number;
+export class SideBarNavigationComponent {
+
+  private authService = inject(AuthService);
   
-  faUsers = faUsers;
-  faCalendarAlt = faCalendarAlt;
-  faChartLine = faChartLine;
-  faAngleDown = faAngleDown;
-  faNewspaper = faNewspaper;
-  faCamera = faVideoCamera;
-  faUserTie = faUserTie;
-  faCirclePlay = faCirclePlay;
+  protected staffRoles = computed(() => this.authService.staffRoles());
+  protected connectedStaffData = computed(() => this.authService.staffConnectedData());
+  
+  protected filterMenus = computed(() => this.getFilteredMenu())
 
-  menuList !: any[];
+  getFilteredMenu(): Menu[] {
+    /*
+    return MENU_LIST.map(menu => {
+        const filteredMenuItems = menu.menuItems
+          .filter(item =>
+            item.allowedRoles.some(role => this.staffRoles().map((r: any) => r.code).includes(role))
+          )
+          .map(item => ({
+            ...item,
+            url: item.url === "/mes-groupes" ? `/staffs/${this.connectedStaffData().id}/mes-groupes` : item.url
+          }));
+        return { ...menu, menuItems: filteredMenuItems };
+      })
+      .filter(menu => menu.allowedRoles.some(role => this.staffRoles().map((r: any) => r.code).includes(role)));
 
-  constructor() {
+      */
+
+      return MENU_LIST
   }
+  
 
-  ngOnInit(): void {
-    this.initMenus();
+  onDropdownMenuClicked(index: number) {
+    this.filterMenus()[index].active = !this.filterMenus()[index].active;
   }
-
-  initMenus(){
-    this.menuList = [
-      {
-        icon: this.faChartLine,
-        label: "Tableau De Bord",
-        active: true,
-        menuItems : [
-          { label: "Général", link:"" },
-        ]
-      },
-      {
-        icon: this.faUsers,
-        label: "Ambassadeurs",
-        active: false,
-        menuItems : [
-          {label: "Liste ambassadeurs", link:"/ambassadeur-de-campagne"},
-         
-        ]
-      },
-      {
-        icon: this.faCalendarAlt,
-        label: "Agenda",
-        active: false,
-        menuItems : [
-          {label: "Évênements", link:"/agenda/liste-par-type-d-evenement"}
-        ]
-      },
-      {
-        icon: this.faNewspaper,
-        label: "Articles",
-        active: false,
-        menuItems : [
-          {label: "liste d'articles", link:"/articles/liste-par-type-de-rubrique"},
-        ]
-      },
-      {
-        icon: this.faCirclePlay,
-        label: "Replays",
-        active: false,
-        menuItems : [
-          {label: "Liste replays", link:"/replays"},
-        ]
-      },
-      {
-        icon: this.faUserTie,
-        label: "Utilisateurs",
-        active: false,
-        menuItems : [
-          {label: "Liste utilisateurs", link:"/utilisateurs"},
-        ]
-      },
-    ]
-  }
-
-  onItemMenuClicked( index: number){
-
-    this.menuList[index].active = !this.menuList[index].active;
-
-  }
-
 }

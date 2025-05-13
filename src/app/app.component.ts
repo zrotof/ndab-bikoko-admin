@@ -34,7 +34,6 @@ export class AppComponent implements OnInit {
 
   ngOnInit(): void {
     this.initAppOnReload();
-    this.onResize();
     this.getSideBarState();
     this.isUserLogged$ = this.authService.isLogged$
   }
@@ -57,23 +56,6 @@ export class AppComponent implements OnInit {
       this.styleClass = 'wrapper-toggled'
     }
 
-  }
-
-  @HostListener('window:resize', ['$event'])
-  onResize(){
-    this.screenWidth = window.innerWidth;
-  
-    if(this.screenWidth <= 768){
-      this.isSideNavToggled = true;
-    }
-    else{
-      if(!this.isSideNavToggled){
-        this.isSideNavToggled = false
-      }
-    }
-    
-    this.onGetCssClass(this.isSideNavToggled, this.screenWidth);
-    this.sidebarStateService.setSideBarState(this.isSideNavToggled)
   }
 
   getSideBarState(){

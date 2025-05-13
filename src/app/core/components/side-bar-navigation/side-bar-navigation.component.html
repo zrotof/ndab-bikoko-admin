@@ -1,27 +1,50 @@
-<div class="sidebar">
+<nav class="sidebar">
 
     <div class="logo-bloc">
         <img src="../../../../assets/img/header/logo.png">
         <span>Ndab Bikokoo Pil Gweha</span>
     </div>
 
-    <div class="menu-bloc">
-        <p>MENU</p>
-        <ul class="menu-items">
-            @for (menu of menuList; track $index) {
-            <li>
-                <a 
-                    class="menu-item" 
-                    [routerLink]="menu.menuItems[0].link" 
-                    routerLinkActive="active-link"
-                    [routerLinkActiveOptions]="{exact: true}"
-                    >
-                    <fa-icon [icon]="menu.icon"></fa-icon>
-                    <span> {{menu.label}} </span>
-                </a>
-            </li>
+    <ul class="menu-bloc">
+        @for (menu of filterMenus(); track $index; let isFirstMenuItem = $first) {
+        <li>
+            @if (menu.menuItems.length > 1) {
+            <button class="dropdown-menu" (click)="onDropdownMenuClicked($index)">
+                <fa-icon [icon]="menu.icon | convertStringLabelToFontawesomeIcon"></fa-icon>
+                <span> {{ menu.label }} </span>
+                @if (menu.active) {
+                <fa-icon [icon]="'faAngleUp' | convertStringLabelToFontawesomeIcon"></fa-icon>
+                } @else {
+                <fa-icon [icon]="'faAngleDown' | convertStringLabelToFontawesomeIcon"></fa-icon>
+                }
+            </button>
+            <ul class="sub-menu" [ngClass]="menu.active ? 'show-items' : ''">
+                <div>
+                    @for (menuItem of menu.menuItems; track $index; let isFirstSubMenuItem = $first ) {
+                    <li class="sub-menu-item">
+                        @if (isFirstSubMenuItem) {
+                        <a routerLinkActive="active-sub-menu" routerLink="{{ menuItem.url }}"
+                            [routerLinkActiveOptions]=" { exact: true }">
+                            <span> {{ menuItem.label }} </span>
+                        </a>
+                        }
+                        @else {
+                        <a routerLinkActive="active-sub-menu" routerLink="{{ menuItem.url }}">
+                            <span> {{ menuItem.label }} </span>
+                        </a>
+                        }
+                    </li>
+                    }
+                </div>
+            </ul>
+            } @else {
+            <a class="menu-item" [routerLink]="menu.menuItems[0].url" routerLinkActive="active-navigation"
+                [routerLinkActiveOptions]="isFirstMenuItem ? { exact: true } : { exact: false }">
+                <fa-icon [icon]="menu.icon | convertStringLabelToFontawesomeIcon"></fa-icon>
+                <span> {{ menu.label }} </span>
+            </a>
             }
-        </ul>
-    </div>
-
-</div>
+        </li>
+        }
+    </ul>
+</nav>
