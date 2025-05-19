@@ -9,17 +9,16 @@ import { CategoryListMenuComponent } from '../../../../shared/components/categor
 import { Rubric } from 'src/app/shared/models/rubric';
 
 @Component({
-  selector: 'app-article-list-container',
-  standalone: true,
-  imports: [
-    RouterLink,
-    AsyncPipe,
-    CategoryListMenuComponent,
-    ArticleListComponent
-  ],
-  templateUrl: './article-list-container.component.html',
-  styleUrls: ['./article-list-container.component.scss'],
-  providers: [MessageService]
+    selector: 'app-article-list-container',
+    imports: [
+        RouterLink,
+        AsyncPipe,
+        CategoryListMenuComponent,
+        ArticleListComponent
+    ],
+    templateUrl: './article-list-container.component.html',
+    styleUrls: ['./article-list-container.component.scss'],
+    providers: [MessageService]
 })
 export class ArticleListContainerComponent implements OnInit {
 

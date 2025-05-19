@@ -1,0 +1,140 @@
+.planner-add-edit-containe{
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
+
+    form{
+        display: flex;
+        justify-content: center;
+
+        .left{
+            
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            width: 275px;
+            margin-right: 20px;
+
+            .preview {
+                width: 100%;
+                height: 250px;
+                border-radius: 5px;
+                overflow: hidden;
+                background-color: rgb(211, 211, 211);
+
+                img{
+                    width: 100%;
+                    height: 100%;
+                    display: none;
+                    object-fit: cover;
+                    object-position: top;
+                }
+            }            
+
+            .upload{
+                display: flex;
+                flex-direction: column;
+                align-items: flex-start;
+                width: 100%;
+                margin-top: 15px;
+
+                .input{
+                    display: flex;
+                    flex-direction: column;
+                    width: 100%;
+                    
+                    input{
+                        display:none;
+                    }
+        
+                    label {
+                            width:100%;
+                            height: 50px;
+                            padding: 5px 10px;
+                            background-color: white;
+                            color: var(--project-primary-color);
+                            border-radius:5px;
+                            cursor:pointer;
+                            border: solid var(--project-primary-color);
+                            display: flex;
+                            align-items: center;
+                            justify-content: center;
+
+                            &:hover{
+                                transition: all 0.3 ease-in-out;
+                                background-color: var(--project-primary-color);
+                                color: white;
+                            }
+
+                        i{
+                            margin-right: 7px;
+                        }
+                    }
+                }
+
+                small{
+                margin-top:10px;
+            }
+
+            }
+        }
+
+        .right{
+            display: flex;
+            justify-content: center;
+            flex-direction: column;
+            width: 700px;
+            border-radius: 7px;
+            background-color: white;
+            padding: 60px;
+            box-shadow: rgba(50, 50, 93, 0.25) 0px 13px 27px -5px, rgba(0, 0, 0, 0.3) 0px 8px 16px -8px;
+            
+            .row-one{
+                width: 100%;
+            }
+    
+            .row-two{
+                display: flex;
+                gap: 1rem;
+            }
+            
+            .field{
+                display: flex;
+                flex-direction: column;
+                width: 100%;
+                margin-bottom: 20px;
+                flex: 1;
+    
+                label{
+                    margin-bottom: 7px;
+                }
+    
+                small{
+                    margin:10px 0 0 0;
+                }
+
+                .disabledInput {
+                    background-color: #d3d3d3;
+                }
+
+                .enabledInput {
+                    background-color: transparent;
+                }
+
+                .p-button {
+                    color: #ffffff;
+                    background: var(--project-primary-color);
+                    border: 1px solid var(--project-primary-color);
+                }
+
+                .p-select{
+                    width: 100%;
+
+                    span{
+                        width: 100%;
+                    }
+                }
+            }
+        }
+    } 
+}

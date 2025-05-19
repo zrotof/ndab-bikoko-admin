@@ -8,19 +8,18 @@ import { OverlayPanelModule } from 'primeng/overlaypanel';
 import { Reorder } from 'src/app/shared/models/reorder';
 
 @Component({
-  selector: 'app-replay-list',
-  standalone: true,
-  imports : [
-    NgIf,
-    TableModule,
-    OverlayModule,
-    OverlayPanelModule,
-    NgClass
-  ],
-  templateUrl: './replay-list.component.html',
-  styleUrls: ['./replay-list.component.scss'],
-  providers: [MessageService, ConfirmationService],
-  encapsulation: ViewEncapsulation.None
+    selector: 'app-replay-list',
+    imports: [
+        NgIf,
+        TableModule,
+        OverlayModule,
+        OverlayPanelModule,
+        NgClass
+    ],
+    templateUrl: './replay-list.component.html',
+    styleUrls: ['./replay-list.component.scss'],
+    providers: [MessageService, ConfirmationService],
+    encapsulation: ViewEncapsulation.None
 })
 export class ReplayListComponent{
 

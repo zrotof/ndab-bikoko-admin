@@ -92,7 +92,8 @@
         .right {
             margin-left: 20rem;
             flex: 1;
-
+            width: calc(100% - 20rem);
+            
             .wrapper {
                 transition: all 0.2s ease-in;
                 width: 100%;

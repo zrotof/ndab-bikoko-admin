@@ -1,0 +1,11 @@
+<div class="article-container pages">
+    <app-page-top-header [topHeaderData]="topHeaderPageData"></app-page-top-header>
+    <div class="actions-bar">
+        <button class="add" type="button" routerLink="/articles/creer-article">
+            <i class="pi pi-plus"></i>
+            Créer article
+        </button>
+    </div>
+    <app-rubric-list-container [rubrics]="rubrics" (chooseRubricEventEmiter)="onChooseRubricEventHandler($event)"></app-rubric-list-container>
+    <app-articles-list-container [articles]="articles"></app-articles-list-container>
+</div>

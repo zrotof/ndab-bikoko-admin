@@ -1,59 +1,274 @@
-@import 'variables.scss';
+@import url("./variables.scss");
+@import url("../node_modules/primeicons/primeicons.css");
 
-*{
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
-    -moz-box-sizing: border-box;
-    font-family: "montserrat", Verdana, Geneva, Tahoma, sans-serif;
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  -moz-box-sizing: border-box;
+  font-family: "montserrat", Verdana, Geneva, Tahoma, sans-serif;
 }
 
-html,body{
-    background-color: #edf1f7;
+html,
+body {
+  background-color: #edf1f7;
 }
 
-a{
-    text-decoration: none;
+a {
+  text-decoration: none;
 }
 
 input,
 a,
 button,
-div{
-    -webkit-tap-highlight-color: transparent;
+div {
+  -webkit-tap-highlight-color: transparent;
 }
 
-.error-form{
-    margin-top: 5px;
-    color: red;
+.error-form {
+  margin-top: 5px;
+  color: red;
 }
 
-.red-star{
-    color: red;
-    font-size: 0.95em;
+.red-star {
+  color: red;
+  font-size: 0.95em;
 }
 
-button{
-    cursor: pointer;
-    border: none;
-    border-radius: 5px;
+button {
+  cursor: pointer;
+  border: none;
+  border-radius: 5px;
 }
 
 //Removing background hightlight when autofill on google browser
 input:-webkit-autofill,
 input:-webkit-autofill:focus {
-    transition: background-color 600000s 0s, color 600000s 0s;
+  transition: background-color 600000s 0s, color 600000s 0s;
 }
 
-.title{
-    font-weight: bold;
+.title {
+  font-weight: bold;
 }
 
-.form-error{
-    color: red;
-    margin-top: 3px;
+.form-error {
+  color: red;
+  margin-top: 3px;
 
-    span{
-        font-size: 0.92em;
+  span {
+    font-size: 0.92em;
+  }
+}
+
+.pages {
+  background-color: var(--project-black-primary-color);
+  padding: 2rem;
+  border-radius: 7px;
+}
+
+.actions-bar {
+  display: flex;
+  justify-content: flex-end;
+  padding: 10px;
+  background-color: #17211b;
+  margin-bottom: 4rem;
+  gap: 1rem;
+
+  button {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    outline: none;
+    width: fit-content;
+    cursor: pointer;
+    background-color: transparent;
+    white-space: nowrap;
+    padding: 6px 10px;
+    border-radius: 100px;
+
+    i {
+      margin-right: 5px;
     }
+  }
+
+  .add {
+    border: 2px solid green;
+    color: green;
+
+    &:hover {
+      background-color: green;
+      color: var(--project-white-primary-color);
+    }
+  }
+
+  .cancel {
+    border: 2px solid gray;
+    color: gray;
+
+    &:hover {
+      color: white;
+      background-color: gray;
+    }
+  }
+
+  .save {
+    border: solid blue;
+    color: blue;
+
+    &:hover {
+      background-color: blue;
+    }
+  }
+
+  .p-overlaypanel .p-overlaypanel-content {
+    padding: 7px;
+  }
+}
+
+p-table {
+  width: 100%;
+  margin: auto;
+  box-shadow: rgba(0, 0, 0, 0.16) 0px 1px 4px;
+}
+
+.table-image {
+  width: 50px;
+  padding: 10px !important;
+
+  img {
+    object-fit: cover;
+    border-radius: 50%;
+
+  }
+}
+
+.table-actions-column-header {
+  text-align: right !important;
+  width: 100px;
+}
+
+.table-actions-header {
+  text-align: center !important;
+  width: 100px;
+
+  i {
+    padding: 6px;
+    font-weight: bold;
+    border-radius: 50%;
+    cursor: pointer;
+    transition: all 0.3s ease-in-out;
+    border: 1.5px solid white;
+
+    &:hover {
+      border: 1.5px solid #191922;
+    }
+  }
+}
+
+.table-actions-overlay-panel {
+    display: flex;
+    flex-direction: column;
+
+    i {
+        padding: 6px;
+        font-weight: bold;
+        margin: 5px 0;
+        border-radius: 50%;
+        cursor: pointer;
+    }
+
+    .pi-trash {
+        color: red;
+        border: 1px solid red;
+    }
+
+    .pi-trash:hover {
+        color: white;
+        background-color: red;
+    }
+
+    .pi-pencil {
+        color: green;
+        border: 1px solid green;
+    }
+
+    .pi-pencil:hover {
+        color: white;
+        background-color: green;
+    }
+}
+
+.confirm-delete-dialog {
+  max-width: 500px;
+  width: 100%;
+  overflow: hidden;
+
+  .p-dialog-header {
+    background-color: var(--project-brown-primary-color);
+    margin-bottom: 2rem;
+    padding: 1rem;
+    color: var(--project-white-primary-color);
+
+    .p-dialog-close-button {
+      background-color: var(--project-white-primary-color);
+      color: var(--project-black-primary-color);
+      box-shadow: rgba(255, 255, 255, 0.2) 0px 0px 0px 1px inset,
+        rgba(0, 0, 0, 0.9) 0px 0px 0px 1px;
+
+      &:hover {
+        transform: scale(1.2);
+      }
+    }
+
+  }
+
+  .p-dialog-content {
+    span {
+      margin: 0;
+      line-height: 22px;
+      font-size: 16px;
+    }
+  }
+
+  .p-dialog-footer {
+    display: flex;
+    justify-content: flex-end;
+    gap: 1rem;
+    padding: 1rem;
+    background: #ededed;
+
+    button {
+      display: flex;
+      justify-content: center;
+      gap: 0.5rem;
+      margin: 0;
+      border: none;
+
+      .p-button-label {
+        flex: none;
+        font-size: 15px;
+      }
+    }
+
+    .p-confirmdialog-reject-button {
+      color: var(--project-black-primary-color);
+      background-color: var(--project-white-primary-color);
+      box-shadow: rgba(255, 255, 255, 0.2) 0px 0px 0px 1px inset,
+        rgba(0, 0, 0, 0.9) 0px 0px 0px 1px;
+
+      &:hover {
+        background-color: var(--project-black-tertiary-color);
+      }
+    }
+
+    .p-confirmdialog-accept-button {
+      background-color: var(--project-red-primary-color);
+
+      &:hover {
+        background-color: var(--project-red-secondary-color);
+      }
+    }
+  }
+
+
 }

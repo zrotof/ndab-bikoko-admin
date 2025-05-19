@@ -1,49 +1,70 @@
-header{
-    position: fixed ;
+header {
+    position: fixed;
     display: flex;
     align-items: center;
-    justify-content: space-between;
+    justify-content: flex-end;
     box-shadow: 0 0.5rem 1rem 0 rgb(44 51 73 / 10%);
     background-color: var(--project-black-primary-color);
     padding: 0 2em;
     z-index: 99;
-    width: 100%;
-    height: 105px;
-        border: 1px solid rgb(59, 59, 59);
+    width: calc(100% - 20rem);
+    height: 89px;
+    border: 1px solid rgb(59, 59, 59);
 
-    .connected-user{
+    .connected-user-wrapper {
         display: flex;
         align-items: center;
-        gap: 1rem;
-        
-
-        img {
-            width: 65px;
-            height: 72px;
-            object-fit: cover;
-        }
-
-        .texts {
-            display: flex;
-            flex-direction: column;
-            gap: 0.5rem;
-
-            span {
-                font-size: 1.15rem;
-                font-weight: 500;
-                color: var(--project-white-primary-color);
-            }
-
-            p{
-                font-size: 0.9rem;
-                color: var(--project-white-secondary-color);
-            }
-        }
-    }
-
-    .logo{
-        height: 4em;
+        justify-content: center;
+        width: 45px;
+        height: 45px;
+        border-radius: 7px;
+        background-color: rgb(220, 220, 220);
         cursor: pointer;
-        transform: rotate(12deg);
+
+        .connected-user {
+
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            width: 35px;
+            height: 35px;
+            border-radius: 50%;
+            color: var(--project-white-primary-color);
+            font-size: 1rem;
+            background-color: var(--project-brown-primary-color);
+        }
+
     }
+
+    .top {
+        display: flex;
+        flex-direction: column;
+        gap: 0.5rem;
+        padding: 1rem;
+        border-bottom: 1px solid black;
+
+        h5 {
+            font-size: 0.9rem;
+        }
+
+        span {
+            font-size: 0.9rem;
+        }
+    }
+
+    .p-menu-list {
+        display: flex;
+        flex-direction: column;
+        gap: 0.2rem;
+
+        .p-menu-submenu-label {
+            display: none;
+        }
+    }
+
+    .p-menu-overlay {
+        right: 2rem;
+        top: 4rem;
+    }
+
 }

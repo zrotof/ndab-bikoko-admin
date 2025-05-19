@@ -8,8 +8,8 @@ describe('ImagePreviewComponent', () => {
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      declarations: [ ImagePreviewComponent ]
-    })
+    imports: [ImagePreviewComponent]
+})
     .compileComponents();
 
     fixture = TestBed.createComponent(ImagePreviewComponent);

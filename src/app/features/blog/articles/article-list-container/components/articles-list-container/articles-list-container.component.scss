@@ -1,0 +1,22 @@
+.articles-list-container {
+    margin-top: 2rem;
+
+    .article-list {
+        p {
+            padding: 1rem;
+            background-color: var(--project-white-primary-color);
+            color: var(--project-black-primary-color);
+        }
+    }
+
+    .default-state {
+        height: 15px;
+        width: 15px;
+        border-radius: 50%;
+        background-color: rgb(203, 203, 203);
+    }
+
+    .active-replay {
+        background-color: green;
+    }
+}

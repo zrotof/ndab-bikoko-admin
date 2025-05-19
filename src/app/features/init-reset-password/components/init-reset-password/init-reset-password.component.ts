@@ -1,15 +1,18 @@
 import { Component, OnInit } from '@angular/core';
-import { UntypedFormBuilder, UntypedFormGroup, Validators } from '@angular/forms';
+import { UntypedFormBuilder, UntypedFormGroup, Validators, ReactiveFormsModule } from '@angular/forms';
 import { Router } from '@angular/router';
 import { Subscription } from 'rxjs';
 import { AuthService } from 'src/app/shared/services/auth/auth.service';
 import { UsersService } from 'src/app/shared/services/users/users.service';
+import { NgClass, NgIf } from '@angular/common';
+import { InputTextModule } from 'primeng/inputtext';
 
 
 @Component({
-  selector: 'app-init-reset-password',
-  templateUrl: './init-reset-password.component.html',
-  styleUrls: ['./init-reset-password.component.scss']
+    selector: 'app-init-reset-password',
+    templateUrl: './init-reset-password.component.html',
+    styleUrls: ['./init-reset-password.component.scss'],
+    imports: [NgClass, NgIf, ReactiveFormsModule, InputTextModule]
 })
 
 export class InitResetPasswordComponent implements OnInit {

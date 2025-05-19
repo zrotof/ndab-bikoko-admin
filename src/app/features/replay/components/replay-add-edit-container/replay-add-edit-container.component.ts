@@ -12,20 +12,19 @@ import { InputTextModule } from 'primeng/inputtext';
 import { InputSwitchModule } from 'primeng/inputswitch';
 
 @Component({
-  selector: 'app-replay-add-edit-container',
-  standalone: true,
-  imports: [
-    NgIf,
-    ReactiveFormsModule,
-    DropdownModule,
-    ToastModule,
-    InputTextModule,
-    InputSwitchModule
-  ],
-  templateUrl: './replay-add-edit-container.component.html',
-  styleUrls: ['./replay-add-edit-container.component.scss'],
-  encapsulation: ViewEncapsulation.None,
-  providers: [MessageService]
+    selector: 'app-replay-add-edit-container',
+    imports: [
+        NgIf,
+        ReactiveFormsModule,
+        DropdownModule,
+        ToastModule,
+        InputTextModule,
+        InputSwitchModule
+    ],
+    templateUrl: './replay-add-edit-container.component.html',
+    styleUrls: ['./replay-add-edit-container.component.scss'],
+    encapsulation: ViewEncapsulation.None,
+    providers: [MessageService]
 })
 export class ReplayAddEditContainerComponent implements OnInit {
 

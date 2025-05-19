@@ -12,20 +12,19 @@ import { Reorder } from 'src/app/shared/models/reorder';
 import { ConfirmDialogModule } from 'primeng/confirmdialog';
 
 @Component({
-  selector: 'app-replay-list-container',
-  standalone: true,
-  imports: [
-    RouterLink,
-    AsyncPipe,
-    NgIf,
-    ReplayListComponent,
-    ToastModule,
-    ConfirmDialogModule
-  ],
-  templateUrl: './replay-list-container.component.html',
-  styleUrls: ['./replay-list-container.component.scss'],
-  providers: [MessageService, ConfirmationService, DialogService],
-  encapsulation: ViewEncapsulation.None,
+    selector: 'app-replay-list-container',
+    imports: [
+        RouterLink,
+        AsyncPipe,
+        NgIf,
+        ReplayListComponent,
+        ToastModule,
+        ConfirmDialogModule
+    ],
+    templateUrl: './replay-list-container.component.html',
+    styleUrls: ['./replay-list-container.component.scss'],
+    providers: [MessageService, ConfirmationService, DialogService],
+    encapsulation: ViewEncapsulation.None
 })
 
 export class ReplayListContainerComponent implements OnInit, OnDestroy  {

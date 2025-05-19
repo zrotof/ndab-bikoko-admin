@@ -10,20 +10,19 @@ import { OverlayPanelModule } from 'primeng/overlaypanel';
 import { ArticleService } from 'src/app/shared/services/article/article.service';
 
 @Component({
-  selector: 'app-article-list',
-  standalone: true,
-  imports: [
-    NgIf,
-    TableModule,
-    OverlayModule,
-    ConfirmDialogModule,
-    ToastModule,
-    OverlayPanelModule,
-    NgClass
-  ],
-  templateUrl: './article-list.component.html',
-  styleUrls: ['./article-list.component.scss'],
-  providers: [MessageService, ConfirmationService, DatePipe]
+    selector: 'app-article-list',
+    imports: [
+        NgIf,
+        TableModule,
+        OverlayModule,
+        ConfirmDialogModule,
+        ToastModule,
+        OverlayPanelModule,
+        NgClass
+    ],
+    templateUrl: './article-list.component.html',
+    styleUrls: ['./article-list.component.scss'],
+    providers: [MessageService, ConfirmationService, DatePipe]
 })
 export class ArticleListComponent {
 

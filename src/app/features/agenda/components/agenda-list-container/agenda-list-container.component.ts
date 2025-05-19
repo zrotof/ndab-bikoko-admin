@@ -2,7 +2,7 @@ import { AsyncPipe } from '@angular/common';
 import { Component } from '@angular/core';
 import { RouterLink } from '@angular/router';
 import { Observable, map, pipe } from 'rxjs';
-import { AgendaService } from 'src/app/shared/services/agenda/agenda.service';
+import { AgendaService } from 'src/app/core/services/planner/planner.service';
 import { MessageService } from 'primeng/api';
 import { CategoryListMenuComponent } from 'src/app/shared/components/category-list-menu/category-list-menu.component';
 import { Rubric } from 'src/app/shared/models/rubric';
@@ -10,17 +10,16 @@ import { AgendaListComponent } from './agenda-list/agenda-list.component';
 import { Event } from 'src/app/shared/models/event';
 
 @Component({
-  selector: 'app-agenda-list-container',
-  templateUrl: './agenda-list-container.component.html',
-  styleUrls: ['./agenda-list-container.component.scss'],
-  standalone: true,
-  imports : [
-    CategoryListMenuComponent,
-    AgendaListComponent,
-    RouterLink,
-    AsyncPipe
-  ],
-  providers: [MessageService]
+    selector: 'app-agenda-list-container',
+    templateUrl: './agenda-list-container.component.html',
+    styleUrls: ['./agenda-list-container.component.scss'],
+    imports: [
+        CategoryListMenuComponent,
+        AgendaListComponent,
+        RouterLink,
+        AsyncPipe
+    ],
+    providers: [MessageService]
 })
 
 export class AgendaListContainerComponent {

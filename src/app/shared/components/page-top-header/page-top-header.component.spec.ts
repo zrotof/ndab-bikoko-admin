@@ -8,8 +8,8 @@ describe('PageTopHeaderComponent', () => {
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      declarations: [ PageTopHeaderComponent ]
-    })
+    imports: [PageTopHeaderComponent]
+})
     .compileComponents();
 
     fixture = TestBed.createComponent(PageTopHeaderComponent);

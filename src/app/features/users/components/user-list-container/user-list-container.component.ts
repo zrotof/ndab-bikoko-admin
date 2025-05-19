@@ -9,16 +9,15 @@ import { Router, RouterLink } from '@angular/router';
 import { UsersListComponent } from './users-list/users-list.component';
 
 @Component({
-  selector: 'app-user-list-container',
-  standalone: true,
-  imports: [
-    AsyncPipe,
-    RouterLink,
-    UsersListComponent
-  ],
-  templateUrl: './user-list-container.component.html',
-  styleUrls: ['./user-list-container.component.scss'],
-  providers: [MessageService, ConfirmationService]
+    selector: 'app-user-list-container',
+    imports: [
+        AsyncPipe,
+        RouterLink,
+        UsersListComponent
+    ],
+    templateUrl: './user-list-container.component.html',
+    styleUrls: ['./user-list-container.component.scss'],
+    providers: [MessageService, ConfirmationService]
 })
 export class UserListContainerComponent implements OnInit {
 

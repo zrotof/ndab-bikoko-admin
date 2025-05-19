@@ -1,54 +1,51 @@
-<ng-container  *ngIf="currentRubricList">
-    <div class="rubric-list">
+@if (currentRubricList) {
+<div class="rubric-list">
 
-        <ng-container *ngIf="currentRubricList?.length == 0; else tableau">
-            <span>Aucune rubrique n'a encore été enregistrée pour le moment.</span>
-        </ng-container>
-        
-        <ng-template #tableau>
-            <p-table  
-                [value]="currentRubricList" 
-                responsiveLayout="scroll"
-                (onRowReorder)="onRowReorder()"
-                >
-                
-                <ng-template pTemplate="header">
-                    <tr>
-                        <th></th>
-                        <th></th>
-                        <th>Titre</th>
-                        <th>Description</th>
-                        <th>Activée?</th>
-                        <th class="last-column">Actions</th>
-                    </tr>
-                </ng-template>
-                <ng-template pTemplate="body" let-rubric let-index="rowIndex">
-                    <tr [pReorderableRow]="index">
-                        <td pReorderableRowHandle class="row-reorder-handler"></td>
-                        <td >
-                            <span class="pi pi-align-justify"></span>
-                        </td>
-                        <td>{{rubric.name}}</td>
-                        <td> {{rubric.description}}</td>
-                        <td>
-                            <div class="default-state" [ngClass]="rubric.isActive === true ? 'active-rubric':''"></div>
-                        </td>
-                        <td class="row-actions">
-                            <i class="pi pi-ellipsis-v" (click)="op.toggle($event)"></i>
-    
-                            <p-overlayPanel #op>
-                                <ng-template pTemplate>
-                                    <div class="row-actions-event">
-                                        <i (click)="editRubricEventTrigger(rubric.id)" class="pi pi-pencil"></i>
-                                        <i (click)="deleteRubricEventTrigger(rubric.id)"class="pi pi-trash"></i>
-                                    </div>
-                                </ng-template>
-                            </p-overlayPanel>
-                        </td>
-                    </tr>
-                </ng-template>
-    
-            </p-table>
+    @if (currentRubricList.length === 0) {
+    <span>Aucune rubrique n'a encore été enregistrée pour le moment.</span>
+    }
+    @else {
+    <p-table [value]="currentRubricList" responsiveLayout="scroll" (onRowReorder)="onRowReorder()" [reorderableColumns]="true">
+
+        <ng-template pTemplate="header">
+            <tr>
+                <th style="width:3rem"></th>
+                <th>Titre</th>
+                <th>Description</th>
+                <th style="width:7rem">Activée ?</th>
+                <th class="last-column">Actions</th>
+            </tr>
         </ng-template>
-    </div>
-</ng-container>
+        <ng-template pTemplate="body" let-rubric let-index="rowIndex">
+            <tr [pReorderableRow]="index">
+                <td>
+                    <span class="pi pi-align-justify" pReorderableRowHandle></span>
+                </td>
+                <td>{{rubric.name}}</td>
+                <td> {{rubric.description}}</td>
+                <td>
+                    @if (rubric.isActive === true) {
+                        <span class="state active-rubric"> Oui </span>
+                    }
+                    @else {
+                        <span class="state non-active-rubric">Non</span>
+                    }
+                </td>
+                <td class="row-actions">
+                    <i class="pi pi-ellipsis-v" (click)="op.toggle($event)"></i>
+
+                    <p-overlayPanel #op>
+                        <ng-template pTemplate>
+                            <div class="row-actions-event">
+                                <i (click)="editRubricEventTrigger(rubric.id)" class="pi pi-pencil"></i>
+                                <i (click)="deleteRubricEventTrigger(rubric.id)" class="pi pi-trash"></i>
+                            </div>
+                        </ng-template>
+                    </p-overlayPanel>
+                </td>
+            </tr>
+        </ng-template>
+    </p-table>
+    }
+</div>
+}

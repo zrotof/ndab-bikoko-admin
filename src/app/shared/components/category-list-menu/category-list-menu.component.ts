@@ -3,16 +3,15 @@ import { NgClass, NgFor, NgIf } from '@angular/common';
 import { Rubric } from 'src/app/shared/models/rubric';
 
 @Component({
-  selector: 'app-category-list-menu',
-  standalone: true,
-  imports: [
-    NgFor,
-    NgIf,
-    NgClass
-  ],
-  templateUrl: './category-list-menu.component.html',
-  styleUrls: ['./category-list-menu.component.scss'],
-  changeDetection: ChangeDetectionStrategy.Default,
+    selector: 'app-category-list-menu',
+    imports: [
+        NgFor,
+        NgIf,
+        NgClass
+    ],
+    templateUrl: './category-list-menu.component.html',
+    styleUrls: ['./category-list-menu.component.scss'],
+    changeDetection: ChangeDetectionStrategy.Default
 })
 export class CategoryListMenuComponent implements OnChanges {
 

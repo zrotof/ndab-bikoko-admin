@@ -20,19 +20,12 @@
             </button>
             <ul class="sub-menu" [ngClass]="menu.active ? 'show-items' : ''">
                 <div>
-                    @for (menuItem of menu.menuItems; track $index; let isFirstSubMenuItem = $first ) {
+                    @for (menuItem of menu.menuItems; track $index) {
                     <li class="sub-menu-item">
-                        @if (isFirstSubMenuItem) {
                         <a routerLinkActive="active-sub-menu" routerLink="{{ menuItem.url }}"
                             [routerLinkActiveOptions]=" { exact: true }">
                             <span> {{ menuItem.label }} </span>
                         </a>
-                        }
-                        @else {
-                        <a routerLinkActive="active-sub-menu" routerLink="{{ menuItem.url }}">
-                            <span> {{ menuItem.label }} </span>
-                        </a>
-                        }
                     </li>
                     }
                 </div>

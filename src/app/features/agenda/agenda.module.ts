@@ -6,7 +6,7 @@ import { AgendaAddEditContainerComponent } from './components/agenda-add-edit-co
 import { AgendaEventTypeListContainerComponent } from './components/agenda-event-type-list-container/agenda-event-type-list-containercomponent';
 import { AddEditEventTypeComponent } from './components/add-edit-event-type/add-edit-event-type.component';
 import { ReactiveFormsModule } from '@angular/forms';
-import { PrimengModule } from 'src/app/shared/modules/primeng/primeng.module';
+
 
 @NgModule({
   imports: [
@@ -16,8 +16,7 @@ import { PrimengModule } from 'src/app/shared/modules/primeng/primeng.module';
     AgendaAddEditContainerComponent,
     CommonModule,
     AgendaRoutingModule,
-    ReactiveFormsModule,
-    PrimengModule
-  ]
+    ReactiveFormsModule
+]
 })
 export class AgendaModule { }

@@ -10,34 +10,33 @@ import { InputTextareaModule } from 'primeng/inputtextarea';
 import { TableModule } from 'primeng/table';
 import { ToastModule } from 'primeng/toast';
 import { MessageService } from 'primeng/api';
-import { AgendaService } from 'src/app/shared/services/agenda/agenda.service';
+import { AgendaService } from 'src/app/core/services/planner/planner.service';
 import { ActivatedRoute } from '@angular/router';
 import { Observable, map, lastValueFrom, timer, pipe } from 'rxjs';
 import { Rubric } from 'src/app/shared/models/rubric';
 import { ArticleService } from 'src/app/shared/services/article/article.service';
 
 @Component({
-  selector: 'app-agenda-add-edit-container',
-  templateUrl: './agenda-add-edit-container.component.html',
-  styleUrls: ['./agenda-add-edit-container.component.scss'],
-  standalone: true,
-  imports: [
-    NgIf,
-    NgFor,
-    NgClass,
-    AsyncPipe,
-    TableModule,
-    ToastModule,
-    ReactiveFormsModule,
-    InputTextModule,
-    InputSwitchModule,
-    CalendarModule,
-    InputTextareaModule,
-    DropdownModule,
-    EditorModule
-  ],
-  encapsulation: ViewEncapsulation.None,
-  providers: [MessageService, DatePipe]
+    selector: 'app-agenda-add-edit-container',
+    templateUrl: './agenda-add-edit-container.component.html',
+    styleUrls: ['./agenda-add-edit-container.component.scss'],
+    imports: [
+        NgIf,
+        NgFor,
+        NgClass,
+        AsyncPipe,
+        TableModule,
+        ToastModule,
+        ReactiveFormsModule,
+        InputTextModule,
+        InputSwitchModule,
+        CalendarModule,
+        InputTextareaModule,
+        DropdownModule,
+        EditorModule
+    ],
+    encapsulation: ViewEncapsulation.None,
+    providers: [MessageService, DatePipe]
 })
 export class AgendaAddEditContainerComponent implements OnInit {
 

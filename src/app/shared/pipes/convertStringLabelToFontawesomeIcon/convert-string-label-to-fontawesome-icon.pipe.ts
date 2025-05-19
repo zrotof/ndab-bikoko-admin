@@ -17,9 +17,7 @@ import {
   faPersonWalking
 } from '@fortawesome/free-solid-svg-icons';
 
-@Pipe({
-  name: 'convertStringLabelToFontawesomeIcon'
-})
+@Pipe({ name: 'convertStringLabelToFontawesomeIcon' })
 export class ConvertStringLabelToFontawesomeIconPipe implements PipeTransform {
 
   transform(value: string): IconProp {

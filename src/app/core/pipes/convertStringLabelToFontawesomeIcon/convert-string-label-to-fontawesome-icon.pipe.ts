@@ -6,26 +6,31 @@ import {
   faAngleUp,
   faArrowLeft,
   faArrowRight,
+  faArrowUp19,
   faBan,
   faBed,
   faBell,
   faBriefcase,
   faBullhorn,
   faBus,
+  faCalendarAlt,
   faCar,
   faCartPlus,
   faChartLine,
   faChurch,
   faCircleCheck,
+  faCircleDollarToSlot,
   faCross,
   faCode,
   faEarthAfrica,
   faEnvelope,
+  faEuroSign,
   faEye,
   faFilter,
   faFloppyDisk,
   faGlobe,
   faHeart,
+  faHandHoldingMedical,
   faHouseUser,
   faIdBadge,
   faLaptop,
@@ -57,9 +62,9 @@ import {
 } from '@fortawesome/free-regular-svg-icons';
 
 @Pipe({
-  name: 'convertStringLabelToFontawesomeIcon',
-  standalone: true
+  name: 'convertStringLabelToFontawesomeIcon'
 })
+
 export class ConvertStringLabelToFontawesomeIconPipe implements PipeTransform {
 
   transform(value: string): IconProp {
@@ -72,6 +77,8 @@ export class ConvertStringLabelToFontawesomeIconPipe implements PipeTransform {
         return faArrowLeft
       case 'faArrowRight':
         return faArrowRight
+      case 'faArrowUp19':
+        return faArrowUp19
       case 'faBan':
         return faBan
       case 'faBell':
@@ -84,6 +91,8 @@ export class ConvertStringLabelToFontawesomeIconPipe implements PipeTransform {
         return faBullhorn
       case 'faBus':
         return faBus
+      case 'faCalendarAlt':
+        return faCalendarAlt
       case 'faCar':
         return faCar
       case 'faCartPlus':
@@ -94,6 +103,8 @@ export class ConvertStringLabelToFontawesomeIconPipe implements PipeTransform {
         return faChurch
       case 'faCircleCheck':
         return faCircleCheck
+      case 'faCircleDollarToSlot':
+        return faCircleDollarToSlot
       case 'faCode':
         return faCode  
       case 'faCross':
@@ -102,10 +113,14 @@ export class ConvertStringLabelToFontawesomeIconPipe implements PipeTransform {
         return faEarthAfrica
       case 'faEnvelope':
         return faEnvelope
+      case "faEuroSign":
+        return faEuroSign
       case 'faEye':
         return faEye
       case 'faHeart':
         return faHeart
+      case 'faHandHoldingMedical':
+        return faHandHoldingMedical
       case 'faHouseUser':
         return faHouseUser
       case 'faChartLine':

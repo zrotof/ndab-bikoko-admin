@@ -14,6 +14,7 @@
                         tr{
                             position: relative;
                             transition: all 0.8s ease-in-out;
+                            
                             .row-reorder-handler{
                                 position: absolute;
                                 top: 0;
@@ -33,15 +34,21 @@
         text-align: right;
     }
 
-    .default-state{
-        height: 15px;
-        width: 15px;
-        border-radius: 50%;
-        background-color: rgb(203, 203, 203);
+    .state{
+        padding: 0.3rem 1rem;
+        border-radius: 100px;
+        margin: auto;
+        display: inline-block;
     }
 
     .active-rubric{
         background-color: green;
+        color: var(--project-white-primary-color);
+    }
+
+    .non-active-rubric{
+        background-color: #cbcbcb;
+        color: var(--project-black-primary-color);
     }
 
     .row-actions{

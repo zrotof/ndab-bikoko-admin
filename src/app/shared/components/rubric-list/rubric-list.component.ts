@@ -1,5 +1,4 @@
 import { Component, EventEmitter, Input, OnChanges, Output, SimpleChanges, ViewEncapsulation } from '@angular/core';
-import { NgClass, NgIf } from '@angular/common';
 import { OverlayModule } from 'primeng/overlay';
 import { OverlayPanelModule } from 'primeng/overlaypanel';
 import { TableModule } from 'primeng/table';
@@ -8,17 +7,14 @@ import { Rubric } from '../../models/rubric';
 
 @Component({
   selector: 'app-rubric-list',
-  standalone: true,
-  imports: [
-    NgIf,
-    TableModule,
-    OverlayModule,
-    OverlayPanelModule,
-    NgClass
-  ],
   templateUrl: './rubric-list.component.html',
   styleUrls: ['./rubric-list.component.scss'],
-  encapsulation: ViewEncapsulation.None
+  encapsulation: ViewEncapsulation.None,
+  imports: [
+    TableModule,
+    OverlayModule,
+    OverlayPanelModule
+  ]
 })
 export class RubricListComponent implements OnChanges {
 
@@ -26,29 +22,29 @@ export class RubricListComponent implements OnChanges {
   private _firstReplayList !: Rubric[];
 
   @Output() deleteRubricEvent = new EventEmitter<number>();
-  @Output() editRubricEvent = new EventEmitter<number>();
+  @Output() editRubricEvent = new EventEmitter<string>();
   @Output() itemsOrderChangedEvent = new EventEmitter<Reorder>();
 
   //handling drag and drop functionnality
   onRowReorder() {
-    const arrays : Reorder = {
-      firstList : this._firstReplayList, 
-      currentList : this.currentRubricList
+    const arrays: Reorder = {
+      firstList: this._firstReplayList,
+      currentList: this.currentRubricList
     }
     this.itemsOrderChangedEvent.emit(arrays)
   }
-  
-  editRubricEventTrigger(rubricId : number){
+
+  editRubricEventTrigger(rubricId: string) {
     this.editRubricEvent.emit(rubricId);
   }
 
-  deleteRubricEventTrigger(rubricId: number){
+  deleteRubricEventTrigger(rubricId: number) {
     this.deleteRubricEvent.emit(rubricId);
   }
 
 
   ngOnChanges(changes: SimpleChanges): void {
-    if(changes['currentRubricList'].currentValue){
+    if (changes['currentRubricList'].currentValue) {
       this._firstReplayList = [...this.currentRubricList];
     }
   }

@@ -1,14 +1,18 @@
 import { Component, OnInit, ViewEncapsulation } from '@angular/core';
-import { Router } from '@angular/router';
+import { Router, RouterLink } from '@angular/router';
 import { User } from 'src/app/shared/models/user';
 import { AuthService } from 'src/app/shared/services/auth/auth.service';
 import { UsersService } from 'src/app/shared/services/users/users.service';
+import { NgIf, NgFor } from '@angular/common';
+import { SidebarModule } from 'primeng/sidebar';
+import { PrimeTemplate } from 'primeng/api';
 
 @Component({
-  selector: 'app-user-connected-menu-side-bar',
-  templateUrl: './user-connected-menu-side-bar.component.html',
-  styleUrls: ['./user-connected-menu-side-bar.component.scss'],
-  encapsulation: ViewEncapsulation.None
+    selector: 'app-user-connected-menu-side-bar',
+    templateUrl: './user-connected-menu-side-bar.component.html',
+    styleUrls: ['./user-connected-menu-side-bar.component.scss'],
+    encapsulation: ViewEncapsulation.None,
+    imports: [NgIf, SidebarModule, PrimeTemplate, RouterLink, NgFor]
 })
 export class UserConnectedMenuSideBarComponent implements OnInit {
 

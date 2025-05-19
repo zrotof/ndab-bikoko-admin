@@ -13,20 +13,19 @@ import { ToastModule } from 'primeng/toast';
 import { ConfirmDialogModule } from 'primeng/confirmdialog';
 
 @Component({
-  selector: 'app-article-rubric-list-container',
-  standalone: true,
-  imports: [
-    RouterLink,
-    AsyncPipe,
-    NgIf,
-    ToastModule,
-    ConfirmDialogModule,
-    RubricListComponent
-  ],
-  templateUrl: './article-rubric-list-container.component.html',
-  styleUrls: ['./article-rubric-list-container.component.scss'],
-  providers: [MessageService, ConfirmationService, DialogService],
-  encapsulation: ViewEncapsulation.None,
+    selector: 'app-article-rubric-list-container',
+    imports: [
+        RouterLink,
+        AsyncPipe,
+        NgIf,
+        ToastModule,
+        ConfirmDialogModule,
+        RubricListComponent
+    ],
+    templateUrl: './article-rubric-list-container.component.html',
+    styleUrls: ['./article-rubric-list-container.component.scss'],
+    providers: [MessageService, ConfirmationService, DialogService],
+    encapsulation: ViewEncapsulation.None
 })
 export class ArticleRubricListContainerComponent implements OnInit, OnDestroy {
 

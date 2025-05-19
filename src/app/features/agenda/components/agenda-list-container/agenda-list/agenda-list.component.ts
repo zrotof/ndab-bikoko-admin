@@ -2,7 +2,7 @@ import { Component, EventEmitter, Input, Output } from '@angular/core';
 import { DatePipe, NgClass, NgIf } from '@angular/common';
 import { Router } from '@angular/router';
 import { MessageService, ConfirmationService, ConfirmEventType } from 'primeng/api';
-import { AgendaService } from 'src/app/shared/services/agenda/agenda.service';
+import { AgendaService } from 'src/app/core/services/planner/planner.service';
 import { ConfirmDialogModule } from 'primeng/confirmdialog';
 import { OverlayModule } from 'primeng/overlay';
 import { OverlayPanelModule } from 'primeng/overlaypanel';
@@ -12,21 +12,20 @@ import { DragDropModule } from 'primeng/dragdrop';
 import { Event } from 'src/app/shared/models/event';
 
 @Component({
-  selector: 'app-agenda-list',
-  standalone: true,
-  imports: [
-    NgIf,
-    TableModule,
-    OverlayModule,
-    ConfirmDialogModule,
-    ToastModule,
-    OverlayPanelModule,
-    NgClass,
-    DragDropModule
-  ],
-  templateUrl: './agenda-list.component.html',
-  styleUrls: ['./agenda-list.component.scss'],
-  providers: [MessageService, ConfirmationService, DatePipe]
+    selector: 'app-agenda-list',
+    imports: [
+        NgIf,
+        TableModule,
+        OverlayModule,
+        ConfirmDialogModule,
+        ToastModule,
+        OverlayPanelModule,
+        NgClass,
+        DragDropModule
+    ],
+    templateUrl: './agenda-list.component.html',
+    styleUrls: ['./agenda-list.component.scss'],
+    providers: [MessageService, ConfirmationService, DatePipe]
 })
 export class AgendaListComponent {
 

@@ -8,8 +8,8 @@ describe('MainActionBarComponent', () => {
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      declarations: [ MainActionBarComponent ]
-    })
+    imports: [MainActionBarComponent]
+})
     .compileComponents();
 
     fixture = TestBed.createComponent(MainActionBarComponent);

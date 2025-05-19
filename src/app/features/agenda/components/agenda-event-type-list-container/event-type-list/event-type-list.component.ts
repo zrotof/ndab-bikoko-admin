@@ -6,28 +6,27 @@ import { OverlayPanelModule } from 'primeng/overlaypanel';
 import { TableModule } from 'primeng/table';
 import { ToastModule } from 'primeng/toast';
 import { ConfirmationService, ConfirmEventType, MessageService } from 'primeng/api';
-import { AgendaService } from 'src/app/shared/services/agenda/agenda.service';
+import { AgendaService } from 'src/app/core/services/planner/planner.service';
 import { Router } from '@angular/router';
 import { Rubric } from 'src/app/shared/models/rubric';
 import { BehaviorSubject } from 'rxjs';
 import { Reorder } from 'src/app/shared/models/reorder';
 
 @Component({
-  selector: 'app-event-type-list',
-  standalone: true,
-  imports: [
-    NgIf,
-    TableModule,
-    OverlayModule,
-    ConfirmDialogModule,
-    ToastModule,
-    OverlayPanelModule,
-    NgClass
-  ],
-  templateUrl: './event-type-list.component.html',
-  styleUrls: ['./event-type-list.component.scss'],
-  providers: [MessageService, ConfirmationService],
-  encapsulation: ViewEncapsulation.None
+    selector: 'app-event-type-list',
+    imports: [
+        NgIf,
+        TableModule,
+        OverlayModule,
+        ConfirmDialogModule,
+        ToastModule,
+        OverlayPanelModule,
+        NgClass
+    ],
+    templateUrl: './event-type-list.component.html',
+    styleUrls: ['./event-type-list.component.scss'],
+    providers: [MessageService, ConfirmationService],
+    encapsulation: ViewEncapsulation.None
 })
 export class EventTypeListComponent implements OnChanges {
 

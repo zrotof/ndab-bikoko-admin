@@ -4,7 +4,7 @@ import { Router, RouterLink } from '@angular/router';
 import { MessageService, ConfirmationService, ConfirmEventType } from 'primeng/api';
 import { DialogService, DynamicDialogRef } from 'primeng/dynamicdialog';
 import { Observable, Subscription, tap } from 'rxjs';
-import { AgendaService } from 'src/app/shared/services/agenda/agenda.service';
+import { AgendaService } from 'src/app/core/services/planner/planner.service';
 import { EventTypeListComponent } from './event-type-list/event-type-list.component';
 import { Rubric } from 'src/app/shared/models/rubric';
 import { ToastModule } from 'primeng/toast';
@@ -13,20 +13,19 @@ import { ConfirmDialogModule } from 'primeng/confirmdialog';
 import { Reorder } from 'src/app/shared/models/reorder';
 
 @Component({
-  selector: 'app-agenda-event-type-list-container',
-  templateUrl: './agenda-event-type-list-container.component.html',
-  styleUrls: ['./agenda-event-type-list-container.component.scss'],
-  providers: [MessageService, ConfirmationService, DialogService],
-  encapsulation: ViewEncapsulation.None,
-  standalone: true,
-  imports: [
-    RouterLink,
-    AsyncPipe,
-    NgIf,
-    EventTypeListComponent,
-    ToastModule,
-    ConfirmDialogModule,
-  ],
+    selector: 'app-agenda-event-type-list-container',
+    templateUrl: './agenda-event-type-list-container.component.html',
+    styleUrls: ['./agenda-event-type-list-container.component.scss'],
+    providers: [MessageService, ConfirmationService, DialogService],
+    encapsulation: ViewEncapsulation.None,
+    imports: [
+        RouterLink,
+        AsyncPipe,
+        NgIf,
+        EventTypeListComponent,
+        ToastModule,
+        ConfirmDialogModule,
+    ]
 })
 export class AgendaEventTypeListContainerComponent implements OnInit, OnDestroy {
 

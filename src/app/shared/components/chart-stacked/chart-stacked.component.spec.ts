@@ -8,8 +8,8 @@ describe('ChartStackedComponent', () => {
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      declarations: [ ChartStackedComponent ]
-    })
+    declarations: [ChartStackedComponent]
+})
     .compileComponents();
 
     fixture = TestBed.createComponent(ChartStackedComponent);

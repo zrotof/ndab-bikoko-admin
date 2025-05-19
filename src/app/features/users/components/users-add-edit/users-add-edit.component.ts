@@ -1,19 +1,23 @@
 import { Component, OnInit, ViewEncapsulation } from '@angular/core';
-import { UntypedFormGroup, UntypedFormBuilder, Validators } from '@angular/forms';
+import { UntypedFormGroup, UntypedFormBuilder, Validators, ReactiveFormsModule } from '@angular/forms';
 import { Router, ActivatedRoute } from '@angular/router';
 import { MessageService } from 'primeng/api';
 import { lastValueFrom, timer } from 'rxjs';
-import { Location } from '@angular/common';
+import { Location, NgIf } from '@angular/common';
 import { User } from 'src/app/shared/models/user';
 import { UsersService } from 'src/app/shared/services/users/users.service';
 import { Roles } from '../../../../shared/models/roles';
+import { InputTextModule } from 'primeng/inputtext';
+import { MultiSelectModule } from 'primeng/multiselect';
+import { ToastModule } from 'primeng/toast';
 
 @Component({
-  selector: 'app-users-add-edit',
-  templateUrl: './users-add-edit.component.html',
-  styleUrls: ['./users-add-edit.component.scss'],
-  encapsulation: ViewEncapsulation.None,
-  providers: [MessageService]
+    selector: 'app-users-add-edit',
+    templateUrl: './users-add-edit.component.html',
+    styleUrls: ['./users-add-edit.component.scss'],
+    encapsulation: ViewEncapsulation.None,
+    providers: [MessageService],
+    imports: [NgIf, ReactiveFormsModule, InputTextModule, MultiSelectModule, ToastModule]
 })
 
 export class UsersAddEditComponent implements OnInit {

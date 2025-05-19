@@ -14,7 +14,7 @@
         display: flex;
         align-items: center;
         gap: 1rem;
-        padding: 1rem 2rem;
+        padding: 0.5rem 1rem;
         border-bottom: 1px solid rgb(59, 59, 59);
         background-color: var(--project-black-primary-color);
         width: 20rem;
@@ -37,7 +37,8 @@
         flex-direction: column;
         width: 100%;
         margin-top: 150px;
- 
+        padding: 0 1rem;
+
         li {
             display: flex;
             flex-direction: column;
@@ -53,12 +54,25 @@
                 transition: all 0.3s ease-in-out;
                 color: var(--project-yellow-secondary-color);
                 text-decoration: none;
-                border: 1px solid transparent;
                 width: 100%;
 
                 &:hover {
-                    border: 1px solid var(--project-yellow-secondary-color);
+                    background-color: #ffffff2e;
                 }
+
+                .image-wrapper {
+                    position: relative;
+                    margin-right: 10px;
+                    width: 50px;
+                    height: 50px;
+                    overflow: hidden;
+
+                    img {
+                        object-fit: cover;
+                    }
+                }
+
+
 
                 fa-icon {
                     font-size: 1.3rem;

@@ -7,25 +7,24 @@ import { InputSwitchModule } from 'primeng/inputswitch';
 import { InputTextModule } from 'primeng/inputtext';
 import { TableModule } from 'primeng/table';
 import { ToastModule } from 'primeng/toast';
-import { AgendaService } from 'src/app/shared/services/agenda/agenda.service';
+import { AgendaService } from 'src/app/core/services/planner/planner.service';
 import { lastValueFrom, timer } from 'rxjs';
 
 @Component({
-  selector: 'app-add-edit-event-type',
-  templateUrl: './add-edit-event-type.component.html',
-  styleUrls: ['./add-edit-event-type.component.scss'],
-  encapsulation: ViewEncapsulation.None,
-  standalone: true,
-  providers: [MessageService],
-  imports : [
-    NgIf,
-    NgFor,
-    TableModule,
-    ToastModule,
-    ReactiveFormsModule,
-    InputTextModule,
-    InputSwitchModule
-  ]
+    selector: 'app-add-edit-event-type',
+    templateUrl: './add-edit-event-type.component.html',
+    styleUrls: ['./add-edit-event-type.component.scss'],
+    encapsulation: ViewEncapsulation.None,
+    providers: [MessageService],
+    imports: [
+        NgIf,
+        NgFor,
+        TableModule,
+        ToastModule,
+        ReactiveFormsModule,
+        InputTextModule,
+        InputSwitchModule
+    ]
 })
 export class AddEditEventTypeComponent implements OnInit{
 

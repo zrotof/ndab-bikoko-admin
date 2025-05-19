@@ -1,18 +1,22 @@
 import { Component, OnInit, ViewEncapsulation } from '@angular/core';
-import { UntypedFormBuilder, UntypedFormGroup, Validators } from '@angular/forms';
+import { UntypedFormBuilder, UntypedFormGroup, Validators, ReactiveFormsModule } from '@angular/forms';
 import { ActivatedRoute, Router } from '@angular/router';
 import { AuthService } from 'src/app/shared/services/auth/auth.service';
-import { MessageService } from 'primeng/api';
+import { MessageService, PrimeTemplate } from 'primeng/api';
 import { UsersService } from 'src/app/shared/services/users/users.service';
 import { lastValueFrom, timer } from 'rxjs';
+import { NgIf } from '@angular/common';
+import { PasswordModule } from 'primeng/password';
+import { ToastModule } from 'primeng/toast';
 
 
 @Component({
-  selector: 'app-reset-password',
-  templateUrl: './reset-password.component.html',
-  styleUrls: ['./reset-password.component.scss'],
-  encapsulation: ViewEncapsulation.None,
-  providers: [MessageService]
+    selector: 'app-reset-password',
+    templateUrl: './reset-password.component.html',
+    styleUrls: ['./reset-password.component.scss'],
+    encapsulation: ViewEncapsulation.None,
+    providers: [MessageService],
+    imports: [NgIf, ReactiveFormsModule, PasswordModule, PrimeTemplate, ToastModule]
 })
 export class ResetPasswordComponent implements OnInit {
 

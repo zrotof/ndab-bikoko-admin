@@ -1,0 +1,14 @@
+<div class="rubric-list-container">
+    <ul>
+        @for (rubric of rubrics(); track $index) {
+            <li>
+                <button [class.active-rubric]="rubric.isActive" (click)="onChooseRubric(rubric.id)">
+                    {{rubric.name}}
+                </button>
+            </li>
+        }
+        @empty {
+            <p>Aucune rubrique d'article créée pour le moment</p>
+        }
+    </ul>
+</div>

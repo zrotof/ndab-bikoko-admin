@@ -4,15 +4,20 @@ import { SideBarStateService } from './shared/services/side-bar-state/side-bar-s
 import { AuthService } from './shared/services/auth/auth.service';
 import { UsersService } from './shared/services/users/users.service';
 import * as JWT from 'jwt-decode';
+import { SideBarNavigationComponent } from './core/components/side-bar-navigation/side-bar-navigation.component';
+import { NgClass, AsyncPipe } from '@angular/common';
+import { HeaderComponent } from './core/components/header/header.component';
+import { RouterOutlet } from '@angular/router';
 
 @Component({
-  selector: 'app-root',
-  templateUrl: './app.component.html',
-  styleUrls: ['./app.component.scss']
+    selector: 'app-root',
+    templateUrl: './app.component.html',
+    styleUrls: ['./app.component.scss'],
+    imports: [SideBarNavigationComponent, NgClass, HeaderComponent, RouterOutlet, AsyncPipe]
 })
 export class AppComponent implements OnInit {
   
-  title = 'Amadou BÂ 2024';
+  title = 'Ndab Bikokoo';
 
   isUserLogged$ !: Observable<boolean>;
 

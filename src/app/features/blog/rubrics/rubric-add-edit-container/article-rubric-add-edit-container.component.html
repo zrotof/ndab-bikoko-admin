@@ -1,0 +1,52 @@
+<div class="rubric-add-edit-container pages">
+
+    <app-page-top-header [topHeaderData]="topHeaderPageData()"></app-page-top-header>
+    
+    <div class="actions-bar">
+        <button class="cancel" type="button" routerLink="/blog/rubriques">
+            <i class="pi pi-times"></i>
+            Annuler
+        </button>
+        @if (processState() === PROCESS_STATE.Create) {
+            <button class="add" type="submit" (click)="onSaveRubric()">
+                <i class="pi pi-plus"></i>
+                Ajouter
+            </button>
+        }
+        @if(processState() === PROCESS_STATE.Edit){
+            <button class="add" type="submit" (click)="onEditRubric()">
+                <i class="pi pi-pencil"></i>
+                Modifier
+            </button>
+        }
+    </div>
+    
+
+    <form [formGroup]="rubricForm">
+
+        @if (processState() === PROCESS_STATE.Edit) {
+        <div class="field">
+            <label>Activer?</label>
+            <p-toggleswitch formControlName="isActive"></p-toggleswitch>
+        </div>
+        }
+
+        <div class="field">
+            <label>Nom de la rubrique</label>
+            <input type="text" pInputText formControlName="name" placeholder="Entrez le nom de la rubrique"/>
+            @if (formControls['name'].invalid && ( isSaveButtonClicked || isEditButtonClicked)) {
+            <small class="error-form">Renseigner le nom de la rubrique</small>
+            }
+        </div>
+
+        <div class="field">
+            <label>Description</label>
+            <input type="text" pInputText formControlName="description" placeholder="Entrez ce à quoi servira la rubrique" />
+            @if (formControls['description'].invalid && ( isSaveButtonClicked || isEditButtonClicked)) {
+            <small class="error-form">Renseigner une courte description</small>
+            }
+        </div>
+    </form>
+
+    <p-toast position="top-right"></p-toast>
+</div>

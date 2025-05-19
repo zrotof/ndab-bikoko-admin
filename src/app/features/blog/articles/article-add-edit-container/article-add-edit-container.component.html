@@ -1,0 +1,137 @@
+<div class="article-add-edit-container pages">
+
+    <app-page-top-header [topHeaderData]="topHeaderPageData()"></app-page-top-header>
+
+    <div class="actions-bar">
+
+        <button class="cancel" type="button" routerLink="/blog/articles">
+            <i class="pi pi-times"></i>
+            Annuler
+        </button>
+
+        @if (processState() === PROCESS_STATE.Create) {
+        <button class="add" type="submit" (click)="onSaveArticle()">
+            <i class="pi pi-plus"></i>
+            Ajouter
+        </button>
+        }
+
+        @if (processState() === PROCESS_STATE.Edit) {
+        <button class="add" type="submit" (click)="onEditArticle()">
+            <i class="pi pi-pencil"></i>
+            Modifier
+        </button>
+        }
+    </div>
+
+    <form [formGroup]="articleForm">
+
+        <div class="left">
+            <div class="preview">
+                <img [src]="imageDisplay" id="image-previewed">
+            </div>
+            <div class="upload">
+                <div class="input">
+                    <label for="image-input">
+                        <i class="pi pi-upload"></i>
+                        Image de couverture
+                    </label>
+                    <input type="file" id="image-input" accept="image/*" (change)="showImagePreview($event)">
+                </div>
+                <div *ngIf="formControls['coverImage'].invalid && ( isSaveButtonClicked || isEditButtonClicked )"
+                    class="error-form">
+                    <small *ngIf="formControls['coverImage'].errors?.required">Image manquante</small>
+                </div>
+            </div>
+        </div>
+
+        <div class="right">
+            <div class="row-one">
+                <div class="field">
+                    <label>Rubrique</label>
+                    <p-select formControlName="rubric" placeholder="Sélectionnez une rubrique d'article"
+                        [options]="(blogRubrics$ | async)!" [filter]="true" filterBy="name" [showClear]="true"
+                        optionLabel="name">
+                    </p-select>
+                    <small *ngIf="formControls['rubric'].invalid && ( isSaveButtonClicked || isEditButtonClicked)"
+                        class="error-form">Sélectionnez une rubrique d'article</small>
+                </div>
+            </div>
+
+            <div class="row-one">
+                <div class="field">
+                    <label>Titre</label>
+                    <input type="text" pInputText formControlName="title" placeholder="Entrez de le titre de l'article" />
+                    <small *ngIf="formControls['title'].invalid && ( isSaveButtonClicked || isEditButtonClicked)"
+                        class="error-form">Renseigner le titre de l'article</small>
+                </div>
+            </div>
+
+            <div class="row-one">
+                <div class="field">
+                    <label>Description</label>
+                    <input type="text" pInputText formControlName="description" placeholder="Entrez une description" />
+                    <small *ngIf="formControls['description'].invalid && ( isSaveButtonClicked || isEditButtonClicked)"
+                        class="error-form">Renseigner une courte description</small>
+                </div>
+            </div>
+
+            <div class="row-two calendar-bloc">
+                <div class="field">
+                    <label>Heure de l'évênement</label>
+                    <p-datepicker placeholder="Entrez l'heure" formControlName="hour" [readonlyInput]="true" [timeOnly]="true" timeSeparator=":"
+                        dataType="string"></p-datepicker>
+                </div>
+
+                <div class="field">
+                    <label>Date de quand l'évênement a eu lieux</label>
+                    <p-datepicker placeholder="Entrez la date" formControlName="date" dateFormat="dd/mm/yy"
+                        [showIcon]="true" [readonlyInput]="true"
+                    ></p-datepicker>
+                    <small *ngIf="formControls['date'].invalid && ( isSaveButtonClicked || isEditButtonClicked)"
+                        class="error-form">Renseigner la date de l'évênement</small>
+                </div>
+            </div>
+
+            <div class="row-two video-bloc">
+                <div class="field">
+                    <label>Contiendra une vidéo?</label>
+                    <p-toggleswitch formControlName="hasVideo"></p-toggleswitch>
+                </div>
+
+                <div class="field">
+                    <label>Media video</label>
+                    <input [ngClass]="formControls['hasVideo'].value ? 'enabledInput': 'disabledInput' " type="text"
+                        pInputText formControlName="videoLink" />
+                    <small *ngIf="formControls['videoLink'].invalid && ( isSaveButtonClicked || isEditButtonClicked)"
+                        class="error-form">Renseigner le média vidéo</small>
+                </div>
+            </div>
+
+            <div class="row-one">
+                <div class="field">
+                    <label>Un descriptif de l'évênement</label>
+                    <p-editor formControlName="content" [style]="{ height: '320px' }" placeholder="Renseignez le corps de l'article ici !">
+                        <ng-template pTemplate="header">
+                            <span class="ql-formats">
+                                <button class="ql-header" value="1"></button>
+                                <button class="ql-header" value="2"></button>
+                                <button class="ql-header" value="false"></button>
+                                <button type="button" class="ql-bold" aria-label="Bold"></button>
+                                <button type="button" class="ql-italic" aria-label="Italic"></button>
+                                <button type="button" class="ql-underline" aria-label="Underline"></button>
+                                <button type="button" class="ql-list" value="ordered"></button>
+                                <button type="button" class="ql-list" value="bullet"></button>
+                                <button type="button" class="ql-link"></button>
+                            </span>
+                        </ng-template>
+                    </p-editor>
+                    <small *ngIf="formControls['content'].invalid && ( isSaveButtonClicked || isEditButtonClicked)"
+                        class="error-form">Renseigner le contenu de l'article</small>
+                </div>
+            </div>
+        </div>
+    </form>
+
+    <p-toast position="top-right"></p-toast>
+</div>

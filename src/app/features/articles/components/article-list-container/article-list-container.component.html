@@ -3,12 +3,7 @@
     <p class="sub-title">Gestion de tous les articles créés</p>
 
     <div class="content">
-        <div class="actions">
-            <button class="add-article" type="button" routerLink="/articles/creer-article"> 
-                <i class="pi pi-plus"></i>
-                Créer article 
-            </button>
-        </div>
+        
         <app-category-list-menu [menuList]="(rubricList$ | async)!" (menuItemClikedEvent)="getArticleListByRubricId($event)"></app-category-list-menu>
         <app-article-list [articles]="(articlesList$ | async)!" (deleteArticleEvent)="deleteArticleById($event)"></app-article-list>
     </div>

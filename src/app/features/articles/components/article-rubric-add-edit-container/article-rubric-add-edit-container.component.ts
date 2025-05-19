@@ -13,20 +13,19 @@ import { User } from 'src/app/shared/models/user';
 import { AuthService } from 'src/app/shared/services/auth/auth.service';
 
 @Component({
-  selector: 'app-article-rubric-add-edit-container',
-  standalone: true,
-  imports: [
-    NgIf,
-    NgFor,
-    TableModule,
-    ToastModule,
-    ReactiveFormsModule,
-    InputTextModule,
-    InputSwitchModule
-  ],
-  templateUrl: './article-rubric-add-edit-container.component.html',
-  styleUrls: ['./article-rubric-add-edit-container.component.scss'],
-  providers: [MessageService]
+    selector: 'app-article-rubric-add-edit-container',
+    imports: [
+        NgIf,
+        NgFor,
+        TableModule,
+        ToastModule,
+        ReactiveFormsModule,
+        InputTextModule,
+        InputSwitchModule
+    ],
+    templateUrl: './article-rubric-add-edit-container.component.html',
+    styleUrls: ['./article-rubric-add-edit-container.component.scss'],
+    providers: [MessageService]
 })
 export class ArticleRubricAddEditContainerComponent implements OnInit {
 

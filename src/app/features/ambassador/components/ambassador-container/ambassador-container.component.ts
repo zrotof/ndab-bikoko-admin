@@ -6,14 +6,13 @@ import { AmbassadorService } from 'src/app/shared/services/ambassador/ambassador
 import { AmbassadorListComponent } from './ambassador-list/ambassador-list.component';
 
 @Component({
-  selector: 'app-ambassador-container',
-  standalone: true,
-  imports: [
-    AsyncPipe,
-    AmbassadorListComponent
-  ],
-  templateUrl: './ambassador-container.component.html',
-  styleUrls: ['./ambassador-container.component.scss']
+    selector: 'app-ambassador-container',
+    imports: [
+        AsyncPipe,
+        AmbassadorListComponent
+    ],
+    templateUrl: './ambassador-container.component.html',
+    styleUrls: ['./ambassador-container.component.scss']
 })
 export class AmbassadorContainerComponent implements OnInit {
 

@@ -10,17 +10,16 @@ import { MessageService } from 'primeng/api';
 import { AuthService } from 'src/app/shared/services/auth/auth.service';
 
 @Component({
-  selector: 'app-validate-account-container',
-  standalone: true,
-  imports: [
-    NgIf,
-    RouterLink,
-    ToastModule
-  ],
-  templateUrl: './validate-account-container.component.html',
-  styleUrls: ['./validate-account-container.component.scss'],
-  encapsulation: ViewEncapsulation.None,
-  providers: [MessageService]
+    selector: 'app-validate-account-container',
+    imports: [
+        NgIf,
+        RouterLink,
+        ToastModule
+    ],
+    templateUrl: './validate-account-container.component.html',
+    styleUrls: ['./validate-account-container.component.scss'],
+    encapsulation: ViewEncapsulation.None,
+    providers: [MessageService]
 })
 export class ValidateAccountContainerComponent implements OnInit, OnDestroy {
 

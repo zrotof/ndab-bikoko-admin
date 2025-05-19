@@ -12,19 +12,18 @@ import { AuthService } from 'src/app/shared/services/auth/auth.service';
 import { UsersService } from 'src/app/shared/services/users/users.service';
 
 @Component({
-  selector: 'app-users-list',
-  standalone: true,
-  imports : [
-    NgIf,
-    NgFor,
-    TableModule,
-    OverlayPanelModule,
-    ToastModule,
-    ConfirmDialogModule
-  ],
-  templateUrl: './users-list.component.html',
-  styleUrls: ['./users-list.component.scss'],
-  providers: [MessageService, ConfirmationService]
+    selector: 'app-users-list',
+    imports: [
+        NgIf,
+        NgFor,
+        TableModule,
+        OverlayPanelModule,
+        ToastModule,
+        ConfirmDialogModule
+    ],
+    templateUrl: './users-list.component.html',
+    styleUrls: ['./users-list.component.scss'],
+    providers: [MessageService, ConfirmationService]
 })
 export class UsersListComponent{
 

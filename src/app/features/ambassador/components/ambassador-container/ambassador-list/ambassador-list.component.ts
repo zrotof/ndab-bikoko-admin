@@ -4,14 +4,13 @@ import { Ambassador } from 'src/app/shared/models/ambassador';
 import { TableModule } from 'primeng/table';
 
 @Component({
-  selector: 'app-ambassador-list',
-  standalone: true,
-  imports: [
-    TableModule,
-    NgIf
-  ],
-  templateUrl: './ambassador-list.component.html',
-  styleUrls: ['./ambassador-list.component.scss']
+    selector: 'app-ambassador-list',
+    imports: [
+        TableModule,
+        NgIf
+    ],
+    templateUrl: './ambassador-list.component.html',
+    styleUrls: ['./ambassador-list.component.scss']
 })
 export class AmbassadorListComponent {
 

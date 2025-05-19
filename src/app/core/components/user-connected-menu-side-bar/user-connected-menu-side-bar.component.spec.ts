@@ -8,8 +8,8 @@ describe('UserConnectedMenuSideBarComponent', () => {
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      declarations: [ UserConnectedMenuSideBarComponent ]
-    })
+    imports: [UserConnectedMenuSideBarComponent]
+})
     .compileComponents();
   });
 

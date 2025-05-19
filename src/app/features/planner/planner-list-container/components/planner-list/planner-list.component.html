@@ -1,0 +1,71 @@
+<div class="planner-list">
+
+@if(planners()?.length > 0) {
+        <p-table [value]="planners()" responsiveLayout="scroll">
+
+            <ng-template pTemplate="header">
+                <tr>
+                    <th>
+                        Image
+                    </th>
+                    <th>Type d'évênement</th>
+                    <th>lieux</th>
+                    <th>Date</th>
+                    <th class="table-actions-column-header">Actions</th>
+                </tr>
+            </ng-template>
+            <ng-template pTemplate="body" let-planner let-rowIndex="rowIndex">
+                <tr>
+                    <td class="table-image">
+                        @if (planner.coverImage) {
+                        <img [ngSrc]="planner.coverImage" width="40" height="40">
+
+                        }
+                        @else {
+                        /
+                        }
+                    </td>
+
+                    <td>
+                        @switch (planner.type) {
+                            @case ('AG') {
+                                Assemblée générale
+                            }
+
+                            @case ('IC') {
+                                Installation de canton
+                            }
+
+                            @case ('SEMINAR') {
+                                Séminaire
+                            }
+
+                            @case ('BIRTHDAY') {
+                                Anniversaire
+                            }
+                        }
+
+                    </td>
+                    <td> {{planner.town}} ( {{planner.country}} ) </td>
+                    <td> {{planner.date}} </td>
+                    <td class="table-actions-header">
+                        <i class="pi pi-ellipsis-v" (click)="op.toggle($event)"></i>
+
+                        <p-overlayPanel #op>
+                            <ng-template pTemplate>
+                                <div class="table-actions-overlay-panel">
+                                    <i (click)="editPlanner(planner.id)" class="pi pi-pencil"></i>
+                                    <i (click)="deletePlanner(planner.id)" class="pi pi-trash"></i>
+                                </div>
+                            </ng-template>
+                        </p-overlayPanel>
+                    </td>
+                </tr>
+            </ng-template>
+
+        </p-table>
+        }
+        @else {
+        <p>Aucun évênement n'a encore été créé pour le moment.</p>
+        }
+    </div>

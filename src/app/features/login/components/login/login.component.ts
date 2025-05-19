@@ -11,22 +11,21 @@ import { InputTextModule } from 'primeng/inputtext';
 import { PasswordModule } from 'primeng/password';
 
 @Component({
-  selector: 'app-login',
-  templateUrl: './login.component.html',
-  styleUrls: ['./login.component.scss'],
-  standalone : true,
-  imports : [
-    NgIf,
-    InputTextModule,
-    PasswordModule,
-    ProgressSpinnerModule,
-    LoginComponent,
-    JsonPipe,
-    ReactiveFormsModule,
-    RouterLink
-  ],
-  encapsulation: ViewEncapsulation.None,
-  providers: [MessageService]
+    selector: 'app-login',
+    templateUrl: './login.component.html',
+    styleUrls: ['./login.component.scss'],
+    imports: [
+        NgIf,
+        InputTextModule,
+        PasswordModule,
+        ProgressSpinnerModule,
+        LoginComponent,
+        JsonPipe,
+        ReactiveFormsModule,
+        RouterLink
+    ],
+    encapsulation: ViewEncapsulation.None,
+    providers: [MessageService]
 })
 export class LoginComponent implements OnInit {
 

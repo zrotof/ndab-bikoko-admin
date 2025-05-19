@@ -1,0 +1,138 @@
+<div class="planner-add-edit-containe pages">
+    <app-page-top-header [topHeaderData]="topHeaderPageData()"></app-page-top-header>
+
+    <div class="actions-bar">
+
+        <button class="cancel" type="button" routerLink="/evenements">
+            <i class="pi pi-times"></i>
+            Annuler
+        </button>
+
+        @if (processState() === PROCESS_STATE.Create) {
+        <button class="add" type="submit" (click)="onSavePlanner()">
+            <i class="pi pi-plus"></i>
+            Ajouter
+        </button>
+        }
+
+        @if (processState() === PROCESS_STATE.Edit) {
+        <button class="add" type="submit" (click)="onEditPlanner()">
+            <i class="pi pi-pencil"></i>
+            Modifier
+        </button>
+        }
+    </div>
+
+    <form [formGroup]="plannerForm">
+
+        <div class="left">
+            <div class="preview">
+                <img [src]="imageDisplay" id="image-previewed">
+            </div>
+            <div class="upload">
+                <div class="input">
+                    <label for="image-input">
+                        <i class="pi pi-upload"></i>
+                        Image de couverture
+                    </label>
+                    <input type="file" id="image-input" accept="image/*" (change)="showImagePreview($event)">
+                </div>
+                @if (formControls['coverImage'].invalid && ( isSaveButtonClicked || isEditButtonClicked )) {
+                <div class="error-form">
+                    @if (formControls['coverImage'].errors?.required) {
+                    <small>Image manquante</small>
+                    }
+                </div>
+                }
+
+            </div>
+        </div>
+
+        <div class="right">
+            <div class="row-two">
+                <div class="field">
+                    <label>Type d'évênement</label>
+                    <p-select formControlName="eventType" placeholder="Sélectionnez" [options]="PLANNER_TYPES" optionLabel="label" >
+                    </p-select>
+                    @if (formControls['eventType'].invalid && ( isSaveButtonClicked || isEditButtonClicked)) {
+                    <small class="error-form">Sélectionnez un évênement</small>
+                    }
+                </div>
+
+                <div class="field">
+                    <label>Dates de l'évênement</label>
+                    <input type="text" pInputText formControlName="date" placeholder="Entrez la date de l'évênement" />
+                    @if (formControls['date'].invalid && ( isSaveButtonClicked || isEditButtonClicked)) {
+
+                    <small class="error-form">Renseigner la date</small>
+                    }
+                </div>
+            </div>
+
+            <div class="row-two">
+
+                <div class="field">
+                    <label>Ville</label>
+                    <input type="text" pInputText formControlName="town" placeholder="Ville de l'évênement" />
+                    @if (formControls['date'].invalid && ( isSaveButtonClicked || isEditButtonClicked)) {
+
+                    <small class="error-form">Renseigner la ville</small>
+                    }
+                </div>
+
+                <div class="field">
+                    <label>Pays</label>
+                    <input type="text" pInputText formControlName="country" placeholder="Pays de l'évênement" />
+                    @if (formControls['date'].invalid && ( isSaveButtonClicked || isEditButtonClicked)) {
+
+                    <small class="error-form">Renseigner le pays</small>
+                    }
+                </div>
+            </div>
+
+            <div class="row-two">
+                <div class="field">
+                    <label>Contiendra une vidéo?</label>
+                    <p-toggleswitch formControlName="hasVideo"></p-toggleswitch>
+                </div>
+
+                <div class="field">
+                    <label>Media video</label>
+                    <input [ngClass]="formControls['hasVideo'].value ? 'enabledInput': 'disabledInput' " type="text"
+                        pInputText formControlName="videoLink" />
+                    @if (formControls['videoLink'].invalid && ( isSaveButtonClicked || isEditButtonClicked)) {
+
+                    <small class="error-form">Renseigner le média vidéo</small>
+                    }
+                </div>
+            </div>
+
+            <div class="row-one">
+                <div class="field">
+                    <label>Corps de l'article</label>
+                    <p-editor formControlName="content" [style]="{ height: '320px' }"
+                        placeholder="Renseignez le corps de l'article ici !">
+                        <ng-template pTemplate="header">
+                            <span class="ql-formats">
+                                <button class="ql-header" value="1"></button>
+                                <button class="ql-header" value="2"></button>
+                                <button class="ql-header" value="false"></button>
+                                <button type="button" class="ql-bold" aria-label="Bold"></button>
+                                <button type="button" class="ql-italic" aria-label="Italic"></button>
+                                <button type="button" class="ql-underline" aria-label="Underline"></button>
+                                <button type="button" class="ql-list" value="ordered"></button>
+                                <button type="button" class="ql-list" value="bullet"></button>
+                                <button type="button" class="ql-link"></button>
+                            </span>
+                        </ng-template>
+                    </p-editor>
+                    @if (formControls['content'].invalid && ( isSaveButtonClicked || isEditButtonClicked)) {
+                    <small class="error-form">Renseigner le contenu de l'article</small>
+                    }
+                </div>
+            </div>
+        </div>
+    </form>
+
+    <p-toast position="top-right"></p-toast>
+</div>
