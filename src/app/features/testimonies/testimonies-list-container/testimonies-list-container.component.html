@@ -1,0 +1,11 @@
+<div class="testimonies-list-container">
+    <app-page-top-header [topHeaderData]="topHeaderPageData"></app-page-top-header>
+    <div class="actions-bar">
+        <button class="add" type="button" routerLink="/temoignages/creer">
+            <i class="pi pi-plus"></i>
+            Créer témoignage
+        </button>
+    </div>
+    <app-testimony-list [testimonies]="testimonies$ | async"></app-testimony-list>
+
+</div>

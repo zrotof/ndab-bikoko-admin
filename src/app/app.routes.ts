@@ -9,30 +9,6 @@ import { authGuard } from './core/guards/auth.guard';
 */
 
 export const routes: Routes = [
-
-    {
-        path: "evenements",
-        children: [
-            {
-                path: '',
-                loadComponent: () => import('./features/planner/planner-list-container/planner-list-container.component').then(m => m.PlannerListContainerComponent)
-            },
-            {
-                path: "creer",
-                loadComponent: () => import('./features/planner/planner-add-edit-container/planner-add-edit-container.component').then(m => m.PlannerAddEditContainerComponent),
-                data: {
-                    processState: ProcessState.Create,
-                }
-            },
-            {
-                path: "modifier/:id",
-                loadComponent: () => import('./features/planner/planner-add-edit-container/planner-add-edit-container.component').then(m => m.PlannerAddEditContainerComponent),
-                data: {
-                    processState: ProcessState.Edit,
-                }
-            }
-        ]
-    },
     {
         path: "blog",
         children: [
@@ -87,9 +63,56 @@ export const routes: Routes = [
     },
 
     {
+        path: "evenements",
+        children: [
+            {
+                path: '',
+                loadComponent: () => import('./features/planner/planner-list-container/planner-list-container.component').then(m => m.PlannerListContainerComponent)
+            },
+            {
+                path: "creer",
+                loadComponent: () => import('./features/planner/planner-add-edit-container/planner-add-edit-container.component').then(m => m.PlannerAddEditContainerComponent),
+                data: {
+                    processState: ProcessState.Create,
+                }
+            },
+            {
+                path: "modifier/:id",
+                loadComponent: () => import('./features/planner/planner-add-edit-container/planner-add-edit-container.component').then(m => m.PlannerAddEditContainerComponent),
+                data: {
+                    processState: ProcessState.Edit,
+                }
+            }
+        ]
+    },
+    {
         path: "tableau-de-board",
         //canActivate: [authGuard],
         loadComponent: () => import('./features/dashboard-container/dashboard-container.component').then(m => m.DashboardContainerComponent)
+    },
+    {
+        path: "temoignages",
+        //canActivate: [authGuard],
+        children: [
+            {
+                path: "",
+                loadComponent: () => import('./features/testimonies/testimonies-list-container/testimonies-list-container.component').then(m => m.TestimoniesListContainerComponent)
+            },
+            {
+                path: "creer",
+                data: {
+                    processState: ProcessState.Create,
+                },
+                loadComponent: () => import('./features/testimonies/testimony-add-edit-container/testimony-add-edit-container.component').then(m => m.TestimonyAddEditContainerComponent)
+            },
+            {
+                path: "modifier/:id",
+                data: {
+                    processState: ProcessState.Edit,
+                },
+                loadComponent: () => import('./features/testimonies/testimony-add-edit-container/testimony-add-edit-container.component').then(m => m.TestimonyAddEditContainerComponent)
+            }
+        ]
     },
     /*
         
