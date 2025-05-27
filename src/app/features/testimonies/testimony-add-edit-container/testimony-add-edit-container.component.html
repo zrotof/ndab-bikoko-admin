@@ -1,1 +1,107 @@
-<p>testimony-add-edit-container works!</p>
+<div class="testimony-add-edit-container">
+    <app-page-top-header [topHeaderData]="topHeaderPageData()"></app-page-top-header>
+
+    <div class="actions-bar">
+        <button class="cancel" type="button" routerLink="/temoignages">
+            <i class="pi pi-times"></i>
+            Annuler
+        </button>
+
+        @if (processState() === PROCESS_STATE.Create) {
+        <button class="add" type="submit" (click)="onSaveTestimony()">
+            <i class="pi pi-plus"></i>
+            Ajouter
+        </button>
+        }
+
+        @if (processState() === PROCESS_STATE.Edit) {
+        <button class="add" type="submit" (click)="onEditTestimony()">
+            <i class="pi pi-pencil"></i>
+            Modifier
+        </button>
+        }
+    </div>
+
+    <form [formGroup]="testimonyForm">
+
+        <div class="left">
+            <div class="preview">
+                <img [src]="imageDisplay" id="image-previewed">
+            </div>
+            <div class="upload">
+                <div class="input">
+                    <label for="image-input">
+                        <i class="pi pi-upload"></i>
+                        Choisir Image
+                    </label>
+                    <input type="file" id="image-input" accept="image/*" (change)="showImagePreview($event)">
+                </div>
+                @if (formControls['image'].invalid && ( isSaveButtonClicked || isEditButtonClicked )) {
+                <div class="error-form">
+                    @if (formControls['image'].errors?.required) {
+                    <small>Image manquante</small>
+                    }
+                </div>
+                }
+            </div>
+        </div>
+
+        <div class="right">
+
+            @if (processState() === PROCESS_STATE.Edit) {
+            <div class="field">
+                <label>Ce commentaire est-il à activer ?</label>
+                <p-toggleswitch formControlName="isActive">
+                    <ng-template #handle let-checked="checked">
+                        @if (checked) {
+                        <i class="pi pi-check"></i>
+                        }
+                        @else {
+                        <i class="pi pi-times"></i>
+                        }
+                    </ng-template>
+                </p-toggleswitch>
+            </div>
+            }
+
+            <div class="field">
+                <label>Rôle</label>
+                <p-select formControlName="testimonyOwnerType" placeholder="Sélectionnez" [options]="testimonyOwnerTypes" optionLabel="label">
+                </p-select>
+                @if (formControls['testimonyOwnerType'].invalid && ( isSaveButtonClicked || isEditButtonClicked)) {
+                <small class="error-form">Veuillez renseignez un rôle</small>
+                }
+            </div>
+
+            <div class="field">
+                <label>Nom</label>
+                <input type="text" pInputText formControlName="name" placeholder="Entrez le nom" />
+                @if (formControls['name'].invalid && ( isSaveButtonClicked || isEditButtonClicked)) {
+
+                <small class="error-form">Veuillez renseigner le nom</small>
+                }
+            </div>
+
+            <div class="field">
+                <label>Titre</label>
+                <input type="text" pInputText formControlName="title" placeholder="Entrez le titre" />
+                @if (formControls['title'].invalid && ( isSaveButtonClicked || isEditButtonClicked)) {
+
+                <small class="error-form">Veuillez renseigner un titre</small>
+                }
+            </div>
+
+            <div class="field">
+                <label>Message</label>
+                <textarea rows="5" cols="30" pTextarea formControlName="message"
+                    placeholder="Entrez votre message ici"></textarea>
+                @if (formControls['message'].invalid && ( isSaveButtonClicked || isEditButtonClicked)) {
+
+                <small class="error-form">Veuillez renseigner un message</small>
+                }
+            </div>
+        </div>
+    </form>
+
+    <p-toast position="top-right"></p-toast>
+</div>

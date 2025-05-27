@@ -6,6 +6,9 @@
             Créer témoignage
         </button>
     </div>
-    <app-testimony-list [testimonies]="testimonies$ | async"></app-testimony-list>
-
+    <app-testimony-list [testimonies]="testimonies$ | async" (editTestimonyEventTrigger)="editTestimonyEventHandler($event)" (deleteTestimonyEventTrigger)="deleteTestimonyEventHandler($event)"></app-testimony-list>
 </div>
+<p-confirmDialog styleClass="confirm-delete-dialog" header="Confirmation de suppression"
+    [breakpoints]="{'960px': '75vw', '640px': '100vw'}" [style]="{width: '50vw'}">
+</p-confirmDialog>
+<p-toast position="top-right"></p-toast>

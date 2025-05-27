@@ -19,9 +19,7 @@ import { PlannerService } from 'src/app/core/services/planner/planner.service';
   templateUrl: './planner-add-edit-container.component.html',
   styleUrl: './planner-add-edit-container.component.scss',
   encapsulation: ViewEncapsulation.None,
-
   providers: [MessageService],
-
   imports: [
     NgClass,
     RouterLink,

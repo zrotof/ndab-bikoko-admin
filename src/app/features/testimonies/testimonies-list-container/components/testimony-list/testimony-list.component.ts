@@ -28,10 +28,10 @@ export class TestimonyListComponent {
   deleteTestimonyEventTrigger = output<any>();
 
   editTestimony(testimonyId: any) {
-
+    this.editTestimonyEventTrigger.emit(testimonyId)
   }
 
   deleteTestimony(testimonyId: any) {
-
+    this.deleteTestimonyEventTrigger.emit(testimonyId)
   }
 }

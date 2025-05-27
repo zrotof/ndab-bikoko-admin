@@ -2,7 +2,7 @@
 <div class="rubric-list">
 
     @if (currentRubricList.length === 0) {
-    <span>Aucune rubrique n'a encore été enregistrée pour le moment.</span>
+    <p>Aucune rubrique n'a encore été enregistrée pour le moment.</p>
     }
     @else {
     <p-table [value]="currentRubricList" responsiveLayout="scroll" (onRowReorder)="onRowReorder()" [reorderableColumns]="true">
