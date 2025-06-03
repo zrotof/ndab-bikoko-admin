@@ -89,25 +89,25 @@ export class PlannerAddEditContainerComponent {
     })
   }
 
-    onHandlingMedia() {
-      this.plannerForm.controls['hasVideo'].valueChanges.subscribe(
-        result => {
-  
-          if (result) {
-            this.plannerForm.controls['videoLink'].enable();
-            this.plannerForm.controls['videoLink'].setValidators(Validators.required);
-          }
-          else {
-            this.plannerForm.controls['videoLink'].setValue('');
-            this.plannerForm.controls['videoLink'].disable();
-            this.plannerForm.controls['videoLink'].removeValidators(Validators.required);
-          }
-  
-          this.isMediaVideoInputIsToDisable = !this.isMediaVideoInputIsToDisable;
-          this.plannerForm.controls['videoLink'].updateValueAndValidity();
+  onHandlingMedia() {
+    this.plannerForm.controls['hasVideo'].valueChanges.subscribe(
+      result => {
+
+        if (result) {
+          this.plannerForm.controls['videoLink'].enable();
+          this.plannerForm.controls['videoLink'].setValidators(Validators.required);
         }
-      )
-    }
+        else {
+          this.plannerForm.controls['videoLink'].setValue('');
+          this.plannerForm.controls['videoLink'].disable();
+          this.plannerForm.controls['videoLink'].removeValidators(Validators.required);
+        }
+
+        this.isMediaVideoInputIsToDisable = !this.isMediaVideoInputIsToDisable;
+        this.plannerForm.controls['videoLink'].updateValueAndValidity();
+      }
+    )
+  }
 
   checkEditMode() {
     if (this.processState() === ProcessState.Edit) {
@@ -209,7 +209,7 @@ export class PlannerAddEditContainerComponent {
 
   onEditPlanner() {
     this.isEditButtonClicked = true;
-    
+
     if (
       this.plannerForm.controls['eventType'].value.type === this.initialPlannerDataWhenEdit.type
       &&
@@ -230,13 +230,13 @@ export class PlannerAddEditContainerComponent {
       this.messageService.add({ severity: 'info', detail: 'Aucune modification enregistrée' });
       return;
     }
- 
+
     const editObjectArticle = new FormData()
- 
+
     if (this.plannerForm.get('eventType')?.value.type != this.initialPlannerDataWhenEdit.type) {
       editObjectArticle.append('type', this.plannerForm.get('eventType')?.value.type);
     }
-    
+
     if (this.plannerForm.get('date')?.value != this.initialPlannerDataWhenEdit.date) {
       editObjectArticle.append('date', this.plannerForm.get('date')?.value);
     }
@@ -244,20 +244,20 @@ export class PlannerAddEditContainerComponent {
     if (this.plannerForm.get('town')?.value != this.initialPlannerDataWhenEdit.town) {
       editObjectArticle.append('town', this.plannerForm.get('town')?.value);
     }
- 
- 
+
+
     if (this.plannerForm.get('country')?.value != this.initialPlannerDataWhenEdit.country) {
       editObjectArticle.append('country', this.plannerForm.get('country')?.value);
     }
- 
+
     if (this.plannerForm.get('hasVideo')?.value != this.initialPlannerDataWhenEdit.hasVideo) {
       editObjectArticle.append('hasVideo', this.plannerForm.get('hasVideo')?.value);
     }
- 
+
     if (this.plannerForm.get('videoLink')?.value != this.initialPlannerDataWhenEdit.videoLink) {
       editObjectArticle.append('videoLink', this.plannerForm.get('videoLink')?.value);
     }
- 
+
     if (this.plannerForm.get('content')?.value != this.initialPlannerDataWhenEdit.content) {
       editObjectArticle.append('content', this.plannerForm.get('content')?.value);
     }
@@ -265,10 +265,10 @@ export class PlannerAddEditContainerComponent {
     if (this.isImageEdit) {
       editObjectArticle.append('coverImage', this.plannerForm.get('coverImage')?.value);
     }
- 
+
     //editObjectArticle.append('userId', this.connectedUser.id as any);
     editObjectArticle.append('userId', '1');
-    
+
     this.plannerService.editPlannerById(this.initialPlannerDataWhenEdit.id as string, editObjectArticle).subscribe(
       (result) => {
         if (result.status === "success") {

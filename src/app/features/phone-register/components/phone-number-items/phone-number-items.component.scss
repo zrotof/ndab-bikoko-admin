@@ -1,0 +1,15 @@
+.phone-number-items {
+    ul {
+        display: grid;
+        grid-template-columns: repeat(4, 1fr);
+        list-style: none;
+        gap: 0.2rem;
+
+        li{
+            background-color: var(--project-white-primary-color);
+            color: var(--project-black-primary-color);
+            border-radius: 4px;
+            padding: 0.6rem 1rem;
+        }
+    }
+}

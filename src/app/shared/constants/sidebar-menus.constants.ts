@@ -113,6 +113,15 @@ export const MENU_LIST: Menu[] = [
         active: false
     },
     {
+        icon: 'faPhones',
+        label: "Numéros",
+        allowedRoles : [RoleEnum.SUPER_ADMIN, RoleEnum.ADMIN, RoleEnum.DEPUTY],
+        menuItems: [
+            { label: "", url: "/numeros", allowedRoles: [RoleEnum.SUPER_ADMIN, RoleEnum.ADMIN, RoleEnum.DEPUTY] }
+        ],
+        active: false
+    },
+    {
         icon: 'faBriefcase',
         label: "Utilisateurs",
         allowedRoles : [RoleEnum.SUPER_ADMIN, RoleEnum.ADMIN, RoleEnum.DEPUTY],

@@ -1,0 +1,7 @@
+<div class="phone-number-items">
+    <ul>
+        @for (phoneNumber of phoneNumbers(); track $index) {
+            <li>{{phoneNumber.phone}}</li>
+        }
+    </ul>
+</div>

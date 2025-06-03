@@ -18,20 +18,24 @@ header {
         width: 45px;
         height: 45px;
         border-radius: 7px;
-        background-color: rgb(220, 220, 220);
         cursor: pointer;
+
+        &:hover {
+            background-color: rgb(220, 220, 220);
+        }
 
         .connected-user {
 
             display: flex;
             align-items: center;
             justify-content: center;
-            width: 35px;
-            height: 35px;
+            width: 37px;
+            height: 37px;
             border-radius: 50%;
             color: var(--project-white-primary-color);
             font-size: 1rem;
-            background-color: var(--project-brown-primary-color);
+            font-weight: 500;
+            background-color: var(--project-brown-secondary-color);
         }
 
     }

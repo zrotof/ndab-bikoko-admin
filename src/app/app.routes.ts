@@ -86,6 +86,11 @@ export const routes: Routes = [
         ]
     },
     {
+        path: "numeros",
+        //canActivate: [authGuard],
+        loadComponent: () => import('./features/phone-register/phone-register.component').then(m => m.PhoneRegisterComponent)
+    },
+    {
         path: "tableau-de-board",
         //canActivate: [authGuard],
         loadComponent: () => import('./features/dashboard-container/dashboard-container.component').then(m => m.DashboardContainerComponent)

@@ -1,4 +1,4 @@
-import { Component, computed, Inject, inject, input, ViewEncapsulation } from '@angular/core';
+import { Component, computed, inject, input, ViewEncapsulation } from '@angular/core';
 import { FormBuilder, FormGroup, ReactiveFormsModule, Validators } from '@angular/forms';
 import { Router, RouterLink } from '@angular/router';
 import { MessageService } from 'primeng/api';
@@ -206,7 +206,6 @@ export class TestimonyAddEditContainerComponent {
     if (this.testimonyForm.get('title')?.value != this.initialTestimonyDataWhenEdit.town) {
       editObjectTestimony.append('title', this.testimonyForm.get('title')?.value);
     }
-
 
     if (this.testimonyForm.get('message')?.value != this.initialTestimonyDataWhenEdit.message) {
       editObjectTestimony.append('message', this.testimonyForm.get('message')?.value);
