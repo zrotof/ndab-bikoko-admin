@@ -49,22 +49,41 @@
         </div>
 
         <div class="right">
-            <div class="row-two">
-                <div class="field">
+            <div class="row-one-top">
+                <div class="select-type">
                     <label>Type d'évênement</label>
-                    <p-select formControlName="eventType" placeholder="Sélectionnez" [options]="PLANNER_TYPES" optionLabel="label" >
+                    <p-select formControlName="eventType" placeholder="Sélectionnez" [options]="PLANNER_TYPES"
+                        optionLabel="label">
+                        <ng-template let-plannerType #item>
+                            <span [style]="'width: 20px;height: 20px; border-radius:50px; margin-right:12px; background-color: '+plannerType.color+';'"></span>
+                            <div>{{ plannerType.label }}</div>
+
+                        </ng-template>
                     </p-select>
                     @if (formControls['eventType'].invalid && ( isSaveButtonClicked || isEditButtonClicked)) {
-                    <small class="error-form">Sélectionnez un évênement</small>
+                    <small class="error-form">Sélectionnez un type d'évênement</small>
+                    }
+                </div>
+            </div>
+
+            <div class="row-two">
+                <div class="field">
+                    <label>Date début</label>
+                    <p-datepicker formControlName="dateStart" placeholder="Date de début" [iconDisplay]="'input'"
+                        [showIcon]="true" />
+                    @if (formControls['dateStart'].invalid && ( isSaveButtonClicked || isEditButtonClicked)) {
+
+                    <small class="error-form">Renseigner la date de début</small>
                     }
                 </div>
 
                 <div class="field">
-                    <label>Dates de l'évênement</label>
-                    <input type="text" pInputText formControlName="date" placeholder="Exemple: 12-15 Mai 2022" />
-                    @if (formControls['date'].invalid && ( isSaveButtonClicked || isEditButtonClicked)) {
+                    <label>Date fin</label>
+                    <p-datepicker formControlName="dateEnd" placeholder="Date de fin" [iconDisplay]="'input'"
+                        [showIcon]="true" />
+                    @if (formControls['dateEnd'].invalid && ( isSaveButtonClicked || isEditButtonClicked)) {
 
-                    <small class="error-form">Renseigner la date</small>
+                    <small class="error-form">Renseigner la date de fin</small>
                     }
                 </div>
             </div>
@@ -74,7 +93,7 @@
                 <div class="field">
                     <label>Ville</label>
                     <input type="text" pInputText formControlName="town" placeholder="Ville de l'évênement" />
-                    @if (formControls['date'].invalid && ( isSaveButtonClicked || isEditButtonClicked)) {
+                    @if (formControls['town'].invalid && ( isSaveButtonClicked || isEditButtonClicked)) {
 
                     <small class="error-form">Renseigner la ville</small>
                     }
@@ -83,7 +102,7 @@
                 <div class="field">
                     <label>Pays</label>
                     <input type="text" pInputText formControlName="country" placeholder="Pays de l'évênement" />
-                    @if (formControls['date'].invalid && ( isSaveButtonClicked || isEditButtonClicked)) {
+                    @if (formControls['country'].invalid && ( isSaveButtonClicked || isEditButtonClicked)) {
 
                     <small class="error-form">Renseigner le pays</small>
                     }
@@ -112,19 +131,6 @@
                     <label>Corps de l'article</label>
                     <p-editor formControlName="content" [style]="{ height: '320px' }"
                         placeholder="Renseignez le corps de l'article ici !">
-                        <ng-template pTemplate="header">
-                            <span class="ql-formats">
-                                <button class="ql-header" value="1"></button>
-                                <button class="ql-header" value="2"></button>
-                                <button class="ql-header" value="false"></button>
-                                <button type="button" class="ql-bold" aria-label="Bold"></button>
-                                <button type="button" class="ql-italic" aria-label="Italic"></button>
-                                <button type="button" class="ql-underline" aria-label="Underline"></button>
-                                <button type="button" class="ql-list" value="ordered"></button>
-                                <button type="button" class="ql-list" value="bullet"></button>
-                                <button type="button" class="ql-link"></button>
-                            </span>
-                        </ng-template>
                     </p-editor>
                     @if (formControls['content'].invalid && ( isSaveButtonClicked || isEditButtonClicked)) {
                     <small class="error-form">Renseigner le contenu de l'article</small>

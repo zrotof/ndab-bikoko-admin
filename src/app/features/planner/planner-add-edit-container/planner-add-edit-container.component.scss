@@ -1,14 +1,14 @@
-.planner-add-edit-containe{
+.planner-add-edit-containe {
     display: flex;
     flex-direction: column;
     min-height: 100vh;
 
-    form{
+    form {
         display: flex;
         justify-content: center;
 
-        .left{
-            
+        .left {
+
             display: flex;
             flex-direction: column;
             align-items: center;
@@ -22,64 +22,64 @@
                 overflow: hidden;
                 background-color: rgb(211, 211, 211);
 
-                img{
+                img {
                     width: 100%;
                     height: 100%;
                     display: none;
                     object-fit: cover;
                     object-position: top;
                 }
-            }            
+            }
 
-            .upload{
+            .upload {
                 display: flex;
                 flex-direction: column;
                 align-items: flex-start;
                 width: 100%;
                 margin-top: 15px;
 
-                .input{
+                .input {
                     display: flex;
                     flex-direction: column;
                     width: 100%;
-                    
-                    input{
-                        display:none;
+
+                    input {
+                        display: none;
                     }
-        
+
                     label {
-                            width:100%;
-                            height: 50px;
-                            padding: 5px 10px;
-                            background-color: white;
-                            color: var(--project-primary-color);
-                            border-radius:5px;
-                            cursor:pointer;
-                            border: solid var(--project-primary-color);
-                            display: flex;
-                            align-items: center;
-                            justify-content: center;
+                        width: 100%;
+                        height: 50px;
+                        padding: 5px 10px;
+                        background-color: white;
+                        color: var(--project-primary-color);
+                        border-radius: 5px;
+                        cursor: pointer;
+                        border: solid var(--project-primary-color);
+                        display: flex;
+                        align-items: center;
+                        justify-content: center;
 
-                            &:hover{
-                                transition: all 0.3 ease-in-out;
-                                background-color: var(--project-primary-color);
-                                color: white;
-                            }
+                        &:hover {
+                            transition: all 0.3 ease-in-out;
+                            background-color: var(--project-primary-color);
+                            color: white;
+                        }
 
-                        i{
+                        i {
                             margin-right: 7px;
                         }
                     }
                 }
 
-                small{
-                margin-top:10px;
-            }
+                small {
+                    margin-top: 10px;
+                }
 
             }
         }
 
-        .right{
+        .right {
             display: flex;
             justify-content: center;
             flex-direction: column;
@@ -88,29 +88,67 @@
             background-color: white;
             padding: 60px;
             box-shadow: rgba(50, 50, 93, 0.25) 0px 13px 27px -5px, rgba(0, 0, 0, 0.3) 0px 8px 16px -8px;
-            
-            .row-one{
+
+
+            .row-one-top {
+                display: flex;
+                gap: 1rem;
+
+                .select-type {
+                    flex: 1;
+                    display: flex;
+                    flex-direction: column;
+                    width: 100%;
+                    margin-bottom: 20px;
+
+                    label {
+                        margin-bottom: 7px;
+                    }
+
+                    small {
+                        margin: 10px 0 0 0;
+                    }
+                }
+
+                .date-bloc {
+                    width: 150px;
+                    flex-shrink: 0;
+                    display: flex;
+                    flex-direction: column;
+                    margin-bottom: 20px;
+
+                    label {
+                        margin-bottom: 7px;
+                    }
+
+                    small {
+                        margin: 10px 0 0 0;
+                    }
+                }
+            }
+
+            .row-one {
                 width: 100%;
             }
-    
-            .row-two{
+
+            .row-two {
                 display: flex;
                 gap: 1rem;
             }
-            
-            .field{
+
+            .field {
                 display: flex;
                 flex-direction: column;
                 width: 100%;
                 margin-bottom: 20px;
                 flex: 1;
-    
-                label{
+
+                label {
                     margin-bottom: 7px;
                 }
-    
-                small{
-                    margin:10px 0 0 0;
+
+                small {
+                    margin: 10px 0 0 0;
                 }
 
                 .disabledInput {
@@ -127,14 +165,18 @@
                     border: 1px solid var(--project-primary-color);
                 }
 
-                .p-select{
+                .p-select {
                     width: 100%;
 
-                    span{
+                    span {
                         width: 100%;
                     }
                 }
+
+                .p-datepicker{
+                    width: 100%;
+                }
             }
         }
-    } 
+    }
 }

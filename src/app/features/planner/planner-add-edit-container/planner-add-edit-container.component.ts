@@ -13,6 +13,7 @@ import { PageTopHeaderComponent } from 'src/app/shared/components/page-top-heade
 import { PLANNER_TYPES } from 'src/app/shared/constants/planner-type';
 import { lastValueFrom, timer } from 'rxjs';
 import { PlannerService } from 'src/app/core/services/planner/planner.service';
+import { DatePickerModule } from 'primeng/datepicker';
 
 @Component({
   selector: 'app-planner-add-edit-container',
@@ -25,6 +26,7 @@ import { PlannerService } from 'src/app/core/services/planner/planner.service';
     RouterLink,
     ReactiveFormsModule,
     InputTextModule,
+    DatePickerModule,
     SelectModule,
     ToggleSwitchModule,
     EditorModule,
@@ -79,7 +81,8 @@ export class PlannerAddEditContainerComponent {
   initForm(): void {
     this.plannerForm = this.fb.group({
       eventType: ["", Validators.required],
-      date: ["", Validators.required],
+      dateStart: ["", Validators.required],
+      dateEnd: ["", Validators.required],
       town: ["", Validators.required],
       country: ["", Validators.required],
       hasVideo: [false],
@@ -121,7 +124,8 @@ export class PlannerAddEditContainerComponent {
             const currentPlannerType = PLANNER_TYPES.filter((res: any) => res.type === this.initialPlannerDataWhenEdit.type)
             this.plannerForm.controls['eventType'].setValue(currentPlannerType[0]);
 
-            this.plannerForm.controls['date'].setValue(this.initialPlannerDataWhenEdit.date);
+            this.plannerForm.controls['dateStart'].setValue(new Date(this.initialPlannerDataWhenEdit.dateStart));
+            this.plannerForm.controls['dateEnd'].setValue(new Date(this.initialPlannerDataWhenEdit.dateEnd));
             this.plannerForm.controls['town'].setValue(this.initialPlannerDataWhenEdit.town);
             this.plannerForm.controls['country'].setValue(this.initialPlannerDataWhenEdit.country);
             this.plannerForm.controls['hasVideo'].setValue(this.initialPlannerDataWhenEdit.hasVideo);
@@ -146,7 +150,7 @@ export class PlannerAddEditContainerComponent {
     }
   }
 
-  getUserConnected(): void {
+  getUserConnected() {
     //this.connectedUser = this.activatedRoute.snapshot.data.user;
   }
 
@@ -164,8 +168,12 @@ export class PlannerAddEditContainerComponent {
       newPlanner.append('type', this.plannerForm.get('eventType')?.value.type);
     }
 
-    if (this.plannerForm.get('date')?.value) {
-      newPlanner.append('date', this.plannerForm.get('date')?.value);
+    if (this.plannerForm.get('dateStart')?.value) {
+      newPlanner.append('dateStart', this.plannerForm.get('dateStart')?.value);
+    }
+
+    if (this.plannerForm.get('dateEnd')?.value) {
+      newPlanner.append('dateEnd', this.plannerForm.get('dateEnd')?.value);
     }
 
     if (this.plannerForm.get('town')?.value) {
@@ -213,7 +221,9 @@ export class PlannerAddEditContainerComponent {
     if (
       this.plannerForm.controls['eventType'].value.type === this.initialPlannerDataWhenEdit.type
       &&
-      this.plannerForm.controls['date'].value === this.initialPlannerDataWhenEdit.date
+      this.plannerForm.controls['dateStart'].value === this.initialPlannerDataWhenEdit.dateStart
+      &&
+      this.plannerForm.controls['dateEnd'].value === this.initialPlannerDataWhenEdit.dateEnd
       &&
       this.plannerForm.controls['town'].value === this.initialPlannerDataWhenEdit.town
       &&
@@ -237,8 +247,12 @@ export class PlannerAddEditContainerComponent {
       editObjectArticle.append('type', this.plannerForm.get('eventType')?.value.type);
     }
 
-    if (this.plannerForm.get('date')?.value != this.initialPlannerDataWhenEdit.date) {
-      editObjectArticle.append('date', this.plannerForm.get('date')?.value);
+    if (this.plannerForm.get('dateStart')?.value != this.initialPlannerDataWhenEdit.dateStart) {
+      editObjectArticle.append('dateStart', this.plannerForm.get('dateStart')?.value);
+    }
+
+     if (this.plannerForm.get('dateEnd')?.value != this.initialPlannerDataWhenEdit.dateEnd) {
+      editObjectArticle.append('dateEnd', this.plannerForm.get('dateEnd')?.value);
     }
 
     if (this.plannerForm.get('town')?.value != this.initialPlannerDataWhenEdit.town) {

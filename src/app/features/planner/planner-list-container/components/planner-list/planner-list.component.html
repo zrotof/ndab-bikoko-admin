@@ -10,7 +10,8 @@
                     </th>
                     <th>Type d'évênement</th>
                     <th>lieux</th>
-                    <th>Date</th>
+                    <th>Date Début</th>
+                    <th>Date Fin</th>
                     <th class="table-actions-column-header">Actions</th>
                 </tr>
             </ng-template>
@@ -50,7 +51,8 @@
                         }
                     </td>
                     <td> {{planner.town}} ( {{planner.country}} ) </td>
-                    <td> {{planner.date}} </td>
+                    <td> {{planner.dateStart | date:'d MMMM y':'':'fr'}} </td>
+                    <td> {{planner.dateEnd | date:'d MMMM y':'':'fr'}} </td>
                     <td class="table-actions-header">
                         <i class="pi pi-ellipsis-v" (click)="op.toggle($event)"></i>
 

@@ -1,4 +1,4 @@
-import { NgOptimizedImage } from '@angular/common';
+import { DatePipe, NgOptimizedImage } from '@angular/common';
 import { Component, input, output, ViewEncapsulation } from '@angular/core';
 import { OverlayModule } from 'primeng/overlay';
 import { OverlayPanelModule } from 'primeng/overlaypanel';
@@ -11,6 +11,7 @@ import { TableModule } from 'primeng/table';
   encapsulation: ViewEncapsulation.None,
   imports: [
     NgOptimizedImage,
+    DatePipe,
     TableModule,
     OverlayModule,
     OverlayPanelModule,
